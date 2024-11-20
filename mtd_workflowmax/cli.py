@@ -12,8 +12,6 @@ from .core.logging import get_logger, LogManager
 from .services.custom_field_service import EntityType
 from .services.linkedin_service import LinkedInService
 
-logger = get_logger('workflowmax.cli')
-
 def setup_argparse():
     """Set up argument parser."""
     parser = argparse.ArgumentParser(description='WorkflowMax API CLI')
@@ -51,60 +49,14 @@ def setup_argparse():
     
     return parser
 
-def format_custom_field_value(field):
-    """Format custom field value for display."""
-    if field.value is None:
-        return 'Not set'
-    
-    if field.type == 'Boolean':
-        return 'Yes' if field.value.lower() == 'true' else 'No'
-    elif field.type == 'Link':
-        return f"<{field.value}>"
-    else:
-        return field.value
-
 def handle_contact_command(wfm: WorkflowMax, args):
     """Handle contact-related commands."""
     if args.subcommand == 'view':
         # Get contact with custom fields included
         contact = wfm.contacts.get_contact(args.uuid, include_custom_fields=True)
         if contact:
-            # Print basic contact details
-            print("\nContact Details:")
-            print(f"Name: {contact.name}")
-            print(f"UUID: {contact.uuid}")
-            if contact.email:
-                print(f"Email: {contact.email}")
-            if contact.mobile:
-                print(f"Mobile: {contact.mobile}")
-            if contact.phone:
-                print(f"Phone: {contact.phone}")
-            if contact.addressee:
-                print(f"Addressee: {contact.addressee}")
-            if contact.salutation:
-                print(f"Salutation: {contact.salutation}")
-            
-            # Print positions (company relationships)
-            if contact.positions:
-                print("\nCompany Relationships:")
-                for pos in contact.positions:
-                    print(f"  Company: {pos.client_name}")
-                    if pos.client_uuid:
-                        print(f"  Company UUID: {pos.client_uuid}")
-                    if pos.position:
-                        print(f"  Position: {pos.position}")
-                    if pos.is_primary:
-                        print("  Primary Position: Yes")
-                    if pos.include_in_emails:
-                        print("  Include in Emails: Yes")
-                    print()  # Add blank line between positions
-            
-            # Print custom fields
-            if contact.custom_fields:
-                print("Custom Fields:")
-                for field in contact.custom_fields:
-                    value = format_custom_field_value(field)
-                    print(f"  {field.name}: {value}")
+            # Use the model's print_details method
+            contact.print_details()
         else:
             print(f"Failed to fetch contact with UUID: {args.uuid}")
             
@@ -119,25 +71,8 @@ def handle_contact_command(wfm: WorkflowMax, args):
         if contacts:
             print(f"\nFound {len(contacts)} contacts:")
             for contact in contacts:
-                print(f"\n- {contact.name} ({contact.uuid})")
-                if contact.email:
-                    print(f"  Email: {contact.email}")
-                
-                # Print company info
-                if contact.positions:
-                    for pos in contact.positions:
-                        print(f"  Company: {pos.client_name}")
-                        if pos.position:
-                            print(f"  Position: {pos.position}")
-                        if pos.is_primary:
-                            print("  Primary Position: Yes")
-                
-                # Print custom fields if requested
-                if args.include_custom_fields and contact.custom_fields:
-                    print("  Custom Fields:")
-                    for field in contact.custom_fields:
-                        value = format_custom_field_value(field)
-                        print(f"    {field.name}: {value}")
+                # Use the model's print_details method
+                contact.print_details()
         else:
             print("\nNo contacts found")
             
@@ -159,9 +94,9 @@ def main():
     parser = setup_argparse()
     args = parser.parse_args()
     
-    # Set log level before any other operations
-    LogManager.set_log_level(args.log_level)
-    logger.debug(f"Log level set to {args.log_level}")
+    # Configure logging with user-specified level
+    LogManager.configure_logging(level=args.log_level)
+    logger = get_logger('workflowmax.cli')
     
     if not args.command:
         parser.print_help()

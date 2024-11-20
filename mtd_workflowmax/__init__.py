@@ -5,7 +5,9 @@ __version__ = '0.1.0'
 import os
 import json
 from typing import Optional, Dict
-from .core.logging import get_logger, with_logging
+from pathlib import Path
+
+from .core.logging import get_logger, LogManager
 from .core.exceptions import WorkflowMaxError
 from .api import api
 from .repositories import repositories, initialize as init_repositories, Repositories
@@ -15,6 +17,8 @@ from .services.workflowmax_linkedin_service import WorkflowMaxLinkedInService
 from .services.relationship_service import RelationshipService
 from .services.job_service import JobService
 
+# Initialize logging with default settings
+LogManager.configure_logging()
 logger = get_logger('workflowmax')
 
 class WorkflowMax:

@@ -7,13 +7,82 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 import hashlib
 import json
+from pathlib import Path
 
 from .logging import get_logger
-from .exceptions import ValidationError
+from .exceptions import ValidationError, XMLParsingError
 
 logger = get_logger('workflowmax.utils')
 
 T = TypeVar('T')
+
+def find_project_root() -> Path:
+    """Find the project root directory by looking for .env file.
+    
+    Returns:
+        Path to project root directory
+    """
+    current = Path.cwd()
+    logger.debug(f"Starting search for project root from: {current}")
+    
+    # First check current directory and parents
+    while current != current.parent:
+        if (current / '.env').exists():
+            logger.debug(f"Found .env file in: {current}")
+            return current
+        if (current / 'setup.py').exists():
+            logger.debug(f"Found setup.py in: {current}")
+            return current
+        logger.debug(f"No .env or setup.py found in: {current}")
+        current = current.parent
+    
+    # If not found, check if we're in src directory
+    if Path.cwd().name == 'src':
+        parent = Path.cwd().parent
+        logger.debug(f"In src directory, checking parent: {parent}")
+        if (parent / '.env').exists():
+            logger.debug(f"Found .env file in parent: {parent}")
+            return parent
+        if (parent / 'setup.py').exists():
+            logger.debug(f"Found setup.py in parent: {parent}")
+            return parent
+        logger.debug(f"No .env or setup.py found in parent: {parent}")
+    
+    logger.debug(f"No project root found, returning cwd: {Path.cwd()}")
+    return Path.cwd()
+
+def get_xml_text(
+    element: ET.Element,
+    tag: str,
+    default: Optional[str] = None,
+    required: bool = False
+) -> Optional[str]:
+    """Get text content of an XML element.
+    
+    Args:
+        element: Parent XML element
+        tag: Tag name to find
+        default: Default value if tag not found
+        required: Whether the tag is required
+        
+    Returns:
+        Text content or default value
+        
+    Raises:
+        XMLParsingError: If required tag is missing
+    """
+    try:
+        child = element.find(tag)
+        if child is None:
+            if required:
+                raise XMLParsingError(f"Required tag {tag} not found")
+            return default
+        return child.text or default
+    except Exception as e:
+        if required:
+            raise XMLParsingError(f"Error getting required tag {tag}: {str(e)}")
+        logger.warning(f"Error getting tag {tag}: {str(e)}")
+        return default
 
 def retry(
     max_attempts: int = 3,
@@ -206,6 +275,19 @@ def truncate_string(value: str, max_length: int, suffix: str = '...') -> str:
         return value
         
     return value[:max_length - len(suffix)] + suffix
+
+def get_cache_age(timestamp: Optional[float]) -> float:
+    """Get age of cache in seconds.
+    
+    Args:
+        timestamp: Cache timestamp (seconds since epoch)
+        
+    Returns:
+        Age in seconds, or float('inf') if timestamp is None
+    """
+    if timestamp is None:
+        return float('inf')
+    return time.time() - timestamp
 
 class Timer:
     """Context manager for timing code execution."""

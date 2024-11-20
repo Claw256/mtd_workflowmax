@@ -7,9 +7,11 @@ import yaml
 from pydantic import BaseModel, Field, field_validator
 import json
 import re
+from dotenv import load_dotenv
 
 from ..core.exceptions import ConfigurationError
 from ..core.logging import get_logger
+from ..core.utils import find_project_root
 
 logger = get_logger('workflowmax.config')
 
@@ -143,29 +145,34 @@ class PathConfig(BaseConfig):
     """Path configuration."""
     
     base_dir: Path = Field(
-        default=Path.cwd(),
+        default_factory=find_project_root,  # Use project root as base directory
         description="Base directory for the application"
     )
     config_dir: Path = Field(
-        default=Path("config"),
+        default=None,  # Will be set in post_init
         description="Configuration directory"
     )
     logs_dir: Path = Field(
-        default=Path("logs"),
+        default=None,  # Will be set in post_init
         description="Logs directory"
     )
     cache_dir: Path = Field(
-        default=Path("cache"),
+        default=None,  # Will be set in post_init
         description="Cache directory"
     )
     
-    @field_validator('*')
-    @classmethod
-    def validate_directory(cls, v: Path) -> Path:
-        """Validate and create directories."""
-        if isinstance(v, Path):
-            v.mkdir(parents=True, exist_ok=True)
-        return v
+    def __init__(self, **data):
+        """Initialize path configuration with project structure."""
+        super().__init__(**data)
+        # Set default paths relative to base_dir/mtd_workflowmax
+        pkg_dir = self.base_dir / 'mtd_workflowmax'
+        self.config_dir = data.get('config_dir', pkg_dir / 'config')
+        self.logs_dir = data.get('logs_dir', pkg_dir / 'logs')
+        self.cache_dir = data.get('cache_dir', pkg_dir / 'cache')
+        
+        # Create directories
+        for path in [self.config_dir, self.logs_dir, self.cache_dir]:
+            path.mkdir(parents=True, exist_ok=True)
 
 class ConfigurationManager:
     """Manages application configuration."""
@@ -219,13 +226,34 @@ class ConfigurationManager:
         if cache_key in self._config_cache:
             return self._config_cache[cache_key]
         
-        # Load from file
+        # First try loading from root config.yml if it exists
+        root_config_path = self.paths.base_dir / 'config.yml'
+        if root_config_path.exists():
+            try:
+                with open(root_config_path) as f:
+                    root_config = yaml.safe_load(f)
+                if name in root_config:
+                    config = config_class.from_dict(root_config[name])
+                    self._config_cache[cache_key] = config
+                    return config
+            except Exception as e:
+                logger.warning(f"Failed to load {name} from root config.yml: {str(e)}")
+        
+        # If not found in root config, try package config directory
         config_file = self.paths.config_dir / f"{name}.yml"
         if config_file.exists():
             config = config_class.from_yaml(config_file)
         else:
-            # Create default config
-            config = config_class()
+            # If config class has a load method, use it
+            if hasattr(config_class, 'load'):
+                config = config_class.load()
+            else:
+                # Create default config
+                config = config_class()
+        
+        # Load environment variables if config has load_from_env method
+        if hasattr(config, 'load_from_env'):
+            config.load_from_env()
             
         # Cache configuration
         self._config_cache[cache_key] = config

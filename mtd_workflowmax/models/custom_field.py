@@ -9,7 +9,7 @@ import re
 
 from ..core.exceptions import ValidationError, XMLParsingError, CustomFieldError
 from ..core.logging import get_logger
-from ..core.utils import validate_string_length, sanitize_xml
+from ..core.utils import validate_string_length, sanitize_xml, get_xml_text
 
 logger = get_logger('workflowmax.models.custom_field')
 
@@ -153,21 +153,21 @@ class CustomFieldDefinition(BaseModel):
         """
         try:
             data = {
-                "Name": cls._get_text(xml_element, 'Name', required=True),
-                "Type": cls._get_text(xml_element, 'Type', required=True),
-                "Description": cls._get_text(xml_element, 'Description'),
-                "Required": cls._get_text(xml_element, 'Mandatory', 'false').lower() == 'true',
-                "UseClient": cls._get_text(xml_element, 'UseClient', 'false').lower() == 'true',
-                "UseContact": cls._get_text(xml_element, 'UseContact', 'false').lower() == 'true',
-                "UseSupplier": cls._get_text(xml_element, 'UseSupplier', 'false').lower() == 'true',
-                "UseJob": cls._get_text(xml_element, 'UseJob', 'false').lower() == 'true',
-                "UseLead": cls._get_text(xml_element, 'UseLead', 'false').lower() == 'true',
-                "UseJobTask": cls._get_text(xml_element, 'UseJobTask', 'false').lower() == 'true',
-                "UseJobCost": cls._get_text(xml_element, 'UseJobCost', 'false').lower() == 'true',
-                "UseJobTime": cls._get_text(xml_element, 'UseJobTime', 'false').lower() == 'true',
-                "UseQuote": cls._get_text(xml_element, 'UseQuote', 'false').lower() == 'true',
-                "LinkURL": cls._get_text(xml_element, 'LinkURL'),
-                "ValueElement": cls._get_text(xml_element, 'ValueElement')
+                "Name": get_xml_text(xml_element, 'Name', required=True),
+                "Type": get_xml_text(xml_element, 'Type', required=True),
+                "Description": get_xml_text(xml_element, 'Description'),
+                "Required": get_xml_text(xml_element, 'Mandatory', 'false').lower() == 'true',
+                "UseClient": get_xml_text(xml_element, 'UseClient', 'false').lower() == 'true',
+                "UseContact": get_xml_text(xml_element, 'UseContact', 'false').lower() == 'true',
+                "UseSupplier": get_xml_text(xml_element, 'UseSupplier', 'false').lower() == 'true',
+                "UseJob": get_xml_text(xml_element, 'UseJob', 'false').lower() == 'true',
+                "UseLead": get_xml_text(xml_element, 'UseLead', 'false').lower() == 'true',
+                "UseJobTask": get_xml_text(xml_element, 'UseJobTask', 'false').lower() == 'true',
+                "UseJobCost": get_xml_text(xml_element, 'UseJobCost', 'false').lower() == 'true',
+                "UseJobTime": get_xml_text(xml_element, 'UseJobTime', 'false').lower() == 'true',
+                "UseQuote": get_xml_text(xml_element, 'UseQuote', 'false').lower() == 'true',
+                "LinkURL": get_xml_text(xml_element, 'LinkURL'),
+                "ValueElement": get_xml_text(xml_element, 'ValueElement')
             }
             
             # Parse options for Select type
@@ -226,35 +226,6 @@ class CustomFieldDefinition(BaseModel):
         
         xml.append('</CustomField>')
         return '\n'.join(xml)
-    
-    @staticmethod
-    def _get_text(element: ET.Element, tag: str, default: Optional[str] = None, required: bool = False) -> Optional[str]:
-        """Get text content of an XML element.
-        
-        Args:
-            element: Parent XML element
-            tag: Tag name to find
-            default: Default value if tag not found
-            required: Whether the tag is required
-            
-        Returns:
-            Text content or default value
-            
-        Raises:
-            XMLParsingError: If required tag is missing
-        """
-        try:
-            child = element.find(tag)
-            if child is None:
-                if required:
-                    raise XMLParsingError(f"Required tag {tag} not found")
-                return default
-            return child.text or default
-        except Exception as e:
-            if required:
-                raise XMLParsingError(f"Error getting required tag {tag}: {str(e)}")
-            logger.warning(f"Error getting tag {tag}: {str(e)}")
-            return default
 
 class CustomFieldValue(BaseModel):
     """Custom field value model."""
@@ -278,6 +249,38 @@ class CustomFieldValue(BaseModel):
     class Config:
         """Model configuration."""
         populate_by_name = True  # Allow both alias and field name for assignment
+    
+    def format_value(self) -> str:
+        """Format the field value for display based on its type.
+        
+        Returns:
+            Formatted value string
+        """
+        if self.value is None:
+            return 'Not set'
+        
+        if self.type == CustomFieldType.BOOLEAN:
+            return 'Yes' if self.value.lower() == 'true' else 'No'
+        elif self.type == CustomFieldType.LINK:
+            return f"<{self.value}>"
+        elif self.type == CustomFieldType.DATE:
+            try:
+                dt = datetime.strptime(self.value, '%Y-%m-%d')
+                return dt.strftime('%d %b %Y')
+            except ValueError:
+                return self.value
+        elif self.type == CustomFieldType.NUMBER:
+            try:
+                return f"{int(float(self.value)):,}"
+            except ValueError:
+                return self.value
+        elif self.type == CustomFieldType.DECIMAL:
+            try:
+                return f"{float(self.value):,.2f}"
+            except ValueError:
+                return self.value
+        else:
+            return self.value
     
     @validator('value')
     def validate_value(cls, v, values):
@@ -331,16 +334,16 @@ class CustomFieldValue(BaseModel):
         """
         try:
             data = {
-                "Name": cls._get_text(xml_element, 'Name', required=True),
-                "Type": cls._get_text(xml_element, 'Type', CustomFieldType.TEXT)
+                "Name": get_xml_text(xml_element, 'Name', required=True),
+                "Type": get_xml_text(xml_element, 'Type', CustomFieldType.TEXT)
             }
             
             # Determine value based on type
             field_type = data['Type']
             if field_type == CustomFieldType.BOOLEAN:
-                data['Value'] = cls._get_text(xml_element, 'Boolean')
+                data['Value'] = get_xml_text(xml_element, 'Boolean')
             elif field_type == CustomFieldType.DATE:
-                date_val = cls._get_text(xml_element, 'Date')
+                date_val = get_xml_text(xml_element, 'Date')
                 if date_val:
                     # Convert to standard format if needed
                     try:
@@ -350,13 +353,13 @@ class CustomFieldValue(BaseModel):
                         pass  # Keep original format if parsing fails
                 data['Value'] = date_val
             elif field_type == CustomFieldType.NUMBER:
-                data['Value'] = cls._get_text(xml_element, 'Number')
+                data['Value'] = get_xml_text(xml_element, 'Number')
             elif field_type == CustomFieldType.DECIMAL:
-                data['Value'] = cls._get_text(xml_element, 'Decimal')
+                data['Value'] = get_xml_text(xml_element, 'Decimal')
             elif field_type == CustomFieldType.LINK:
-                data['Value'] = cls._get_text(xml_element, 'LinkURL')
+                data['Value'] = get_xml_text(xml_element, 'LinkURL')
             else:
-                data['Value'] = cls._get_text(xml_element, 'Value')
+                data['Value'] = get_xml_text(xml_element, 'Value')
             
             return cls(**data)
             
@@ -401,32 +404,3 @@ class CustomFieldValue(BaseModel):
         
         xml.append('</CustomField>')
         return '\n'.join(xml)
-    
-    @staticmethod
-    def _get_text(element: ET.Element, tag: str, default: Optional[str] = None, required: bool = False) -> Optional[str]:
-        """Get text content of an XML element.
-        
-        Args:
-            element: Parent XML element
-            tag: Tag name to find
-            default: Default value if tag not found
-            required: Whether the tag is required
-            
-        Returns:
-            Text content or None
-            
-        Raises:
-            XMLParsingError: If required tag is missing
-        """
-        try:
-            child = element.find(tag)
-            if child is None:
-                if required:
-                    raise XMLParsingError(f"Required tag {tag} not found")
-                return default
-            return child.text or default
-        except Exception as e:
-            if required:
-                raise XMLParsingError(f"Error getting required tag {tag}: {str(e)}")
-            logger.warning(f"Error getting tag {tag}: {str(e)}")
-            return default

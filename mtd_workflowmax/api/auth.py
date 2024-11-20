@@ -84,9 +84,16 @@ class OAuthManager:
     """Manager for OAuth2 authentication."""
     
     def __init__(self):
-        """Initialize OAuth manager."""
+        """Initialize OAuth manager.
+        
+        Raises:
+            ConfigurationError: If required OAuth2 credentials are missing
+        """
         self.auth_config = config.auth
         self._encryption_key: Optional[bytes] = None
+        
+        # Validate configuration immediately
+        self.auth_config.validate_config()
         
         if self.auth_config.token_storage.encryption_key:
             self._encryption_key = Fernet.generate_key()
@@ -300,7 +307,8 @@ class OAuthManager:
                 'client_id': self.auth_config.oauth2_credentials.client_id,
                 'redirect_uri': str(self.auth_config.oauth2_endpoints.redirect_uri),
                 'scope': self.auth_config.oauth2_credentials.scope,
-                'state': state
+                'state': state,
+                'prompt': 'consent'  # Added as per documentation
             }
             
             auth_url = (
@@ -349,6 +357,10 @@ class OAuthManager:
                 )
                 
                 if not token_response.ok:
+                    logger.error("Token exchange failed", 
+                               status_code=token_response.status_code,
+                               reason=token_response.reason,
+                               response_text=token_response.text)
                     raise AuthenticationError(
                         f"Token exchange failed: {token_response.status_code} "
                         f"{token_response.reason}"
@@ -356,12 +368,17 @@ class OAuthManager:
                 
                 # Process token response
                 token_info = token_response.json()
+                logger.debug("Received token response", token_info=token_info)
+                
                 # Extract org_id from access token
                 token_data = jwt.decode(token_info['access_token'], options={"verify_signature": False})
+                logger.debug("Decoded JWT token", token_data=token_data)
+                
                 org_ids = token_data.get('org_ids', [])
                 org_id = org_ids[0] if org_ids else None
                 
                 if not org_id:
+                    logger.error("No organization ID found in token", token_data=token_data)
                     raise AuthenticationError("Organization ID not found in token")
                 
                 # Structure token info

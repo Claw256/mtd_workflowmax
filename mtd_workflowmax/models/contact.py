@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 
 from ..core.exceptions import ValidationError, XMLParsingError
 from ..core.logging import get_logger
-from ..core.utils import validate_string_length, sanitize_xml
+from ..core.utils import validate_string_length, sanitize_xml, get_xml_text
 from .custom_field import CustomFieldValue, CustomFieldType
 
 logger = get_logger('workflowmax.models.contact')
@@ -211,7 +211,7 @@ class Contact(BaseModel):
             
             data = {}
             for xml_tag, (field_name, default) in field_mappings.items():
-                value = cls._get_text(xml_element, xml_tag, default)
+                value = get_xml_text(xml_element, xml_tag, default)
                 if value is not None:
                     data[field_name] = value
             
@@ -223,12 +223,12 @@ class Contact(BaseModel):
                     for pos_elem in positions_elem.findall('Position'):
                         try:
                             pos_data = {
-                                'UUID': cls._get_text(pos_elem, 'UUID'),
-                                'Position': cls._get_text(pos_elem, 'Position'),
-                                'Name': cls._get_text(pos_elem, 'Name'),
-                                'ClientUUID': cls._get_text(pos_elem, 'ClientUUID'),
-                                'IncludeInEmails': cls._get_text(pos_elem, 'IncludeInEmails', 'no').lower() == 'yes',
-                                'IsPrimary': cls._get_text(pos_elem, 'IsPrimary', 'no').lower() == 'yes'
+                                'UUID': get_xml_text(pos_elem, 'UUID'),
+                                'Position': get_xml_text(pos_elem, 'Position'),
+                                'Name': get_xml_text(pos_elem, 'Name'),
+                                'ClientUUID': get_xml_text(pos_elem, 'ClientUUID'),
+                                'IncludeInEmails': get_xml_text(pos_elem, 'IncludeInEmails', 'no').lower() == 'yes',
+                                'IsPrimary': get_xml_text(pos_elem, 'IsPrimary', 'no').lower() == 'yes'
                             }
                             positions.append(Position(**pos_data))
                         except Exception as e:
@@ -383,24 +383,4 @@ class Contact(BaseModel):
         if self.custom_fields:
             print("\nCustom Fields:")
             for field in self.custom_fields:
-                value = field.value if field.value is not None else ''
-                print(f"{field.name} ({field.type.value}): {value}")
-    
-    @staticmethod
-    def _get_text(element: ET.Element, tag: str, default: Optional[str] = None) -> Optional[str]:
-        """Get text content of an XML element.
-        
-        Args:
-            element: Parent XML element
-            tag: Tag name to find
-            default: Default value if tag not found
-            
-        Returns:
-            Text content or default value
-        """
-        try:
-            child = element.find(tag)
-            return child.text if child is not None and child.text else default
-        except Exception as e:
-            logger.warning(f"Error getting text for tag {tag}: {str(e)}")
-            return default
+                print(f"{field.name} ({field.type.value}): {field.format_value()}")

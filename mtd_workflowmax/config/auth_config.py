@@ -1,11 +1,15 @@
 """Authentication configuration for WorkflowMax API."""
 
+import os
 from typing import Optional
 from pathlib import Path
 from pydantic import BaseModel, Field, HttpUrl, SecretStr, field_validator
 
 from .base import BaseConfig
 from ..core.exceptions import ConfigurationError
+from ..core.logging import get_logger
+
+logger = get_logger('workflowmax.config.auth')
 
 class OAuth2Endpoints(BaseModel):
     """OAuth2 endpoint configuration."""
@@ -126,29 +130,41 @@ class AuthConfig(BaseConfig):
     
     def load_from_env(self):
         """Load configuration from environment variables."""
-        import os
-        
         # OAuth2 endpoints
         if auth_url := os.getenv('WORKFLOWMAX_AUTH_URL'):
             self.oauth2_endpoints.authorize_url = auth_url
+            logger.debug(f"Loaded auth URL: {auth_url}")
         if token_url := os.getenv('WORKFLOWMAX_TOKEN_URL'):
             self.oauth2_endpoints.token_url = token_url
+            logger.debug(f"Loaded token URL: {token_url}")
         if redirect_uri := os.getenv('WORKFLOWMAX_REDIRECT_URI'):
             self.oauth2_endpoints.redirect_uri = redirect_uri
+            logger.debug(f"Loaded redirect URI: {redirect_uri}")
             
         # OAuth2 credentials
         if client_id := os.getenv('CLIENT_ID'):
             self.oauth2_credentials.client_id = client_id
+            logger.debug(f"Loaded client ID: {client_id}")
+        else:
+            logger.warning("CLIENT_ID environment variable not found")
+            
         if client_secret := os.getenv('CLIENT_SECRET'):
             self.oauth2_credentials.client_secret = SecretStr(client_secret)
+            logger.debug("Loaded client secret")
+        else:
+            logger.warning("CLIENT_SECRET environment variable not found")
+            
         if scope := os.getenv('WORKFLOWMAX_SCOPE'):
             self.oauth2_credentials.scope = scope
+            logger.debug(f"Loaded scope: {scope}")
             
         # Token storage
         if storage_path := os.getenv('WORKFLOWMAX_TOKEN_STORAGE'):
             self.token_storage.file_path = Path(storage_path)
+            logger.debug(f"Loaded token storage path: {storage_path}")
         if encryption_key := os.getenv('WORKFLOWMAX_TOKEN_ENCRYPTION_KEY'):
             self.token_storage.encryption_key = SecretStr(encryption_key)
+            logger.debug("Loaded token encryption key")
     
     def validate_config(self):
         """Validate complete configuration.

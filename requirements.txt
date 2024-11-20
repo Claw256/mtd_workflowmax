@@ -1,23 +1,21 @@
 # Core dependencies
 requests>=2.31.0
-python-jwt>=4.0.0
+PyJWT>=2.0.0  # Changed from python-jwt
 python-dotenv>=1.0.0
-lxml>=4.9.3  # Fast XML processing
-cachetools>=5.3.1  # For TTL caching
-aiohttp>=3.8.5  # For async HTTP requests
-circuitbreaker>=1.4.0  # For circuit breaker pattern
-prometheus_client>=0.17.1  # For metrics collection
+lxml>=4.9.3
+cachetools>=5.3.1
+aiohttp>=3.8.5
+circuitbreaker>=1.4.0
+prometheus_client>=0.17.1
 urllib3>=2.0.4
-tenacity>=8.2.3  # For advanced retry capabilities
-linkedin-api>=2.0.0  # For LinkedIn profile searching
-
-# Configuration
+tenacity>=8.2.3
+linkedin-api>=2.0.0
+pydantic>=2.0.0
+cryptography>=3.4.0
 PyYAML>=6.0.1
-
-# Progress tracking
 tqdm>=4.65.0
 
-# Type checking (development only)
+# Development dependencies
 mypy>=1.5.1
 types-requests>=2.31.0.2
 types-PyYAML>=6.0.12.11
