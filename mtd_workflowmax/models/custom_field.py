@@ -6,6 +6,7 @@ from datetime import datetime
 from pydantic import BaseModel, Field, validator
 import xml.etree.ElementTree as ET
 import re
+from urllib.parse import urlparse
 
 from ..core.exceptions import ValidationError, XMLParsingError, CustomFieldError
 from ..core.logging import get_logger
@@ -28,6 +29,11 @@ class CustomFieldType(str, Enum):
 class CustomFieldDefinition(BaseModel):
     """Custom field definition model."""
     
+    uuid: Optional[str] = Field(
+        None,
+        alias="UUID",
+        description="Field UUID"
+    )
     name: str = Field(
         ...,
         alias="Name",
@@ -107,11 +113,6 @@ class CustomFieldDefinition(BaseModel):
         alias="LinkURL",
         description="URL template for Link type fields"
     )
-    value_element: Optional[str] = Field(
-        None,
-        alias="ValueElement",
-        description="XML element to use for field value"
-    )
     
     class Config:
         """Model configuration."""
@@ -153,6 +154,7 @@ class CustomFieldDefinition(BaseModel):
         """
         try:
             data = {
+                "UUID": get_xml_text(xml_element, 'UUID'),
                 "Name": get_xml_text(xml_element, 'Name', required=True),
                 "Type": get_xml_text(xml_element, 'Type', required=True),
                 "Description": get_xml_text(xml_element, 'Description'),
@@ -166,8 +168,7 @@ class CustomFieldDefinition(BaseModel):
                 "UseJobCost": get_xml_text(xml_element, 'UseJobCost', 'false').lower() == 'true',
                 "UseJobTime": get_xml_text(xml_element, 'UseJobTime', 'false').lower() == 'true',
                 "UseQuote": get_xml_text(xml_element, 'UseQuote', 'false').lower() == 'true',
-                "LinkURL": get_xml_text(xml_element, 'LinkURL'),
-                "ValueElement": get_xml_text(xml_element, 'ValueElement')
+                "LinkURL": get_xml_text(xml_element, 'LinkURL')
             }
             
             # Parse options for Select type
@@ -191,7 +192,9 @@ class CustomFieldDefinition(BaseModel):
         """
         xml = ['<CustomField>']
         
-        # Add basic fields
+        # Add basic fields in correct order
+        if self.uuid:
+            xml.append(f"<UUID>{sanitize_xml(self.uuid)}</UUID>")
         xml.append(f"<Name>{sanitize_xml(self.name)}</Name>")
         xml.append(f"<Type>{self.type.value}</Type>")
         
@@ -211,11 +214,9 @@ class CustomFieldDefinition(BaseModel):
         xml.append(f"<UseJobTime>{str(self.use_job_time).lower()}</UseJobTime>")
         xml.append(f"<UseQuote>{str(self.use_quote).lower()}</UseQuote>")
         
-        # Add link URL and value element if present
+        # Add link URL if present
         if self.link_url:
             xml.append(f"<LinkURL>{sanitize_xml(self.link_url)}</LinkURL>")
-        if self.value_element:
-            xml.append(f"<ValueElement>{sanitize_xml(self.value_element)}</ValueElement>")
         
         # Add options for Select type
         if self.type == CustomFieldType.SELECT and self.options:
@@ -230,20 +231,30 @@ class CustomFieldDefinition(BaseModel):
 class CustomFieldValue(BaseModel):
     """Custom field value model."""
     
+    uuid: Optional[str] = Field(
+        None,
+        alias="UUID",
+        description="Field UUID"
+    )
     name: str = Field(
         ...,
         alias="Name",
         description="Field name"
+    )
+    type: CustomFieldType = Field(
+        CustomFieldType.TEXT,  # Default to TEXT type
+        alias="Type",
+        description="Field type"
     )
     value: Optional[str] = Field(
         None,
         alias="Value",
         description="Field value"
     )
-    type: CustomFieldType = Field(
-        CustomFieldType.TEXT,  # Default to TEXT type
-        alias="Type",
-        description="Field type"
+    link_url: Optional[str] = Field(
+        None,
+        alias="LinkURL",
+        description="URL template for Link type fields"
     )
     
     class Config:
@@ -308,11 +319,15 @@ class CustomFieldValue(BaseModel):
                 if v.lower() not in ('true', 'false'):
                     raise ValueError("Boolean value must be 'true' or 'false'")
             elif field_type == CustomFieldType.LINK:
-                # Remove any XML tags
-                v = re.sub(r'<[^>]+>', '', v)
                 # Add https:// prefix if not present
                 if not v.startswith(('http://', 'https://', 'www.')):
                     v = 'https://' + v
+                # Extract domain and path from URL if template is provided
+                if 'link_url' in values and values['link_url']:
+                    parsed = urlparse(v)
+                    v = parsed.netloc + parsed.path
+                    if parsed.query:
+                        v += '?' + parsed.query
         except ValueError as e:
             raise ValidationError(f"Invalid value for type {field_type}: {str(e)}")
             
@@ -334,8 +349,10 @@ class CustomFieldValue(BaseModel):
         """
         try:
             data = {
+                "UUID": get_xml_text(xml_element, 'UUID'),
                 "Name": get_xml_text(xml_element, 'Name', required=True),
-                "Type": get_xml_text(xml_element, 'Type', CustomFieldType.TEXT)
+                "Type": get_xml_text(xml_element, 'Type', CustomFieldType.TEXT),
+                "LinkURL": get_xml_text(xml_element, 'LinkURL')
             }
             
             # Determine value based on type
@@ -374,6 +391,9 @@ class CustomFieldValue(BaseModel):
         """
         xml = ['<CustomField>']
         
+        # Add fields in correct order
+        if self.uuid:
+            xml.append(f"<UUID>{sanitize_xml(self.uuid)}</UUID>")
         xml.append(f"<Name>{sanitize_xml(self.name)}</Name>")
         xml.append(f"<Type>{self.type.value}</Type>")
         
@@ -398,7 +418,8 @@ class CustomFieldValue(BaseModel):
             value_str = str(float(self.value)) if self.value else ''
             xml.append(f"<Decimal>{sanitize_xml(value_str)}</Decimal>")
         elif self.type == CustomFieldType.LINK:
-            xml.append(f"<LinkURL>{sanitize_xml(self.value or '')}</LinkURL>")
+            value = self.value or ''
+            xml.append(f"<LinkURL>{sanitize_xml(value)}</LinkURL>")
         else:
             xml.append(f"<Value>{sanitize_xml(self.value or '')}</Value>")
         

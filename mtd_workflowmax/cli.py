@@ -77,10 +77,7 @@ def handle_contact_command(wfm: WorkflowMax, args):
             print("\nNo contacts found")
             
     elif args.subcommand == 'set-field':
-        updates = {
-            args.field_name: args.field_value,
-            'Is Info up-to-date?': 'true'  # Always mark as up-to-date when updating
-        }
+        updates = {args.field_name: args.field_value}
         
         if wfm.contacts.update_custom_fields(args.uuid, updates):
             print(f"\nSuccessfully updated custom fields:")

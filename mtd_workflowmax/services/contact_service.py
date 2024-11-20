@@ -88,7 +88,7 @@ class ContactService:
         uuid: str,
         updates: Dict[str, str],
         validate: bool = True,
-        auto_update_info_status: bool = True
+        auto_update_info_status: bool = False  # Changed to False by default
     ) -> bool:
         """Update contact custom fields.
         
@@ -146,27 +146,9 @@ class ContactService:
                         "Custom field validation failed",
                         errors=errors
                     )
-                
-                # Prepare updates with field types
-                typed_updates = {
-                    name: {
-                        'value': value,
-                        'type': definitions[name].type.value
-                    }
-                    for name, value in processed_updates.items()
-                }
-            else:
-                # Without validation, assume all fields are text type
-                typed_updates = {
-                    name: {
-                        'value': value,
-                        'type': CustomFieldType.TEXT.value
-                    }
-                    for name, value in processed_updates.items()
-                }
             
             # Perform updates
-            return self._repositories.contacts.update_custom_fields(uuid, typed_updates)
+            return self._repositories.contacts.update_custom_fields(uuid, processed_updates)
     
     @with_logging
     def search_contacts(
