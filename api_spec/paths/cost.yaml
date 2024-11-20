@@ -1,0 +1,119 @@
+paths:
+  /cost.api/add:
+    post:
+      tags:
+      - Cost
+      summary: Add a cost
+      operationId: createCost
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/cost.api-add'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                type: object
+                x-content-type: application/xml
+  /cost.api/delete:
+    post:
+      tags:
+      - Cost
+      summary: Delete a cost
+      operationId: deleteCost
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/cost.api-delete'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                type: object
+                x-content-type: application/xml
+  /cost.api/deleteall:
+    post:
+      tags:
+      - Cost
+      summary: Delete all costs
+      operationId: deleteCosts
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/cost.api-deleteall'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                type: object
+                x-content-type: application/xml
+  /cost.api/get/{uuid}:
+    get:
+      tags:
+      - Cost
+      description: Detailed information for a specific cost
+      operationId: readCost
+      parameters:
+      - name: uuid
+        in: path
+        description: Identifier of the cost
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/cost.api-get-uuid'
+  /cost.api/list:
+    get:
+      tags:
+      - Cost
+      summary: Return a list of all costs
+      operationId: readCosts
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: number
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/cost.api-list'
+  /cost.api/update:
+    put:
+      tags:
+      - Cost
+      summary: Update a cost
+      operationId: updateCost
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/cost.api-update'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                type: object
+                x-content-type: application/xml

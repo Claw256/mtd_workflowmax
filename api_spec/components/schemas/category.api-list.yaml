@@ -1,0 +1,22 @@
+category.api-list:
+  type: object
+  properties:
+    Categories:
+      type: array
+      items:
+        $ref: '#/components/schemas/Category'
+    Status:
+      type: string
+      example: OK
+  example:
+    Categories:
+    - Category:
+        Name: Design
+        UUID: c257b062-fbc9-4dc7-9132-f18ee956c4f9
+    - Category:
+        Name: Design
+        UUID: c257b062-fbc9-4dc7-9132-f18ee956c4f9
+    Status: OK
+  xml:
+    name: Response
+    wrapped: true

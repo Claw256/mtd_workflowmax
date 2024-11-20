@@ -1,0 +1,7 @@
+groups:
+  type: array
+  xml:
+    name: Groups
+    wrapped: true
+  items:
+    $ref: '#/components/schemas/group'

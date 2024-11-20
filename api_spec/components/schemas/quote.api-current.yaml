@@ -1,0 +1,34 @@
+quote.api-current:
+  type: object
+  properties:
+    Quote:
+      type: object
+  example:
+    Quote:
+      Amount: '200'
+      AmountIncludingTax: '225'
+      AmountTax: '25'
+      Budget: Budget
+      Client:
+        Name: A B C Limited
+        UUID: a98b5db3-c3b7-4f90-acee-f1e741a4fc7c
+      Contact:
+        Name: Andrew Smith
+        UUID: a98b5db3-c3b7-4f90-acee-f1e741a4fc7c
+      Date: 2007-09-15 00:00:00+00:00
+      Description: Description
+      EstimatedCost: '100'
+      EstimatedCostIncludingTax: '112.5'
+      EstimatedCostTax: '12.5'
+      ID: Q000123
+      LeadUUID: 754a48e5-0fce-421c-b32b-f84d6b576ef3
+      Name: Name
+      OptionExplanation: OptionExplanation
+      State: Issued
+      Type: Estimate
+      UUID: 6af333db-e272-4983-b374-6981301227b3
+      ValidDate: 2007-09-22 00:00:00+00:00
+    Status: OK
+  xml:
+    name: Response
+    wrapped: true

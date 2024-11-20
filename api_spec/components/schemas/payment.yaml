@@ -1,0 +1,18 @@
+Payment:
+  type: object
+  properties:
+    Amount:
+      type: number
+      example: 200.0
+    Date:
+      type: string
+      example: 2007-09-15 00:00:00+00:00
+    Reference:
+      type: string
+      example: ABC-1234
+  example:
+    Amount: 200
+    Date: 2007-09-15 00:00:00+00:00
+    Reference: ABC-1234
+  xml:
+    name: Payment

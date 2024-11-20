@@ -1,0 +1,31 @@
+costs:
+  type: object
+  properties:
+    Cost:
+      type: array
+      items:
+        $ref: '#/components/schemas/cost'
+  example:
+    Cost:
+    - Code: Code
+      CostOfSaleAccount: CostOfSaleAccount
+      Description: Widget
+      IncomeAccount: IncomeAccount
+      Note: Note
+      Supplier:
+        Name: Widget Incorporated
+        UUID: UUID
+      UUID: UUID
+      UnitCost: 100
+      UnitPrice: 130
+    - Code: Code
+      CostOfSaleAccount: CostOfSaleAccount
+      Description: Widget
+      IncomeAccount: IncomeAccount
+      Note: Note
+      Supplier:
+        Name: Widget Incorporated
+        UUID: UUID
+      UUID: UUID
+      UnitCost: 100
+      UnitPrice: 130

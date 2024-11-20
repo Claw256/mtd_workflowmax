@@ -1,0 +1,7 @@
+NewSupplier_Contacts:
+  type: object
+  properties:
+    Contact:
+      type: array
+      items:
+        $ref: '#/components/schemas/NewSupplierContact'

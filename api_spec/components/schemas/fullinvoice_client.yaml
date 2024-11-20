@@ -1,0 +1,12 @@
+FullInvoice_Client:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: A C Smith Limited
+    UUID:
+      type: string
+      example: 9298fafa-f1a4-494d-b62a-35aae4c7bb3e
+  example:
+    Name: A C Smith Limited
+    UUID: 9298fafa-f1a4-494d-b62a-35aae4c7bb3e

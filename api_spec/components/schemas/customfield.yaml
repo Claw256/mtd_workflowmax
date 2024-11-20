@@ -1,0 +1,31 @@
+CustomField:
+  type: object
+  properties:
+    Boolean:
+      type: boolean
+      example: true
+    Date:
+      type: string
+      example: 2010-10-11 00:00:00+00:00
+    Decimal:
+      type: number
+      example: 123.45
+    Name:
+      type: string
+      example: Date Field
+    Number:
+      type: number
+      example: 123.0
+    Text:
+      type: string
+      example: some text
+    UUID:
+      type: string
+  example:
+    Boolean: true
+    Date: 20240130
+    Decimal: 123.45
+    Name: Date Field
+    Number: 123
+    Text: some text
+    UUID: UUID

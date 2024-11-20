@@ -1,0 +1,21 @@
+job.api-task-update-request:
+  type: object
+  properties:
+    Description:
+      type: string
+    DueDate:
+      type: string
+      example: '20091028'
+    EstimatedMinutes:
+      type: number
+      example: 60.0
+    Label:
+      type: string
+    StartDate:
+      type: string
+      example: '20091023'
+    TaskUUID:
+      type: string
+      example: 75f95129-bcd1-4cb4-8f24-6067bf9d365a
+  xml:
+    name: Task

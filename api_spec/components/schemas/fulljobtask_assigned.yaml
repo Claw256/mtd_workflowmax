@@ -1,0 +1,10 @@
+FullJobTask_Assigned:
+  type: object
+  properties:
+    Staff:
+      $ref: '#/components/schemas/FullJobTask_Assigned_Staff'
+  example:
+    Staff:
+      AllocatedMinutes: 180
+      Name: Jo Bloggs
+      UUID: 44ce9043-8a05-45e6-9a6b-93a7458d5734

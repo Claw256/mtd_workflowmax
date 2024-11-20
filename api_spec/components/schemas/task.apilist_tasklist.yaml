@@ -1,0 +1,15 @@
+task.apilist_TaskList:
+  type: object
+  properties:
+    Task:
+      type: array
+      items:
+        $ref: '#/components/schemas/TaskUuidNameDescription'
+  example:
+    Task:
+    - Description: Description
+      Name: Concept
+      UUID: f3fa10e2-69e4-4491-9cf4-dad4433f20da
+    - Description: Description
+      Name: Concept
+      UUID: f3fa10e2-69e4-4491-9cf4-dad4433f20da

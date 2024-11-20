@@ -1,0 +1,23 @@
+cost.api-update:
+  type: object
+  properties:
+    Code:
+      type: string
+    Description:
+      type: string
+      example: Widget
+    Note:
+      type: string
+    SupplierUUID:
+      type: string
+    UUID:
+      type: string
+    UnitCost:
+      type: number
+      example: 100.0
+    UnitPrice:
+      type: number
+      example: 130.0
+  xml:
+    name: Cost
+    wrapped: true

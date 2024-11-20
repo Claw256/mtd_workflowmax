@@ -1,0 +1,89 @@
+CustomFieldDefinition:
+  type: object
+  properties:
+    LinkUrl:
+      type: string
+    Name:
+      type: string
+      example: Name of Custom Field
+    Options:
+      type: string
+    Type:
+      type: string
+      enum:
+      - Text
+      - Decimal
+      - Date
+      - Dropdown List
+      - Value Link
+    UUID:
+      type: string
+    UseClient:
+      type: string
+      enum:
+      - 'true'
+      - 'false'
+    UseContact:
+      type: string
+      enum:
+      - 'true'
+      - 'false'
+    UseJob:
+      type: string
+      enum:
+      - 'true'
+      - 'false'
+    UseJobCost:
+      type: string
+      enum:
+      - 'true'
+      - 'false'
+    UseJobTask:
+      type: string
+      enum:
+      - 'true'
+      - 'false'
+    UseJobTime:
+      type: string
+      enum:
+      - 'true'
+      - 'false'
+    UseLead:
+      type: string
+      enum:
+      - 'true'
+      - 'false'
+    UseSupplier:
+      type: string
+      enum:
+      - 'true'
+      - 'false'
+    ValueElement:
+      type: string
+      enum:
+      - Text
+      - Decimal
+      - Number
+      - Boolean
+      - Date
+    Mandatory:
+      type: string
+      enum:
+      - 'true'
+      - 'false'
+  example:
+    LinkUrl: LinkUrl
+    Name: Name of Custom Field
+    Options: Options
+    Type: Text
+    UUID: UUID
+    UseClient: 'true'
+    UseContact: 'true'
+    UseJob: 'true'
+    UseJobCost: 'true'
+    UseJobTask: 'true'
+    UseJobTime: 'true'
+    UseLead: 'true'
+    UseSupplier: 'true'
+    ValueElement: Text
+    Mandatory: 'true'

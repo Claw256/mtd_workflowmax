@@ -1,0 +1,16 @@
+Contact:
+  type: object
+  properties:
+    Contact:
+      $ref: '#/components/schemas/Contact_Contact'
+  example:
+    Contact:
+      Addressee: Mrs S Benecke
+      Email: Email
+      IsPrimary: true
+      Mobile: Mobile
+      Name: Samantha Benecke
+      Phone: Phone
+      Position: Position
+      Salutation: Sam
+      UUID: f1ec264f-d269-4232-9615-c167583fa7da

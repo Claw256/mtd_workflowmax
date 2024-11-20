@@ -1,0 +1,11 @@
+cost_Supplier:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: Widget Incorporated
+    UUID:
+      type: string
+  example:
+    Name: Widget Incorporated
+    UUID: UUID

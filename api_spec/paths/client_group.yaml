@@ -1,0 +1,93 @@
+paths:
+  /clientgroup.api/add:
+    post:
+      tags:
+      - Client Group
+      summary: Add a client group
+      operationId: createClientGroup
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/clientgroup.api-add'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                type: object
+                x-content-type: application/xml
+  /clientgroup.api/delete:
+    post:
+      tags:
+      - Client Group
+      summary: Delete a client group
+      operationId: deleteClientGroup
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/clientgroup.api-delete'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                type: object
+                x-content-type: application/xml
+  /clientgroup.api/get/{uuid}:
+    get:
+      tags:
+      - Client Group
+      summary: Detailed information for a specific client group
+      operationId: readClientGroup
+      parameters:
+      - name: uuid
+        in: path
+        description: Identifier of the client group
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/clientgroup.api-get-uuid'
+  /clientgroup.api/list:
+    get:
+      tags:
+      - Client Group
+      summary: Return a list of all client groups
+      operationId: readClientGroups
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/clientgroups.api-list'
+  /clientgroup.api/members:
+    put:
+      tags:
+      - Client Group
+      summary: Manage the members of a client group
+      operationId: readClientGroupMembers
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/clientgroup.api-manage'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/clientgroup.api-get-uuid'

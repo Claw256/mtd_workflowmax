@@ -1,0 +1,7 @@
+job.apireordertasksrequest_Tasks:
+  type: object
+  properties:
+    Task:
+      type: array
+      items:
+        $ref: '#/components/schemas/TaskWithUUID'

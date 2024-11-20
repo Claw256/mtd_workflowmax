@@ -1,0 +1,31 @@
+supplier.api-list:
+  type: object
+  properties:
+    Status:
+      type: string
+      example: OK
+    Suppliers:
+      $ref: '#/components/schemas/supplier.apilist_Suppliers'
+    Page:
+      type: number
+      description: Only appears if page size or page parameters are passed
+      example: 1.0
+    PageSize:
+      type: number
+      description: Only appears if page size or page parameters are passed
+      example: 2.0
+    TotalRecords:
+      type: number
+      description: Only appears if page size or page parameters are passed
+      example: 36.0
+  example:
+    Status: OK
+    Suppliers:
+      Supplier:
+      - ''
+      - ''
+    Page: 1
+    PageSize: 2
+    TotalRecords: 36
+  xml:
+    name: Response

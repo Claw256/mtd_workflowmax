@@ -1,0 +1,43 @@
+Task:
+  type: object
+  properties:
+    Amount:
+      type: number
+      example: 150.0
+    AmountIncludingTax:
+      type: number
+      example: 168.75
+    AmountTax:
+      type: number
+      example: 18.75
+    Billable:
+      type: string
+      enum:
+      - true
+      - false
+    BillableRate:
+      type: number
+      example: 150.0
+    Description:
+      type: string
+    Minutes:
+      type: number
+      example: 60.0
+    Name:
+      type: string
+      example: Design
+    UUID:
+      type: string
+      example: 5d852206-b63f-4921-9267-12c0d95ef906
+  example:
+    Amount: 150
+    AmountIncludingTax: 168.75
+    AmountTax: 18.75
+    Billable: true
+    BillableRate: 150
+    Description: Description
+    Minutes: 60
+    Name: Design
+    UUID: 5d852206-b63f-4921-9267-12c0d95ef906
+  xml:
+    name: Task

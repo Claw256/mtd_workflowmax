@@ -1,0 +1,16 @@
+FullJobTask_Assigned_Staff:
+  type: object
+  properties:
+    AllocatedMinutes:
+      type: number
+      example: 180.0
+    Name:
+      type: string
+      example: Jo Bloggs
+    UUID:
+      type: string
+      example: 44ce9043-8a05-45e6-9a6b-93a7458d5734
+  example:
+    AllocatedMinutes: 180
+    Name: Jo Bloggs
+    UUID: 44ce9043-8a05-45e6-9a6b-93a7458d5734

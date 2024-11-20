@@ -1,0 +1,6 @@
+TaskWithUUID:
+  type: object
+  properties:
+    UUID:
+      type: string
+      example: f26b8e7e-0c3e-4b08-a0d0-1ecca7eaf4f7

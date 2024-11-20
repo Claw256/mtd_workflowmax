@@ -1,0 +1,12 @@
+PersonUuidName:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: Andrew Smith
+    UUID:
+      type: string
+      example: a98b5db3-c3b7-4f90-acee-f1e741a4fc7c
+  example:
+    Name: Andrew Smith
+    UUID: a98b5db3-c3b7-4f90-acee-f1e741a4fc7c

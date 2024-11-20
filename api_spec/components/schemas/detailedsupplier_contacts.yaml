@@ -1,0 +1,21 @@
+DetailedSupplier_Contacts:
+  type: object
+  properties:
+    Contact:
+      type: array
+      items:
+        $ref: '#/components/schemas/PersonWithId'
+  example:
+    Contact:
+    - Email: Email
+      Mobile: Mobile
+      Name: Samantha Benecke
+      Phone: Phone
+      Position: Position
+      UUID: bb9cb1cb-0646-431b-83f8-192d6dd3b5d1
+    - Email: Email
+      Mobile: Mobile
+      Name: Samantha Benecke
+      Phone: Phone
+      Position: Position
+      UUID: bb9cb1cb-0646-431b-83f8-192d6dd3b5d1

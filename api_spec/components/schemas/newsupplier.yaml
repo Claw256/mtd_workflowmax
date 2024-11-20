@@ -1,0 +1,36 @@
+NewSupplier:
+  type: object
+  properties:
+    Address:
+      type: string
+    City:
+      type: string
+    Contacts:
+      $ref: '#/components/schemas/NewSupplier_Contacts'
+    Country:
+      type: string
+    Fax:
+      type: string
+    Name:
+      type: string
+      example: Bloggs Electrical Ltd
+    Phone:
+      type: string
+    PostCode:
+      type: string
+    PostalAddress:
+      type: string
+    PostalCity:
+      type: string
+    PostalCountry:
+      type: string
+    PostalPostCode:
+      type: string
+    PostalRegion:
+      type: string
+    Region:
+      type: string
+    WebSite:
+      type: string
+  xml:
+    name: Supplier

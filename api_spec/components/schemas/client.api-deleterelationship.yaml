@@ -1,0 +1,7 @@
+client.api-deleterelationship:
+  type: object
+  properties:
+    UUID:
+      type: string
+  xml:
+    name: Relationship

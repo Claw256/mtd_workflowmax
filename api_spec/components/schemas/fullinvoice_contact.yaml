@@ -1,0 +1,12 @@
+FullInvoice_Contact:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: Andy Smith
+    UUID:
+      type: string
+      example: 5d852206-b63f-4921-9267-12c0d95ef906
+  example:
+    Name: Andy Smith
+    UUID: 5d852206-b63f-4921-9267-12c0d95ef906

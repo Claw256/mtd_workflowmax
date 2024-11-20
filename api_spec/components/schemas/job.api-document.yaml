@@ -1,0 +1,28 @@
+job.api-document:
+  type: object
+  properties:
+    Content:
+      type: string
+      example: File content base 64 encoded
+    FileName:
+      type: string
+      example: example.jpg
+    Folder:
+      type: string
+      example: Images
+    Job:
+      type: string
+      example: J000309
+    Public:
+      type: string
+      enum:
+      - 'false'
+      - 'true'
+    Text:
+      type: string
+      example: The note relating to the document
+    Title:
+      type: string
+      example: Document Title
+  xml:
+    name: Document

@@ -1,0 +1,5 @@
+NewContact:
+  type: object
+  properties:
+    Contact:
+      $ref: '#/components/schemas/NewContact_Contact'

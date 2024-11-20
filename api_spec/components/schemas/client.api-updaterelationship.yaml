@@ -1,0 +1,19 @@
+client.api-updaterelationship:
+  type: object
+  properties:
+    EndDate:
+      type: string
+      example: yyyy-MM-dd
+    NumberOfShared:
+      type: number
+      example: 1000.0
+    Percentage:
+      type: number
+      example: 25.0
+    StartDate:
+      type: string
+      example: yyyy-MM-dd
+    UUID:
+      type: string
+  xml:
+    name: Relationship

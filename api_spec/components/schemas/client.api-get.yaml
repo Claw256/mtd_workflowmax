@@ -1,0 +1,83 @@
+client.api-get:
+  type: object
+  properties:
+    Client:
+      $ref: '#/components/schemas/RawClient'
+    Status:
+      type: string
+      example: OK
+  example:
+    Client:
+      AccountManager:
+        Name: Jo Blogs
+        UUID: f1ec264f-d269-4232-9615-c167583fa7da
+      Address: Address
+      City: City
+      Contacts:
+      - Contact:
+          Addressee: Mrs S Benecke
+          Email: Email
+          IsPrimary: true
+          Mobile: Mobile
+          Name: Samantha Benecke
+          Phone: Phone
+          Position: Position
+          Salutation: Sam
+          UUID: f1ec264f-d269-4232-9615-c167583fa7da
+      - Contact:
+          Addressee: Mrs S Benecke
+          Email: Email
+          IsPrimary: true
+          Mobile: Mobile
+          Name: Samantha Benecke
+          Phone: Phone
+          Position: Position
+          Salutation: Sam
+          UUID: f1ec264f-d269-4232-9615-c167583fa7da
+      Country: Country
+      DateOfBirth: 1970-11-26 00:00:00+00:00
+      Email: someone@example.com
+      ExportCode: ExportCode
+      Fax: Fax
+      FirstName: FirstName
+      Gender: Gender
+      IsArchived: true
+      IsDeleted: true
+      IsProspect: Yes'
+      LastName: LastName
+      Name: XYZ Australia, NZ Business Unit
+      Notes:
+      - Note:
+          CreatedBy: Jo Bloggs
+          Date: 2008-09-12 13:00:00+00:00
+          Folder: Folder
+          Text: subject of the note
+          Title: note title
+      - Note:
+          CreatedBy: Jo Bloggs
+          Date: 2008-09-12 13:00:00+00:00
+          Folder: Folder
+          Text: subject of the note
+          Title: note title
+      OtherName: OtherName
+      Phone: (02)1723 5265
+      PostalAddress: Level 32, PWC Building 188 Quay Street Auckland Central
+      PostalCity: Auckland
+      PostalCountry: PostalCountry
+      PostalPostCode: '1001'
+      PostalRegion: PostalRegion
+      Postcode: Postcode
+      ReferralSource: ReferralSource
+      Region: Region
+      Title: Title
+      Type:
+        CostMarkup: 30
+        Name: 20th of Month
+        PaymentDay: '20'
+        PaymentTerm: DayOfMonth
+      UUID: c257b062-fbc9-4dc7-9132-f18ee956c4f9
+      Website: Website
+    Status: OK
+  xml:
+    name: Response
+    wrapped: true

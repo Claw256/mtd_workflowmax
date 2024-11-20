@@ -1,0 +1,34 @@
+paths:
+  /task.api/get/{uuid}:
+    get:
+      tags:
+      - Task
+      summary: Details for a specific task
+      operationId: readTask
+      parameters:
+      - name: uuid
+        in: path
+        description: UUID of specific task
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/task.api-get-uuid'
+  /task.api/list:
+    get:
+      tags:
+      - Task
+      summary: Return a list of all tasks
+      operationId: readTasks
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/task.api-list'

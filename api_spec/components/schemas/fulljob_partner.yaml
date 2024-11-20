@@ -1,0 +1,12 @@
+FullJob_Partner:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: Jack Brown
+    UUID:
+      type: string
+      example: bcbf14e9-b150-4e5d-933f-f99b0d5528d2
+  example:
+    Name: Jack Brown
+    UUID: bcbf14e9-b150-4e5d-933f-f99b0d5528d2

@@ -1,0 +1,34 @@
+Lead:
+  type: object
+  properties:
+    Category:
+      type: string
+      example: Hot
+    Client:
+      $ref: '#/components/schemas/DetailedLead_Client'
+    Contact:
+      $ref: '#/components/schemas/DetailedLead_Contact'
+    Date:
+      type: string
+      example: 2008-08-29 00:00:00+00:00
+    DateWonLost:
+      type: string
+    Description:
+      type: string
+    Dropbox:
+      type: string
+      example: lead+dropbox+example@emailmyjob.com
+    EstimatedValue:
+      type: number
+      example: 10000.0
+    Name:
+      type: string
+      example: Brochure Design
+    Owner:
+      $ref: '#/components/schemas/DetailedLead_Owner'
+    State:
+      type: string
+      example: Current
+    UUID:
+      type: string
+      example: 0c6c8518-b2f2-4d2e-86d5-4cda1ffad545

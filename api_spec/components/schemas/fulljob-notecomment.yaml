@@ -1,0 +1,20 @@
+FullJob-NoteComment:
+  type: object
+  properties:
+    CreatedBy:
+      type: string
+      example: John Smith
+    Date:
+      type: string
+      example: 2008-09-12 14:00:00+00:00
+    Text:
+      type: string
+      example: example comment
+    UUID:
+      type: string
+      example: 7f29618e-e191-4bfd-966a-d418d489f623
+  example:
+    CreatedBy: John Smith
+    Date: 2008-09-12 14:00:00+00:00
+    Text: example comment
+    UUID: 7f29618e-e191-4bfd-966a-d418d489f623

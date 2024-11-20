@@ -1,0 +1,95 @@
+supplier.apigetuuid_Suppliers:
+  type: object
+  properties:
+    Supplier:
+      type: array
+      items:
+        $ref: '#/components/schemas/DetailedSupplier'
+  example:
+    Supplier:
+    - Address: Address
+      City: City
+      Contacts:
+        Contact:
+        - Email: Email
+          Mobile: Mobile
+          Name: Samantha Benecke
+          Phone: Phone
+          Position: Position
+          UUID: bb9cb1cb-0646-431b-83f8-192d6dd3b5d1
+        - Email: Email
+          Mobile: Mobile
+          Name: Samantha Benecke
+          Phone: Phone
+          Position: Position
+          UUID: bb9cb1cb-0646-431b-83f8-192d6dd3b5d1
+      Country: Country
+      Fax: Fax
+      Name: XYZ Australia, NZ Business Unit
+      Notes:
+        Note:
+        - Note:
+            CreatedBy: Jo Bloggs
+            Date: 2008-09-12 13:00:00+00:00
+            Folder: Folder
+            Text: subject of the note
+            Title: note title
+        - Note:
+            CreatedBy: Jo Bloggs
+            Date: 2008-09-12 13:00:00+00:00
+            Folder: Folder
+            Text: subject of the note
+            Title: note title
+      Phone: Phone
+      PostCode: PostCode
+      PostalAddress: Level 32, PWC  Building 188 Quay Street Auckland Central
+      PostalCity: Auckland
+      PostalCountry: PostalCountry
+      PostalPostCode: '1001'
+      PostalRegion: PostalRegion
+      Region: Region
+      UUID: 0c2b4b07-79c0-419a-9329-6a1b5cef84bc
+      Website: Website
+    - Address: Address
+      City: City
+      Contacts:
+        Contact:
+        - Email: Email
+          Mobile: Mobile
+          Name: Samantha Benecke
+          Phone: Phone
+          Position: Position
+          UUID: bb9cb1cb-0646-431b-83f8-192d6dd3b5d1
+        - Email: Email
+          Mobile: Mobile
+          Name: Samantha Benecke
+          Phone: Phone
+          Position: Position
+          UUID: bb9cb1cb-0646-431b-83f8-192d6dd3b5d1
+      Country: Country
+      Fax: Fax
+      Name: XYZ Australia, NZ Business Unit
+      Notes:
+        Note:
+        - Note:
+            CreatedBy: Jo Bloggs
+            Date: 2008-09-12 13:00:00+00:00
+            Folder: Folder
+            Text: subject of the note
+            Title: note title
+        - Note:
+            CreatedBy: Jo Bloggs
+            Date: 2008-09-12 13:00:00+00:00
+            Folder: Folder
+            Text: subject of the note
+            Title: note title
+      Phone: Phone
+      PostCode: PostCode
+      PostalAddress: Level 32, PWC  Building 188 Quay Street Auckland Central
+      PostalCity: Auckland
+      PostalCountry: PostalCountry
+      PostalPostCode: '1001'
+      PostalRegion: PostalRegion
+      Region: Region
+      UUID: 0c2b4b07-79c0-419a-9329-6a1b5cef84bc
+      Website: Website

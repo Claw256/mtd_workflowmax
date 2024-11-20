@@ -1,0 +1,33 @@
+lead.api-add:
+  type: object
+  properties:
+    CategoryUUID:
+      type: string
+      description: UUID of lead category
+      example: 1404fb3b-ed04-4513-9c60-16955d5de540
+    ClientUUID:
+      type: string
+      example: 11d2b1dc-32cd-411d-b8b2-9d6c02517b8f
+    ContactUUID:
+      type: string
+      example: e3f6de9d-455b-4f98-980c-72785ebeb008
+    Description:
+      type: string
+      example: Detailed description of the lead
+    EstimatedValue:
+      type: number
+      example: 10000.0
+    Name:
+      type: string
+      example: Brochure Design
+    OwnerUUID:
+      type: string
+      description: UUID of staff member responsible for lead
+      example: 44ce9043-8a05-45e6-9a6b-93a7458d5734
+    TemplateUUID:
+      type: string
+      description: ID of template to apply to lead. Applying a template allows you
+        to default lead activities
+      example: c616f5d2-d492-445d-995c-f57cf4d6c12d
+  xml:
+    name: Lead

@@ -1,0 +1,14 @@
+paths:
+  /category.api/list:
+    get:
+      tags:
+      - Category
+      summary: Return a list of all categories
+      operationId: readCategories
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/category.api-list'

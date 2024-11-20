@@ -1,0 +1,42 @@
+job.api-add-request:
+  type: object
+  properties:
+    Budget:
+      type: number
+      example: 55.0
+    CategoryUUID:
+      type: string
+      description: ID of Job Category to assign to job
+      example: 7b1d935c-5cd6-4186-ab69-3a25fd3f94ad
+    ClientNumber:
+      type: string
+      description: Client order number - optional
+    ClientUUID:
+      type: string
+      example: 5f3b0d25-5469-4d76-92f4-be76144899b7
+    ContactUUID:
+      type: string
+      example: c034f048-8d30-4197-9557-7a601c99def0
+    Description:
+      type: string
+      example: Detailed description of the job
+    DueDate:
+      type: string
+      example: '20091028'
+    ID:
+      type: string
+      description: Use to assign a custom ID to the job. If not specified, the next
+        value from the job number sequence will be used.
+      example: ABCD1234
+    Name:
+      type: string
+      example: Brochure Design
+    StartDate:
+      type: string
+      example: '20090123'
+    TemplateUUID:
+      type: string
+      description: ID of Job Template to apply to job. Applying a template allows
+        you to default the job milestones, tasks and costs.
+  xml:
+    name: Job

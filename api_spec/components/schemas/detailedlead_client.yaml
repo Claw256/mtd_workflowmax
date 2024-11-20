@@ -1,0 +1,12 @@
+DetailedLead_Client:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: A C Smith Limited
+    UUID:
+      type: string
+      example: 23a720b6-a58e-4c4f-a938-bddbea7b4c66
+  example:
+    Name: A C Smith Limited
+    UUID: 23a720b6-a58e-4c4f-a938-bddbea7b4c66

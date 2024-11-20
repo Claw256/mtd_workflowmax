@@ -1,0 +1,30 @@
+client.api-contact:
+  type: object
+  properties:
+    Addressee:
+      type: string
+      example: Mrs S Benecke
+    Client:
+      $ref: '#/components/schemas/client.apicontact_Client'
+    Email:
+      type: string
+    IsPrimary:
+      type: string
+      enum:
+      - true
+      - false
+    Mobile:
+      type: string
+    Name:
+      type: string
+      example: Samantha Benecke
+    Phone:
+      type: string
+    Position:
+      type: string
+    Salutation:
+      type: string
+      example: Sam
+  xml:
+    name: Contact
+    wrapped: true

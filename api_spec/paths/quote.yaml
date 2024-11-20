@@ -1,0 +1,98 @@
+paths:
+  /quote.api/draft:
+    get:
+      tags:
+      - Quote
+      summary: Return a list of draft quotes
+      operationId: readDraftQuotes
+      parameters:
+      - name: detailed
+        in: query
+        description: Return detailed information on a quote
+        schema:
+          type: string
+          enum:
+          - 'false'
+          - 'true'
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/quote.api-draft'
+  /quote.api/current:
+    get:
+      tags:
+      - Quote
+      summary: Return a list of current quotes
+      operationId: readCurrentQuotes
+      parameters:
+      - name: detailed
+        in: query
+        description: Return detailed information on a quote
+        schema:
+          type: string
+          enum:
+          - 'false'
+          - 'true'
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/quote.api-current'
+  /quote.api/get/{quote_number_or_uuid}:
+    get:
+      tags:
+      - Quote
+      summary: Detailed information for a specific quote
+      operationId: readQuote
+      parameters:
+      - name: quote_number_or_uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/quote.api-get-quote_number_or_uuid'
+  /quote.api/list:
+    get:
+      tags:
+      - Quote
+      summary: Return a list of current and archived quotes
+      operationId: readQuotes
+      parameters:
+      - name: from
+        in: query
+        description: Return leads created on or after this date - YYYYMMDD
+        required: true
+        schema:
+          type: string
+      - name: to
+        in: query
+        description: Return leads created on or before this date - YYYYMMDD
+        required: true
+        schema:
+          type: string
+      - name: detailed
+        in: query
+        description: Return detailed information on a quote
+        schema:
+          type: string
+          enum:
+          - 'false'
+          - 'true'
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/quote.api-current'

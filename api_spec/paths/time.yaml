@@ -1,0 +1,169 @@
+paths:
+  /time.api/add:
+    post:
+      tags:
+      - Time
+      summary: Add a time sheet entry to a job
+      operationId: createTimeSheetEntry
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/time.api-add-request'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/time.api-uuid'
+  /time.api/delete/{uuid}:
+    delete:
+      tags:
+      - Time
+      summary: Delete a specific time sheet entry
+      operationId: deleteTimeSheetEntry
+      parameters:
+      - name: uuid
+        in: path
+        description: Timesheet UUID
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Success - note response payload is not documented.
+          content: {}
+  /time.api/job/{job_number}:
+    get:
+      tags:
+      - Time
+      summary: Returns a list of time sheet entries for a specific job
+      operationId: readJobTimeSheetEntries
+      parameters:
+      - name: job_number
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        description: Date to search from - YYYYMMDD
+        schema:
+          type: string
+      - name: to
+        in: query
+        description: Date to search to - YYYYMMDD
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/time.api-job-job_number'
+  /time.api/list:
+    get:
+      tags:
+      - Time
+      summary: Return a list of time sheet entries
+      operationId: readTimeSheetEntries
+      parameters:
+      - name: from
+        in: query
+        description: Return time sheet entries created on or after this date. Format
+          YYYYMMDD.
+        required: true
+        schema:
+          type: string
+      - name: to
+        in: query
+        description: Return time sheet entries created on or before this date. Format
+          YYYYMMDD.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success. Note response payload is not documented, as such the
+            following is assumed
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/time.api-job-job_number'
+  /time.api/staff/{uuid}:
+    get:
+      tags:
+      - Time
+      summary: Return a list of time sheet entries for a specific staff member
+      operationId: readStaffTimeSheetEntries
+      parameters:
+      - name: uuid
+        in: path
+        description: Staff member UUID
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        description: Return time sheet entries created on or after this date. Format
+          YYYYMMDD.
+        required: true
+        schema:
+          type: string
+      - name: to
+        in: query
+        description: Return time sheet entries created on or before this date. Format
+          YYYYMMDD.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success. Note response payload is not documented, as such the
+            following is assumed
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/time.api-job-job_number'
+  /time.api/update:
+    put:
+      tags:
+      - Time
+      summary: Update a time sheet entry on a job
+      operationId: updateTimeSheetEntry
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/time.api-update-request'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/time.api-uuid'
+  /time.api/get/{uuid}:
+    get:
+      tags:
+      - Time
+      summary: Detailed information for a specific time entry
+      operationId: readTimeSheetEntry
+      parameters:
+      - name: uuid
+        in: path
+        description: Time entry UUID
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Success
+          content:
+            applciation/xml:
+              schema:
+                $ref: '#/components/schemas/time.api-uuid'

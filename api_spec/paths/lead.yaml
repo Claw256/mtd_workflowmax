@@ -1,0 +1,104 @@
+paths:
+  /lead.api/add:
+    post:
+      tags:
+      - Lead
+      summary: Add a lead
+      operationId: createLead
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/lead.api-add'
+        required: true
+      responses:
+        200:
+          content: {}
+  /lead.api/categories:
+    get:
+      tags:
+      - Lead
+      summary: Return a list of lead categories
+      operationId: readLeadCategories
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/lead.api-categories'
+  /lead.api/current:
+    get:
+      tags:
+      - Lead
+      summary: Returns a list of current leads
+      operationId: readCurrentLeads
+      parameters:
+      - name: detailed
+        in: query
+        description: Return detailed information for a lead
+        schema:
+          type: string
+          enum:
+          - 'false'
+          - 'true'
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/lead.api-current'
+  /lead.api/get/{uuid}:
+    get:
+      tags:
+      - Lead
+      summary: Detailed information for a specific lead
+      operationId: readLead
+      parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/lead.api-get-uuid'
+  /lead.api/list:
+    get:
+      tags:
+      - Lead
+      summary: Return a list of all leads
+      operationId: readLeads
+      parameters:
+      - name: from
+        in: query
+        description: Return leads created on or after this date - YYYYMMDD
+        required: true
+        schema:
+          type: string
+      - name: to
+        in: query
+        description: Return leads created on or before this date - YYYYMMDD
+        required: true
+        schema:
+          type: string
+      - name: detailed
+        in: query
+        description: Return detailed information for lead
+        schema:
+          type: string
+          enum:
+          - 'false'
+          - 'true'
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/lead.api-current'

@@ -1,0 +1,12 @@
+DetailedJob_Client:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: John Smith
+    UUID:
+      type: string
+      example: 4f2161d6-21af-4f47-9845-2436f3efd5b0
+  example:
+    Name: John Smith
+    UUID: 4f2161d6-21af-4f47-9845-2436f3efd5b0

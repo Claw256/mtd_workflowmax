@@ -1,0 +1,27 @@
+clientgroups.api-list:
+  type: object
+  properties:
+    Groups:
+      type: array
+      items:
+        $ref: '#/components/schemas/groups'
+    Status:
+      type: string
+      example: OK
+  example:
+    Groups:
+    - - Name: Bloggs Family
+        Taxable: true
+        UUID: e873137a-7e07-49a0-8987-130e7418ad34
+      - Name: Bloggs Family
+        Taxable: true
+        UUID: e873137a-7e07-49a0-8987-130e7418ad34
+    - - Name: Bloggs Family
+        Taxable: true
+        UUID: e873137a-7e07-49a0-8987-130e7418ad34
+      - Name: Bloggs Family
+        Taxable: true
+        UUID: e873137a-7e07-49a0-8987-130e7418ad34
+    Status: OK
+  xml:
+    name: Response

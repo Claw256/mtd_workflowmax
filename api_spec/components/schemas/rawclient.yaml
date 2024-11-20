@@ -1,0 +1,164 @@
+RawClient:
+  type: object
+  properties:
+    AccountManager:
+      $ref: '#/components/schemas/AccountManager'
+    Address:
+      type: string
+    City:
+      type: string
+    Contacts:
+      type: array
+      items:
+        $ref: '#/components/schemas/Contact'
+    Country:
+      type: string
+    DateOfBirth:
+      type: string
+      example: 1970-11-26 00:00:00+00:00
+    Email:
+      type: string
+      example: someone@example.com
+    ExportCode:
+      type: string
+    Fax:
+      type: string
+    FirstName:
+      type: string
+      description: For individuals only
+    Gender:
+      type: string
+      description: AU Tax Enabled Only
+    IsArchived:
+      type: string
+      enum:
+      - true
+      - false
+    IsDeleted:
+      type: string
+      enum:
+      - true
+      - false
+    IsProspect:
+      type: string
+      enum:
+      - Yes'
+      - false
+    LastName:
+      type: string
+      description: For individuals only
+    Name:
+      type: string
+      example: XYZ Australia, NZ Business Unit
+    Notes:
+      type: array
+      items:
+        $ref: '#/components/schemas/Note'
+    OtherName:
+      type: string
+      description: For individuals only
+    Phone:
+      type: string
+      example: (02)1723 5265
+    PostalAddress:
+      type: string
+      example: Level 32, PWC Building 188 Quay Street Auckland Central
+    PostalCity:
+      type: string
+      example: Auckland
+    PostalCountry:
+      type: string
+    PostalPostCode:
+      type: string
+      example: '1001'
+    PostalRegion:
+      type: string
+    Postcode:
+      type: string
+    ReferralSource:
+      type: string
+    Region:
+      type: string
+    Title:
+      type: string
+      description: AU Tax Enabled Only
+    Type:
+      $ref: '#/components/schemas/RawClient_Type'
+    UUID:
+      type: string
+      example: c257b062-fbc9-4dc7-9132-f18ee956c4f9
+    Website:
+      type: string
+  example:
+    AccountManager:
+      Name: Jo Blogs
+      UUID: f1ec264f-d269-4232-9615-c167583fa7da
+    Address: Address
+    City: City
+    Contacts:
+    - Contact:
+        Addressee: Mrs S Benecke
+        Email: Email
+        IsPrimary: true
+        Mobile: Mobile
+        Name: Samantha Benecke
+        Phone: Phone
+        Position: Position
+        Salutation: Sam
+        UUID: f1ec264f-d269-4232-9615-c167583fa7da
+    - Contact:
+        Addressee: Mrs S Benecke
+        Email: Email
+        IsPrimary: true
+        Mobile: Mobile
+        Name: Samantha Benecke
+        Phone: Phone
+        Position: Position
+        Salutation: Sam
+        UUID: f1ec264f-d269-4232-9615-c167583fa7da
+    Country: Country
+    DateOfBirth: 1970-11-26 00:00:00+00:00
+    Email: someone@example.com
+    ExportCode: ExportCode
+    Fax: Fax
+    FirstName: FirstName
+    Gender: Gender
+    IsArchived: true
+    IsDeleted: true
+    IsProspect: Yes'
+    LastName: LastName
+    Name: XYZ Australia, NZ Business Unit
+    Notes:
+    - Note:
+        CreatedBy: Jo Bloggs
+        Date: 2008-09-12 13:00:00+00:00
+        Folder: Folder
+        Text: subject of the note
+        Title: note title
+    - Note:
+        CreatedBy: Jo Bloggs
+        Date: 2008-09-12 13:00:00+00:00
+        Folder: Folder
+        Text: subject of the note
+        Title: note title
+    OtherName: OtherName
+    Phone: (02)1723 5265
+    PostalAddress: Level 32, PWC Building 188 Quay Street Auckland Central
+    PostalCity: Auckland
+    PostalCountry: PostalCountry
+    PostalPostCode: '1001'
+    PostalRegion: PostalRegion
+    Postcode: Postcode
+    ReferralSource: ReferralSource
+    Region: Region
+    Title: Title
+    Type:
+      CostMarkup: 30
+      Name: 20th of Month
+      PaymentDay: '20'
+      PaymentTerm: DayOfMonth
+    UUID: c257b062-fbc9-4dc7-9132-f18ee956c4f9
+    Website: Website
+  xml:
+    name: Client
+    wrapped: true

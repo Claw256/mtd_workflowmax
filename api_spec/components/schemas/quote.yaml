@@ -1,0 +1,56 @@
+Quote:
+  type: object
+  properties:
+    Amount:
+      type: string
+      example: '200'
+    AmountIncludingTax:
+      type: string
+      example: '225'
+    AmountTax:
+      type: string
+      example: '25'
+    Budget:
+      type: string
+    Client:
+      $ref: '#/components/schemas/CompanyUuidName'
+    Contact:
+      $ref: '#/components/schemas/PersonUuidName'
+    Date:
+      type: string
+      example: 2007-09-15 00:00:00+00:00
+    Description:
+      type: string
+      example: Description
+    EstimatedCost:
+      type: string
+      example: '100'
+    EstimatedCostIncludingTax:
+      type: string
+      example: '112.5'
+    EstimatedCostTax:
+      type: string
+      example: '12.5'
+    ID:
+      type: string
+      example: Q000123
+    LeadUUID:
+      type: string
+      example: 754a48e5-0fce-421c-b32b-f84d6b576ef3
+    Name:
+      type: string
+      example: Name
+    OptionExplanation:
+      type: string
+    State:
+      type: string
+      example: Issued
+    Type:
+      type: string
+      example: Estimate
+    UUID:
+      type: string
+      example: 6af333db-e272-4983-b374-6981301227b3
+    ValidDate:
+      type: string
+      example: 2007-09-22 00:00:00+00:00

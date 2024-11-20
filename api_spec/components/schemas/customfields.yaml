@@ -1,0 +1,23 @@
+CustomFields:
+  type: object
+  properties:
+    CustomField:
+      type: array
+      items:
+        $ref: '#/components/schemas/CustomField'
+  example:
+    CustomField:
+    - Boolean: true
+      Date: 2010-10-11 00:00:00+00:00
+      Decimal: 123.45
+      Name: Date Field
+      Number: 123
+      Text: some text
+      UUID: UUID
+    - Boolean: true
+      Date: 2010-10-11 00:00:00+00:00
+      Decimal: 123.45
+      Name: Date Field
+      Number: 123
+      Text: some text
+      UUID: UUID

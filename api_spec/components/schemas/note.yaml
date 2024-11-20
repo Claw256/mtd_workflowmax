@@ -1,0 +1,12 @@
+Note:
+  type: object
+  properties:
+    Note:
+      $ref: '#/components/schemas/RawNote'
+  example:
+    Note:
+      CreatedBy: Jo Bloggs
+      Date: 2008-09-12 13:00:00+00:00
+      Folder: Folder
+      Text: subject of the note
+      Title: note title

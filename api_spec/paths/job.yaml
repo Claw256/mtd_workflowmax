@@ -1,0 +1,534 @@
+paths:
+  /job.api/add:
+    post:
+      tags:
+      - Job
+      summary: Add a job
+      operationId: createJob
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/job.api-add-request'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/jobs.api-get-job_number'
+  /job.api/applytemplate:
+    post:
+      tags:
+      - Job
+      summary: Apply an additional template to a job
+      operationId: applyTemplate
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/job.api-applytemplate'
+        required: true
+      responses:
+        200:
+          description: success - Note, response payload is not defined
+          content: {}
+  /job.api/assign:
+    put:
+      tags:
+      - Job
+      summary: Assign staff to a job
+      operationId: assignStaff
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/job.api-assign-request'
+        required: true
+      responses:
+        200:
+          description: success - Note, response payload is not defined
+          content: {}
+  /job.api/client/{uuid}:
+    get:
+      tags:
+      - Job
+      operationId: readClientJobs
+      parameters:
+      - name: uuid
+        in: path
+        description: The UUID of the client to query
+        required: true
+        schema:
+          type: string
+      - name: modifiedsinceutc
+        in: query
+        description: Only return jobs modified after the given date or if not modified,
+          created after the given date. Formatted as yyyy-MM-ddT00:00:00
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: The current page. Defaults to 1 if the value is smaller than
+          1 or if the parameter is not present but pagesize parameter is present
+        schema:
+          type: number
+      - name: pagesize
+        in: query
+        description: Number of records per page. Defaults to 1000 if page parameter
+          is present but pagesize is not provided
+        schema:
+          type: number
+      responses:
+        200:
+          description: success - Note response payload requires review
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/jobs.api-current'
+  /job.api/cost:
+    put:
+      tags:
+      - Job
+      summary: Update a cost on a job
+      operationId: updateJobCost
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/job.api-cost-put-request'
+        required: true
+      responses:
+        200:
+          description: success - Note, response payload is not defined
+          content: {}
+    post:
+      tags:
+      - Job
+      summary: Add a cost to a job
+      operationId: createJobCost
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/job.api-cost-post-request'
+        required: true
+      responses:
+        200:
+          description: success - Note, response payload is not defined
+          content: {}
+  /job.api/costs/{job_number}:
+    get:
+      tags:
+      - Job
+      summary: Return a list of costs for a job
+      operationId: readJobCosts
+      parameters:
+      - name: job_number
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/job.api-costs-job_number'
+  /job.api/createestimate/{job_number}:
+    post:
+      tags:
+      - Job
+      summary: Create an estimate based on the job
+      operationId: createEstimate
+      parameters:
+      - name: job_number
+        in: path
+        description: The job number to create an estimate from
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/job.api-createqoute-job_number'
+  /job.api/createquote/{job_number}:
+    post:
+      tags:
+      - Job
+      summary: Create a quote based on the job
+      operationId: createQuote
+      parameters:
+      - name: job_number
+        in: path
+        description: The job number to create a quote from
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/job.api-createqoute-job_number'
+  /job.api/current:
+    get:
+      tags:
+      - Job
+      summary: Return a list of current jobs
+      operationId: readCurrentJobs
+      parameters:
+      - name: detailed
+        in: query
+        description: Return detailed information on job
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+      - name: modifiedsinceutc
+        in: query
+        description: Only return jobs modified after the given date or if not modified,
+          created after the given date. Formatted as yyyy-MM-ddT00:00:00
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: The current page. Defaults to 1 if the value is smaller than
+          1 or if the parameter is not present but pagesize parameter is present
+        schema:
+          type: number
+      - name: pagesize
+        in: query
+        description: Number of records per page. Defaults to 1000 if page parameter
+          is present but pagesize is not provided
+        schema:
+          type: number
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/jobs.api-current'
+  /job.api/delete:
+    post:
+      tags:
+      - Job
+      summary: Delete a job
+      operationId: deleteJob
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/job.api-delete'
+        required: true
+      responses:
+        200:
+          content: {}
+  /job.api/document:
+    post:
+      tags:
+      - Job
+      summary: Add a document to a job
+      operationId: createDocument
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/job.api-document'
+        required: true
+      responses:
+        200:
+          content: {}
+  /job.api/documents/{job_number}:
+    get:
+      tags:
+      - Job
+      summary: Return a list of documents for a job
+      operationId: readJobDocuments
+      parameters:
+      - name: job_number
+        in: path
+        description: The job number to retrieve documents for
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/job.api-documents'
+  /job.api/get/{job_number}:
+    get:
+      tags:
+      - Job
+      summary: Detailed information for a specific job
+      operationId: readJob
+      parameters:
+      - name: job_number
+        in: path
+        description: The job number to search for
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/jobs.api-get-job_number'
+  /job.api/list:
+    get:
+      tags:
+      - Job
+      summary: Return a list of all jobs
+      operationId: readJobs
+      parameters:
+      - name: detailed
+        in: query
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+      - name: from
+        in: query
+        description: Return invoices created on or after this date - YYYYMMDD
+        required: true
+        schema:
+          type: string
+      - name: to
+        in: query
+        description: Return invoices created on or before this date - YYYYMMDD
+        required: true
+        schema:
+          type: string
+      - name: modifiedsinceutc
+        in: query
+        description: Only return jobs modified after the given date or if not modified,
+          created after the given date. Formatted as yyyy-MM-ddT00:00:00
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: The current page. Defaults to 1 if the value is smaller than
+          1 or if the parameter is not present but pagesize parameter is present
+        schema:
+          type: number
+      - name: pagesize
+        in: query
+        description: Number of records per page. Defaults to 1000 if page parameter
+          is present but pagesize is not provided
+        schema:
+          type: number
+      responses:
+        200:
+          description: success - Note response payload requires review
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/jobs.api-current'
+  /job.api/note:
+    post:
+      tags:
+      - Job
+      summary: Add a note to a job
+      operationId: createNote
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/job.api-note-request'
+        required: true
+      responses:
+        200:
+          content: {}
+  /job.api/reordertasks:
+    put:
+      tags:
+      - Job
+      operationId: reorderTasks
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/job.api-reordertasks-request'
+        required: true
+      responses:
+        200:
+          content: {}
+      summary: This endpoint has been deprecated.
+  /job.api/staff/{uuid}:
+    get:
+      tags:
+      - Job
+      operationId: readStaffJobs
+      parameters:
+      - name: uuid
+        in: path
+        description: The UUID of the staff number to query
+        required: true
+        schema:
+          type: string
+      - name: modifiedsinceutc
+        in: query
+        description: Only return jobs modified after the given date or if not modified,
+          created after the given date. Formatted as yyyy-MM-ddT00:00:00
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: The current page. Defaults to 1 if the value is smaller than
+          1 or if the parameter is not present but pagesize parameter is present
+        schema:
+          type: number
+      - name: pagesize
+        in: query
+        description: Number of records per page. Defaults to 1000 if page parameter
+          is present but pagesize is not provided
+        schema:
+          type: number
+      responses:
+        200:
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/jobs.api-current'
+  /job.api/state:
+    put:
+      tags:
+      - Job
+      summary: Update the state of a specific job
+      operationId: updateState
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/job.api-state'
+        required: true
+      responses:
+        200:
+          description: success - response payload not documented
+          content: {}
+  /job.api/task:
+    put:
+      tags:
+      - Job
+      summary: Update a task on a job
+      operationId: updateTask
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/job.api-task-update-request'
+        required: true
+      responses:
+        200:
+          content: {}
+    post:
+      tags:
+      - Job
+      summary: Add a task to a job
+      operationId: createTask
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/job.api-task-add-request'
+        required: true
+      responses:
+        200:
+          content: {}
+  /job.api/tasks:
+    get:
+      tags:
+      - Job
+      operationId: readJobTasks
+      parameters:
+      - name: complete
+        in: query
+        description: Return jobs containing completed or uncompleted tasks only
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+      - name: page
+        in: query
+        description: The current page. Defaults to 1 if the value is smaller than
+          1 or if the parameter is not present but pagesize parameter is present
+        schema:
+          type: number
+      - name: pagesize
+        in: query
+        description: Number of records per page. Defaults to 1000 if page parameter
+          is present but pagesize is not provided
+        schema:
+          type: number
+      responses:
+        200:
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/job.api-tasks'
+  /job.api/update:
+    put:
+      tags:
+      - Job
+      summary: Update a job
+      operationId: updateJob
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/job.api-update-request'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/jobs.api-get-job_number'
+  /job.api/task/{uuid}/complete:
+    put:
+      tags:
+      - Job
+      summary: Complete a task on a job
+      operationId: completeTask
+      parameters:
+      - name: uuid
+        in: path
+        description: The UUID of a task to mark as completed
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content: {}
+  /job.api/task/{uuid}/reopen:
+    put:
+      tags:
+      - Job
+      summary: Re-open a task on a job
+      operationId: reopenTask
+      parameters:
+      - name: uuid
+        in: path
+        description: The UUID of a task to re-open
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content: {}

@@ -1,0 +1,7 @@
+purchaseorder.apiaddrequest_Items:
+  type: object
+  properties:
+    Item:
+      type: array
+      items:
+        $ref: '#/components/schemas/PurchaseOrderItem'

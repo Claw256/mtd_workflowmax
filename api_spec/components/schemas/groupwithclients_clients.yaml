@@ -1,0 +1,13 @@
+groupWithClients_Clients:
+  type: object
+  properties:
+    Client:
+      type: array
+      items:
+        $ref: '#/components/schemas/clientNameAndUUID'
+  example:
+    Client:
+    - Name: Joe Bloggs
+      UUID: UUID
+    - Name: Joe Bloggs
+      UUID: UUID

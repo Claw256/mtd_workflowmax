@@ -1,0 +1,12 @@
+FullJob_Manager:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: John Smith
+    UUID:
+      type: string
+      example: 273817c6-18c3-407a-9d00-5e8aba80fbd3
+  example:
+    Name: John Smith
+    UUID: 273817c6-18c3-407a-9d00-5e8aba80fbd3

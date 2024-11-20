@@ -1,0 +1,38 @@
+Contact_Contact:
+  type: object
+  properties:
+    Addressee:
+      type: string
+      example: Mrs S Benecke
+    Email:
+      type: string
+    IsPrimary:
+      type: string
+      enum:
+      - true
+      - false
+    Mobile:
+      type: string
+    Name:
+      type: string
+      example: Samantha Benecke
+    Phone:
+      type: string
+    Position:
+      type: string
+    Salutation:
+      type: string
+      example: Sam
+    UUID:
+      type: string
+      example: f1ec264f-d269-4232-9615-c167583fa7da
+  example:
+    Addressee: Mrs S Benecke
+    Email: Email
+    IsPrimary: true
+    Mobile: Mobile
+    Name: Samantha Benecke
+    Phone: Phone
+    Position: Position
+    Salutation: Sam
+    UUID: f1ec264f-d269-4232-9615-c167583fa7da

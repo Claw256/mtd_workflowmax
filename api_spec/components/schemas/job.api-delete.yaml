@@ -1,0 +1,8 @@
+job.api-delete:
+  type: object
+  properties:
+    ID:
+      type: string
+      example: J000309
+  xml:
+    name: Job

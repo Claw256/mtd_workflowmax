@@ -1,0 +1,45 @@
+customfield.api-definition:
+  type: object
+  properties:
+    CustomFieldDefinitions:
+      $ref: '#/components/schemas/CustomFieldDefinitions'
+    Status:
+      type: string
+      example: OK
+  example:
+    CustomFieldDefinitions:
+      CustomFieldDefinition:
+      - LinkUrl: LinkUrl
+        Name: Name of Custom Field
+        Options: Options
+        Type: Text
+        UUID: UUID
+        UseClient: 'true'
+        UseContact: 'true'
+        UseJob: 'true'
+        UseJobCost: 'true'
+        UseJobTask: 'true'
+        UseJobTime: 'true'
+        UseLead: 'true'
+        UseSupplier: 'true'
+        ValueElement: Text
+        Mandatory: 'true'
+      - LinkUrl: LinkUrl
+        Name: Name of Custom Field
+        Options: Options
+        Type: Text
+        UUID: UUID
+        UseClient: 'true'
+        UseContact: 'true'
+        UseJob: 'true'
+        UseJobCost: 'true'
+        UseJobTask: 'true'
+        UseJobTime: 'true'
+        UseLead: 'true'
+        UseSupplier: 'true'
+        ValueElement: Text
+        Mandatory: 'false'
+    Status: OK
+  xml:
+    name: Response
+    wrapped: true

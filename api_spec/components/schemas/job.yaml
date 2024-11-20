@@ -1,0 +1,66 @@
+Job:
+  type: object
+  properties:
+    ClientOrderNumber:
+      type: string
+    Costs:
+      $ref: '#/components/schemas/DetailedQuote_Costs'
+    Description:
+      type: string
+    ID:
+      type: string
+      example: J000345
+    Name:
+      type: string
+      example: Brochure Design
+    Tasks:
+      $ref: '#/components/schemas/FullInvoice_Tasks'
+  example:
+    ClientOrderNumber: ClientOrderNumber
+    Costs:
+      Cost:
+      - Amount: 50
+        AmountIncludingTax: 56.25
+        AmountTax: 6.25
+        Billable: true
+        Code: COURIER
+        Description: Courier
+        Note: Note
+        Quantity: 1
+        UnitCost: 50
+        UnitPrice: 50
+      - Amount: 50
+        AmountIncludingTax: 56.25
+        AmountTax: 6.25
+        Billable: true
+        Code: COURIER
+        Description: Courier
+        Note: Note
+        Quantity: 1
+        UnitCost: 50
+        UnitPrice: 50
+    Description: Description
+    ID: J000345
+    Name: Brochure Design
+    Tasks:
+      Task:
+      - Amount: 150
+        AmountIncludingTax: 168.75
+        AmountTax: 18.75
+        Billable: true
+        BillableRate: 150
+        Description: Description
+        Minutes: 60
+        Name: Design
+        UUID: 5d852206-b63f-4921-9267-12c0d95ef906
+      - Amount: 150
+        AmountIncludingTax: 168.75
+        AmountTax: 18.75
+        Billable: true
+        BillableRate: 150
+        Description: Description
+        Minutes: 60
+        Name: Design
+        UUID: 5d852206-b63f-4921-9267-12c0d95ef906
+  xml:
+    name: Job

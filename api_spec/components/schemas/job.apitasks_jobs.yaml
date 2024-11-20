@@ -1,0 +1,181 @@
+job.apitasks_Jobs:
+  type: object
+  properties:
+    Job:
+      type: array
+      items:
+        $ref: '#/components/schemas/FullJob'
+  example:
+    Job:
+    - ApprovedQuoteId: Q000005
+      ApprovedQuoteUUID: 90dd07e5-bb36-423d-ab76-5a5ead0bb852
+      Assigned:
+        Staff:
+          Name: John Smith
+          UUID: 52ed22ca-4600-437c-86f6-465dda434af2
+      Client:
+        Name: The Health Company
+        UUID: 691e1ea7-dca2-4d1e-a6a8-9f2dac448f8a
+      ClientOrderNumber: ABCD1234
+      CompletedDate: 2008-09-11 00:00:00+00:00
+      Contact:
+        Name: Shelley Brio
+        UUID: 699b0eb6-c54d-4afc-ae3d-1da6d91ba47d
+      DateCreatedUtc: 2008-05-11 02:09:53+00:00
+      DateModifiedUtc: 2008-05-11 02:09:53+00:00
+      Description: Job Description
+      DueDate: 2008-09-29 00:00:00+00:00
+      ID: J000001
+      Manager:
+        Name: John Smith
+        UUID: 273817c6-18c3-407a-9d00-5e8aba80fbd3
+      Milestones:
+        Milestone:
+          Completed: 'false'
+          Date: 2007-09-24 00:00:00+00:00
+          Description: do something by then
+          Folder: Folder
+          UUID: 666ce060-5782-4dd0-b6f6-e0557d036bfa
+      Name: Brochure Design
+      Notes:
+        Note:
+          Comments:
+            Comment:
+              CreatedBy: John Smith
+              Date: 2008-09-12 14:00:00+00:00
+              Text: example comment
+              UUID: 7f29618e-e191-4bfd-966a-d418d489f623
+          CreatedBy: Jo Bloggs
+          Date: 2008-09-12 13:00:00+00:00
+          Folder: Folder
+          Text: subject of the note
+          Title: note title
+          UUID: 56831906-5c3e-4b89-ab4b-c3acc4690ab4
+      Partner:
+        Name: Jack Brown
+        UUID: bcbf14e9-b150-4e5d-933f-f99b0d5528d2
+      StartDate: 2008-08-29 00:00:00+00:00
+      State: In Progress
+      Tasks:
+        Task:
+        - ActualMinutes: 100
+          Assigned:
+            Staff:
+              AllocatedMinutes: 180
+              Name: Jo Bloggs
+              UUID: 44ce9043-8a05-45e6-9a6b-93a7458d5734
+          Billable: 'true'
+          Completed: 'false'
+          Description: Description
+          DueDate: 2008-08029T00:00:00
+          EstimatedMinutes: 180
+          Folder: Folder
+          Name: Creative Direction
+          StartDate: 2008-08029T00:00:00
+          TaskUUID: 3c1fc167-ab62-4db7-be73-01646abc461d
+          UUID: e805ed72-29d7-4897-8765-875f3461bfae
+        - ActualMinutes: 100
+          Assigned:
+            Staff:
+              AllocatedMinutes: 180
+              Name: Jo Bloggs
+              UUID: 44ce9043-8a05-45e6-9a6b-93a7458d5734
+          Billable: 'true'
+          Completed: 'false'
+          Description: Description
+          DueDate: 2008-08029T00:00:00
+          EstimatedMinutes: 180
+          Folder: Folder
+          Name: Creative Direction
+          StartDate: 2008-08029T00:00:00
+          TaskUUID: 3c1fc167-ab62-4db7-be73-01646abc461d
+          UUID: e805ed72-29d7-4897-8765-875f3461bfae
+      Type: Bookkeeping
+      UUID: 355d0389-19cb-42ef-9b23-2960ca30c537
+      WebUrl: http://app.my.workflowmax.web/job/jobview.aspx?id=116912
+    - ApprovedQuoteId: Q000005
+      ApprovedQuoteUUID: 90dd07e5-bb36-423d-ab76-5a5ead0bb852
+      Assigned:
+        Staff:
+          Name: John Smith
+          UUID: 52ed22ca-4600-437c-86f6-465dda434af2
+      Client:
+        Name: The Health Company
+        UUID: 691e1ea7-dca2-4d1e-a6a8-9f2dac448f8a
+      ClientOrderNumber: ABCD1234
+      CompletedDate: 2008-09-11 00:00:00+00:00
+      Contact:
+        Name: Shelley Brio
+        UUID: 699b0eb6-c54d-4afc-ae3d-1da6d91ba47d
+      DateCreatedUtc: 2008-05-11 02:09:53+00:00
+      DateModifiedUtc: 2008-05-11 02:09:53+00:00
+      Description: Job Description
+      DueDate: 2008-09-29 00:00:00+00:00
+      ID: J000001
+      Manager:
+        Name: John Smith
+        UUID: 273817c6-18c3-407a-9d00-5e8aba80fbd3
+      Milestones:
+        Milestone:
+          Completed: 'false'
+          Date: 2007-09-24 00:00:00+00:00
+          Description: do something by then
+          Folder: Folder
+          UUID: 666ce060-5782-4dd0-b6f6-e0557d036bfa
+      Name: Brochure Design
+      Notes:
+        Note:
+          Comments:
+            Comment:
+              CreatedBy: John Smith
+              Date: 2008-09-12 14:00:00+00:00
+              Text: example comment
+              UUID: 7f29618e-e191-4bfd-966a-d418d489f623
+          CreatedBy: Jo Bloggs
+          Date: 2008-09-12 13:00:00+00:00
+          Folder: Folder
+          Text: subject of the note
+          Title: note title
+          UUID: 56831906-5c3e-4b89-ab4b-c3acc4690ab4
+      Partner:
+        Name: Jack Brown
+        UUID: bcbf14e9-b150-4e5d-933f-f99b0d5528d2
+      StartDate: 2008-08-29 00:00:00+00:00
+      State: In Progress
+      Tasks:
+        Task:
+        - ActualMinutes: 100
+          Assigned:
+            Staff:
+              AllocatedMinutes: 180
+              Name: Jo Bloggs
+              UUID: 44ce9043-8a05-45e6-9a6b-93a7458d5734
+          Billable: 'true'
+          Completed: 'false'
+          Description: Description
+          DueDate: 2008-08029T00:00:00
+          EstimatedMinutes: 180
+          Folder: Folder
+          Name: Creative Direction
+          StartDate: 2008-08029T00:00:00
+          TaskUUID: 3c1fc167-ab62-4db7-be73-01646abc461d
+          UUID: e805ed72-29d7-4897-8765-875f3461bfae
+        - ActualMinutes: 100
+          Assigned:
+            Staff:
+              AllocatedMinutes: 180
+              Name: Jo Bloggs
+              UUID: 44ce9043-8a05-45e6-9a6b-93a7458d5734
+          Billable: 'true'
+          Completed: 'false'
+          Description: Description
+          DueDate: 2008-08029T00:00:00
+          EstimatedMinutes: 180
+          Folder: Folder
+          Name: Creative Direction
+          StartDate: 2008-08029T00:00:00
+          TaskUUID: 3c1fc167-ab62-4db7-be73-01646abc461d
+          UUID: e805ed72-29d7-4897-8765-875f3461bfae
+      Type: Bookkeeping
+      UUID: 355d0389-19cb-42ef-9b23-2960ca30c537
+      WebUrl: http://app.my.workflowmax.web/job/jobview.aspx?id=116912

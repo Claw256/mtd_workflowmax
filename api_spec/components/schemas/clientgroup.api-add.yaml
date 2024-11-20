@@ -1,0 +1,16 @@
+clientgroup.api-add:
+  type: object
+  properties:
+    ClientUUID:
+      type: string
+      example: 12345678-5555-4934-aa5e-63dd285b9360
+    Name:
+      type: string
+      example: Smith Group
+    Taxable:
+      type: string
+      enum:
+      - true
+      - false
+  xml:
+    name: Group

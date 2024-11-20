@@ -1,0 +1,11 @@
+purchaseorder.apidraft_PurchaseOrders:
+  type: object
+  properties:
+    PurchaseOrder:
+      type: array
+      items:
+        type: object
+  example:
+    PurchaseOrder:
+    - ''
+    - ''

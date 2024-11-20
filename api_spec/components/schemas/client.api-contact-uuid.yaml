@@ -1,0 +1,24 @@
+client.api-contact-uuid:
+  type: object
+  properties:
+    Contact:
+      $ref: '#/components/schemas/Contact/properties/Contact'
+    Status:
+      type: string
+      example: OK
+  example:
+    Contact:
+      Contact:
+        Addressee: Mrs S Benecke
+        Email: Email
+        IsPrimary: true
+        Mobile: Mobile
+        Name: Samantha Benecke
+        Phone: Phone
+        Position: Position
+        Salutation: Sam
+        UUID: f1ec264f-d269-4232-9615-c167583fa7da
+    Status: OK
+  xml:
+    name: Response
+    wrapped: false

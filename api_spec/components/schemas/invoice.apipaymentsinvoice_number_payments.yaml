@@ -1,0 +1,15 @@
+invoice.apipaymentsinvoice_number_Payments:
+  type: object
+  properties:
+    Payment:
+      type: array
+      items:
+        $ref: '#/components/schemas/Payment'
+  example:
+    Payment:
+    - Amount: 200
+      Date: 2007-09-15 00:00:00+00:00
+      Reference: ABC-1234
+    - Amount: 200
+      Date: 2007-09-15 00:00:00+00:00
+      Reference: ABC-1234

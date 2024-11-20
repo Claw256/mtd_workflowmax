@@ -1,0 +1,443 @@
+paths:
+  /client.api/contact/{identifier}/customfield:
+    get:
+      tags:
+      - Custom Field
+      summary: Retrieve custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      operationId: readClientCustomFields
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield'
+    put:
+      tags:
+      - Custom Field
+      summary: Update custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      operationId: updateClientCustomFields
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/customapis-customfield-updaterequest'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield-update'
+  /client.api/get/{identifier}/customfield:
+    get:
+      tags:
+      - Custom Field
+      summary: Retrieve custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      operationId: readClientContactCustomFields
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield'
+  /client.api/update/{identifier}/customfield:
+    put:
+      tags:
+      - Custom Field
+      summary: Update custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      operationId: updateClientCustomField
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/customapis-customfield-updaterequest'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield-update'
+  /customfield.api/definition:
+    get:
+      tags:
+      - Custom Field
+      summary: Return a list of all the custom fields
+      operationId: readCustomFields
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customfield.api-definition'
+  /job.api/cost/{identifier}/customfield:
+    get:
+      tags:
+      - Custom Field
+      summary: Retrieve custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      operationId: readCostCustomFields
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield'
+    put:
+      tags:
+      - Custom Field
+      summary: Update custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      operationId: updateCostCustomField
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/customapis-customfield-updaterequest'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield-update'
+  /job.api/get/{identifier}/customfield:
+    get:
+      tags:
+      - Custom Field
+      summary: Retrieve custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      operationId: readJobCustomFields
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield'
+  /job.api/task/{identifier}/customfield:
+    get:
+      tags:
+      - Custom Field
+      summary: Retrieve custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      operationId: readTaskCustomFields
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield'
+    put:
+      tags:
+      - Custom Field
+      summary: Update custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      description: success - Note response payload requires review
+      operationId: updateTaskCustomField
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/customapis-customfield-updaterequest'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield-update'
+  /job.api/update/{identifier}/customfield:
+    put:
+      tags:
+      - Custom Field
+      summary: Update custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      operationId: updateJobCustomField
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/customapis-customfield-updaterequest'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield-update'
+  /lead.api/get/{identifier}/customfield:
+    get:
+      tags:
+      - Custom Field
+      summary: Retrieve custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      operationId: readLeadCustomFields
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield'
+  /lead.api/update/{identifier}/customfield:
+    put:
+      tags:
+      - Custom Field
+      summary: Update custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      operationId: updateCustomField
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/customapis-customfield-updaterequest'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield-update'
+  /supplier.api/contact/{identifier}/customfield:
+    get:
+      tags:
+      - Custom Field
+      summary: Retrieve custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      operationId: readSupplierContactCustomFields
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield'
+    put:
+      tags:
+      - Custom Field
+      summary: Update custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      operationId: updateSupplierContactCustomFields
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/customapis-customfield-updaterequest'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield-update'
+  /supplier.api/get/{identifier}/customfield:
+    get:
+      tags:
+      - Custom Field
+      summary: Retrieve custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      operationId: readSupplierCustomFields
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield'
+    put:
+      tags:
+      - Custom Field
+      summary: Update custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      operationId: updateSupplierCustomFields
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/customapis-customfield-updaterequest'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield-update'
+  /time.api/get/{identifier}/customfield:
+    get:
+      tags:
+      - Custom Field
+      summary: Retrieve custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      operationId: readTimeCustomFields
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield'
+  /time.api/update/{identifier}/customfield:
+    put:
+      tags:
+      - Custom Field
+      summary: Update custom field data for a specific client, contact, supplier,
+        supplier contact, job or lead
+      description: success - Note response payload requires review
+      operationId: updateTimeCustomField
+      parameters:
+      - name: identifier
+        in: path
+        description: Identifier of the given record type
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/customapis-customfield-updaterequest'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/customapis-customfield-update'

@@ -1,0 +1,8 @@
+clientgroup.api-delete:
+  type: object
+  properties:
+    UUID:
+      type: string
+      example: c55793da-1cfd-4baf-86b3-89a246565721
+  xml:
+    name: Group

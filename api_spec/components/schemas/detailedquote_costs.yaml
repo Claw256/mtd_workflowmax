@@ -1,0 +1,29 @@
+DetailedQuote_Costs:
+  type: object
+  properties:
+    Cost:
+      type: array
+      items:
+        $ref: '#/components/schemas/Cost'
+  example:
+    Cost:
+    - Amount: 50
+      AmountIncludingTax: 56.25
+      AmountTax: 6.25
+      Billable: true
+      Code: COURIER
+      Description: Courier
+      Note: Note
+      Quantity: 1
+      UnitCost: 50
+      UnitPrice: 50
+    - Amount: 50
+      AmountIncludingTax: 56.25
+      AmountTax: 6.25
+      Billable: true
+      Code: COURIER
+      Description: Courier
+      Note: Note
+      Quantity: 1
+      UnitCost: 50
+      UnitPrice: 50

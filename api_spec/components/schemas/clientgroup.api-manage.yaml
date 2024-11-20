@@ -1,0 +1,12 @@
+clientgroup.api-manage:
+  type: object
+  properties:
+    UUID:
+      type: string
+      description: UUID of group to add client to
+    add:
+      $ref: '#/components/schemas/clientgroup.apimanage_add'
+    remove:
+      $ref: '#/components/schemas/clientgroup.apimanage_remove'
+  xml:
+    name: Group

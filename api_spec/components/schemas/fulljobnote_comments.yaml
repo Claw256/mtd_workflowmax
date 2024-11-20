@@ -1,0 +1,11 @@
+FullJobNote_Comments:
+  type: object
+  properties:
+    Comment:
+      $ref: '#/components/schemas/FullJob-NoteComment'
+  example:
+    Comment:
+      CreatedBy: John Smith
+      Date: 2008-09-12 14:00:00+00:00
+      Text: example comment
+      UUID: 7f29618e-e191-4bfd-966a-d418d489f623

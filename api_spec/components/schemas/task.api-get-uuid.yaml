@@ -1,0 +1,16 @@
+task.api-get-uuid:
+  type: object
+  properties:
+    Status:
+      type: string
+      example: OK
+    Task:
+      $ref: '#/components/schemas/TaskUuidNameDescription'
+  example:
+    Status: OK
+    Task:
+      Description: Description
+      Name: Concept
+      UUID: f3fa10e2-69e4-4491-9cf4-dad4433f20da
+  xml:
+    name: Response

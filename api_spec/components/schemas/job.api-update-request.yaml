@@ -1,0 +1,29 @@
+job.api-update-request:
+  type: object
+  properties:
+    Budget:
+      type: number
+      example: 55.0
+    CategoryUUID:
+      type: string
+      description: ID of Job Category to assign to job
+    ClientNumber:
+      type: string
+      example: client order number
+    Description:
+      type: string
+      example: Detailed description of the job
+    DueDate:
+      type: string
+      example: '20091028'
+    ID:
+      type: string
+      example: J000123
+    Name:
+      type: string
+      example: Brochure Design
+    StartDate:
+      type: string
+      example: '20091023'
+  xml:
+    name: Job

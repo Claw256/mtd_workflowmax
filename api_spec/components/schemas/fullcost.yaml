@@ -1,0 +1,47 @@
+FullCost:
+  type: object
+  properties:
+    Billable:
+      type: string
+      enum:
+      - 'true'
+      - 'false'
+    Code:
+      type: string
+      example: WIDGET
+    Date:
+      type: string
+      example: 2009-10-23 00:00:00+00:00
+    Description:
+      type: string
+      example: Widget
+    Note:
+      type: string
+      example: a note about the widget
+    Quantity:
+      type: number
+      example: 1.0
+    Supplier:
+      $ref: '#/components/schemas/FullCost_Supplier'
+    UUID:
+      type: string
+      example: 0e9d45c4-37c5-4489-b966-765b115966e4
+    UnitCost:
+      type: number
+      example: 50.0
+    UnitPrice:
+      type: number
+      example: 100.0
+  example:
+    Billable: 'true'
+    Code: WIDGET
+    Date: 2009-10-23 00:00:00+00:00
+    Description: Widget
+    Note: a note about the widget
+    Quantity: 1
+    Supplier:
+      Name: Widget Incorporated
+      UUID: 48db0a77-d871-4e1a-9475-aa40de10dd79
+    UUID: 0e9d45c4-37c5-4489-b966-765b115966e4
+    UnitCost: 50
+    UnitPrice: 100

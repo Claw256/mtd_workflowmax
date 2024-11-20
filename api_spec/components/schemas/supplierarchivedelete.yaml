@@ -1,0 +1,8 @@
+SupplierArchiveDelete:
+  type: object
+  properties:
+    UUID:
+      type: string
+      example: 0f6b9149-4e8b-4684-97f0-4de669dfb470
+  xml:
+    name: Supplier

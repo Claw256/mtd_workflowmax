@@ -1,0 +1,16 @@
+supplier.api-contact-uuid-put:
+  type: object
+  properties:
+    Email:
+      type: string
+    Mobile:
+      type: string
+    Name:
+      type: string
+      example: Wyett E Coyote
+    Phone:
+      type: string
+    Position:
+      type: string
+  xml:
+    name: Supplier

@@ -1,0 +1,128 @@
+paths:
+  /invoice.api/current:
+    get:
+      tags:
+      - Invoice
+      summary: Return a list of current invoices
+      operationId: readCurrentInvoices
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/invoice.api-current'
+  /invoice.api/draft:
+    get:
+      tags:
+      - Invoice
+      summary: Returns a list of draft invoices
+      operationId: readDraftInvoices
+      parameters:
+      - name: detailed
+        in: query
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/invoice.api-draft'
+  /invoice.api/get/{invoice_number}:
+    get:
+      tags:
+      - Invoice
+      summary: Detailed information for a specific invoice
+      operationId: readInvoice
+      parameters:
+      - name: invoice_number
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/invoice.api-get'
+  /invoice.api/job/{job_number}:
+    get:
+      tags:
+      - Invoice
+      summary: Returns a list of invoices for a specific job
+      description: Note that the response payload is assumed as it is not documented.
+      operationId: readJobInvoices
+      parameters:
+      - name: job_number
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/invoice.api-current'
+  /invoice.api/list:
+    get:
+      tags:
+      - Invoice
+      summary: Return a list of current and archived invoices
+      operationId: readInvoices
+      parameters:
+      - name: from
+        in: query
+        description: Return invoices created on or after this date - YYYYMMDD
+        required: true
+        schema:
+          type: string
+      - name: to
+        in: query
+        description: Return invoices created on or before this date - YYYYMMDD
+        required: true
+        schema:
+          type: string
+      - name: detailed
+        in: query
+        description: Return detailed information on invoice
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/invoice.api-current'
+  /invoice.api/payments/{invoice_number}:
+    get:
+      tags:
+      - Invoice
+      summary: Return a list of payments for an invoice
+      operationId: readInvoicePayments
+      parameters:
+      - name: invoice_number
+        in: path
+        description: The invoice number to query
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/invoice.api-payments-invoice_number'

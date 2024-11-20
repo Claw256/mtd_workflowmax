@@ -1,0 +1,50 @@
+invoice.api-current:
+  type: object
+  properties:
+    Invoices:
+      $ref: '#/components/schemas/invoice.apicurrent_Invoices'
+    Status:
+      type: string
+      example: OK
+  example:
+    Invoices:
+      Invoice:
+      - Amount: 200
+        AmountIncludingTax: 225
+        AmountOutstanding: 125
+        AmountPaid: 100
+        AmountTax: 25
+        Client:
+          Name: A C Smith Limited
+          UUID: 9298fafa-f1a4-494d-b62a-35aae4c7bb3e
+        Contact:
+          Name: Andy Smith
+          UUID: 5d852206-b63f-4921-9267-12c0d95ef906
+        Date: 2007-09-12 00:00:00+00:00
+        DueDate: 2007-09-22 00:00:00+00:00
+        ID: I000123
+        JobText: J000123
+        Status: Approved
+        Type: Progress Invoice
+        UUID: e873137a-7e07-49a0-8987-130e7418ad34
+      - Amount: 200
+        AmountIncludingTax: 225
+        AmountOutstanding: 125
+        AmountPaid: 100
+        AmountTax: 25
+        Client:
+          Name: A C Smith Limited
+          UUID: 9298fafa-f1a4-494d-b62a-35aae4c7bb3e
+        Contact:
+          Name: Andy Smith
+          UUID: 5d852206-b63f-4921-9267-12c0d95ef906
+        Date: 2007-09-12 00:00:00+00:00
+        DueDate: 2007-09-22 00:00:00+00:00
+        ID: I000123
+        JobText: J000123
+        Status: Approved
+        Type: Progress Invoice
+        UUID: e873137a-7e07-49a0-8987-130e7418ad34
+    Status: OK
+  xml:
+    name: Response

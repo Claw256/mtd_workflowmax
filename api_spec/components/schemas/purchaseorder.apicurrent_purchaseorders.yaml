@@ -1,0 +1,21 @@
+purchaseorder.apicurrent_PurchaseOrders:
+  type: object
+  properties:
+    PurchaseOrder:
+      $ref: '#/components/schemas/PurchaseOrder'
+  example:
+    PurchaseOrder:
+      Amount: 200
+      AmountIncludingTax: 225
+      AmountTax: 25
+      Date: 2007-09-15 00:00:00+00:00
+      DeliveryAddress: DeliveryAddress
+      Description: Description
+      ID: P000123
+      Job:
+        ID: J000123
+        Name: Design Job
+      State: Issued
+      Supplier:
+        Name: A B C Limited
+        UUID: a98b5db3-c3b7-4f90-acee-f1e741a4fc7c

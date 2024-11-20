@@ -1,0 +1,40 @@
+Supplier:
+  type: object
+  properties:
+    Address:
+      type: string
+    City:
+      type: string
+    Contacts:
+      $ref: '#/components/schemas/DetailedSupplier_Contacts'
+    Country:
+      type: string
+    Fax:
+      type: string
+    Name:
+      type: string
+      example: XYZ Australia, NZ Business Unit
+    Phone:
+      type: string
+    PostCode:
+      type: string
+    PostalAddress:
+      type: string
+      example: Level 32, PWC  Building 188 Quay Street Auckland Central
+    PostalCity:
+      type: string
+      example: Auckland
+    PostalCountry:
+      type: string
+    PostalPostCode:
+      type: string
+      example: '1001'
+    PostalRegion:
+      type: string
+    Region:
+      type: string
+    UUID:
+      type: string
+      example: 0c2b4b07-79c0-419a-9329-6a1b5cef84bc
+    Website:
+      type: string

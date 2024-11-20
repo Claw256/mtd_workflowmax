@@ -1,0 +1,102 @@
+openapi: 3.0.1
+
+# This is an index file that references all the split components
+# Use this as a reference for the complete API structure
+
+# Base API information
+info:
+  $ref: 'info.yaml#/info'
+
+# Server configurations
+servers:
+  $ref: 'info.yaml#/servers'
+
+# API Tags
+tags:
+  $ref: 'info.yaml#/tags'
+
+# API Paths
+paths:
+  # Category endpoints
+  /category.api/list:
+    $ref: 'paths/category.yaml#/paths/~1category.api~1list'
+
+  # Client endpoints
+  /client.api/add:
+    $ref: 'paths/client.yaml#/paths/~1client.api~1add'
+  /client.api/list:
+    $ref: 'paths/client.yaml#/paths/~1client.api~1list'
+  # ... other client endpoints
+
+  # Client Group endpoints
+  /clientgroup.api/add:
+    $ref: 'paths/client_group.yaml#/paths/~1clientgroup.api~1add'
+  # ... other client group endpoints
+
+  # Cost endpoints
+  /cost.api/add:
+    $ref: 'paths/cost.yaml#/paths/~1cost.api~1add'
+  # ... other cost endpoints
+
+  # Custom Field endpoints
+  /customfield.api/definition:
+    $ref: 'paths/custom_field.yaml#/paths/~1customfield.api~1definition'
+  # ... other custom field endpoints
+
+  # Invoice endpoints
+  /invoice.api/current:
+    $ref: 'paths/invoice.yaml#/paths/~1invoice.api~1current'
+  # ... other invoice endpoints
+
+  # Job endpoints
+  /job.api/add:
+    $ref: 'paths/job.yaml#/paths/~1job.api~1add'
+  # ... other job endpoints
+
+  # Lead endpoints
+  /lead.api/add:
+    $ref: 'paths/lead.yaml#/paths/~1lead.api~1add'
+  # ... other lead endpoints
+
+  # Purchase Order endpoints
+  /purchaseorder.api/add:
+    $ref: 'paths/purchase_order.yaml#/paths/~1purchaseorder.api~1add'
+  # ... other purchase order endpoints
+
+  # Quote endpoints
+  /quote.api/draft:
+    $ref: 'paths/quote.yaml#/paths/~1quote.api~1draft'
+  # ... other quote endpoints
+
+  # Staff endpoints
+  /staff.api/add:
+    $ref: 'paths/staff.yaml#/paths/~1staff.api~1add'
+  # ... other staff endpoints
+
+  # Supplier endpoints
+  /supplier.api/add:
+    $ref: 'paths/supplier.yaml#/paths/~1supplier.api~1add'
+  # ... other supplier endpoints
+
+  # Task endpoints
+  /task.api/get/{uuid}:
+    $ref: 'paths/task.yaml#/paths/~1task.api~1get~1{uuid}'
+  # ... other task endpoints
+
+  # Template endpoints
+  /template.api/list:
+    $ref: 'paths/template.yaml#/paths/~1template.api~1list'
+  # ... other template endpoints
+
+  # Time endpoints
+  /time.api/add:
+    $ref: 'paths/time.yaml#/paths/~1time.api~1add'
+  # ... other time endpoints
+
+# Components
+components:
+  schemas:
+    $ref: 'components/schemas.yaml#/components/schemas'
+
+# Note: This is a reference file. For the complete API specification,
+# use the reconstruct_yaml.py script to combine all files into a single YAML.

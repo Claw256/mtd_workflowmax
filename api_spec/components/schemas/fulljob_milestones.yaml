@@ -1,0 +1,12 @@
+FullJob_Milestones:
+  type: object
+  properties:
+    Milestone:
+      $ref: '#/components/schemas/FullJob-Milestone'
+  example:
+    Milestone:
+      Completed: 'false'
+      Date: 2007-09-24 00:00:00+00:00
+      Description: do something by then
+      Folder: Folder
+      UUID: 666ce060-5782-4dd0-b6f6-e0557d036bfa

@@ -1,0 +1,20 @@
+job.api-assign-request:
+  type: object
+  properties:
+    ID:
+      type: string
+      example: J000309
+    add:
+      $ref: '#/components/schemas/job.apiassignrequest_add'
+    add-manager:
+      $ref: '#/components/schemas/job.apiassignrequest_addmanager'
+    add-partner:
+      $ref: '#/components/schemas/job.apiassignrequest_addmanager'
+    remove:
+      $ref: '#/components/schemas/job.apiassignrequest_remove'
+    remove-manager:
+      $ref: '#/components/schemas/job.apiassignrequest_removemanager'
+    remove-partner:
+      $ref: '#/components/schemas/job.apiassignrequest_removemanager'
+  xml:
+    name: Job

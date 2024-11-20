@@ -1,0 +1,11 @@
+job.api-state:
+  type: object
+  properties:
+    ID:
+      type: string
+      example: J000309
+    State:
+      type: string
+      example: CONFIRMED
+  xml:
+    name: Job

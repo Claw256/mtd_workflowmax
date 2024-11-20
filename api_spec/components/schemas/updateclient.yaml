@@ -1,0 +1,158 @@
+UpdateClient:
+  type: object
+  properties:
+    AccountManagerUUID:
+      type: string
+    Address:
+      type: string
+    AgencyStatus:
+      type: string
+      enum:
+      - With EOT
+      - Without EOT
+      - Unlinked
+    BalanceMonth:
+      type: string
+      enum:
+      - Jan
+      - '1'
+      - Feb
+      - '2'
+      - Mar
+      - '3'
+      - Apr
+      - '4'
+      - May
+      - '5'
+      - Jun
+      - '6'
+      - Jul
+      - '7'
+      - Aug
+      - '8'
+      - Sep
+      - '9'
+      - Oct
+      - '10'
+      - Nov
+      - '11'
+      - Dec
+      - '12'
+    BillingClientUUID:
+      type: string
+    BusinessNumber:
+      type: string
+    BusinessStructure:
+      type: string
+    City:
+      type: string
+    CompanyNumber:
+      type: string
+    Country:
+      type: string
+    DateOfBirth:
+      type: string
+      example: 1970-11-26 00:00:00+00:00
+    Email:
+      type: string
+      example: someone@example.com
+    Fax:
+      type: string
+    FirstName:
+      type: string
+      description: For individuals only
+    GSTBasis:
+      type: string
+      enum:
+      - Invoice
+      - Payment
+      - Hybrid
+    GSTPeriod:
+      type: number
+    GSTRegistered:
+      type: string
+      enum:
+      - true
+      - false
+    JobManagerUUID:
+      type: string
+    LastName:
+      type: string
+      description: For individuals only
+    Name:
+      type: string
+      example: XYZ Australia, NZ Business Unit
+    OtherName:
+      type: string
+      description: For individuals only
+    Phone:
+      type: string
+      example: (02)1723 5265
+    PostalAddress:
+      type: string
+      example: Level 32, PWC Building 188 Quay Street Auckland Central
+    PostalCity:
+      type: string
+      example: Auckland
+    PostalCountry:
+      type: string
+    PostalPostCode:
+      type: string
+      example: '1001'
+    PostalRegion:
+      type: string
+    Postcode:
+      type: string
+    PrepareActivityStatement:
+      type: string
+      enum:
+      - true
+      - false
+    PrepareGST:
+      type: string
+      enum:
+      - true
+      - false
+    PrepareTaxReturn:
+      type: string
+      enum:
+      - true
+      - false
+    ProvisionalTaxRatio:
+      type: string
+    ProvisionalTaxBasis:
+      type: string
+      enum:
+      - Standard Option
+      - Estimate Option
+      - Ratio Option
+    ReferralSource:
+      type: string
+    Region:
+      type: string
+    ReturnType:
+      type: string
+      enum:
+      - IR3
+      - IR3NR
+      - IR4
+      - IR6
+      - IR7
+      - IR9
+      - PTS
+    SignedTaxAuthority:
+      type: string
+      enum:
+      - true
+      - false
+    TaxAgent:
+      type: string
+    TaxNumber:
+      type: string
+    UUID:
+      type: string
+    Website:
+      type: string
+  xml:
+    name: Client
+    wrapped: true

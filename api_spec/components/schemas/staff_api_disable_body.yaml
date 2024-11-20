@@ -1,0 +1,9 @@
+staff_api_disable_body:
+  type: object
+  properties:
+    UUID:
+      type: string
+      example: 4db95077-ffbb-4393-91b0-4d051bae4365
+  xml:
+    name: Staff
+    wrapped: true

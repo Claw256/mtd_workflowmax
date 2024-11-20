@@ -1,0 +1,12 @@
+Category_Category:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: Design
+    UUID:
+      type: string
+      example: c257b062-fbc9-4dc7-9132-f18ee956c4f9
+  example:
+    Name: Design
+    UUID: c257b062-fbc9-4dc7-9132-f18ee956c4f9

@@ -1,0 +1,14 @@
+clientNameAndUUID:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: Joe Bloggs
+    UUID:
+      type: string
+  example:
+    Name: Joe Bloggs
+    UUID: UUID
+  xml:
+    name: Client
+    wrapped: true

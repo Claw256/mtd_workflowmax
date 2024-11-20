@@ -1,0 +1,22 @@
+job.api-note-request:
+  type: object
+  properties:
+    Folder:
+      type: string
+      example: Correspondence
+    Job:
+      type: string
+      example: J000309
+    Public:
+      type: string
+      enum:
+      - 'false'
+      - 'true'
+    Text:
+      type: string
+      example: The text relating to the note
+    Title:
+      type: string
+      example: Note Title
+  xml:
+    name: Note

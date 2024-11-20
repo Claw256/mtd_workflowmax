@@ -1,0 +1,29 @@
+customapis-customfield:
+  type: object
+  properties:
+    CustomFields:
+      $ref: '#/components/schemas/CustomFields'
+    Status:
+      type: string
+      example: OK
+  example:
+    CustomFields:
+      CustomField:
+      - Boolean: true
+        Date: 2010-10-11 00:00:00+00:00
+        Decimal: 123.45
+        Name: Date Field
+        Number: 123
+        Text: some text
+        UUID: UUID
+      - Boolean: true
+        Date: 2010-10-11 00:00:00+00:00
+        Decimal: 123.45
+        Name: Date Field
+        Number: 123
+        Text: some text
+        UUID: UUID
+    Status: OK
+  xml:
+    name: Response
+    wrapped: true

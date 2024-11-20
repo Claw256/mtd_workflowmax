@@ -1,0 +1,12 @@
+DetailedLead_Contact:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: Andrew Smith
+    UUID:
+      type: string
+      example: 9f286b6c-9db8-472d-adf0-e1595f2a80b5
+  example:
+    Name: Andrew Smith
+    UUID: 9f286b6c-9db8-472d-adf0-e1595f2a80b5

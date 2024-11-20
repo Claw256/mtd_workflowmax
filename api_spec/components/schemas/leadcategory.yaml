@@ -1,0 +1,12 @@
+LeadCategory:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: Cool
+    UUID:
+      type: string
+      example: 123123ff-642a-4448-2379-bbb7d81c1ab2
+  example:
+    Name: Cool
+    UUID: 123123ff-642a-4448-2379-bbb7d81c1ab2

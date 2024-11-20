@@ -1,0 +1,9 @@
+Category:
+  type: object
+  properties:
+    Category:
+      $ref: '#/components/schemas/Category_Category'
+  example:
+    Category:
+      Name: Design
+      UUID: c257b062-fbc9-4dc7-9132-f18ee956c4f9

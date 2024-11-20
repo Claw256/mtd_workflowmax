@@ -1,0 +1,18 @@
+lead.api-categories:
+  type: object
+  properties:
+    Categories:
+      $ref: '#/components/schemas/lead.apicategories_Categories'
+    Status:
+      type: string
+      example: OK
+  example:
+    Categories:
+      Category:
+      - Name: Cool
+        UUID: 123123ff-642a-4448-2379-bbb7d81c1ab2
+      - Name: Cool
+        UUID: 123123ff-642a-4448-2379-bbb7d81c1ab2
+    Status: OK
+  xml:
+    name: Response

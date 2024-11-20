@@ -1,0 +1,25 @@
+job.api-documents:
+  type: object
+  properties:
+    Document:
+      type: array
+      items:
+        $ref: '#/components/schemas/Document'
+  example:
+    Document:
+    - CreatedBy: Jo Bloggs
+      Date: '20091023'
+      Filename: file.txt
+      Folder: Correspondence
+      Text: Text
+      Title: Document Title
+      URL: https://my.workflowmax.com/...
+    - CreatedBy: Jo Bloggs
+      Date: '20091023'
+      Filename: file.txt
+      Folder: Correspondence
+      Text: Text
+      Title: Document Title
+      URL: https://my.workflowmax.com/...
+  xml:
+    name: Documents

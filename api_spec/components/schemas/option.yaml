@@ -1,0 +1,40 @@
+Option:
+  type: object
+  properties:
+    Amount:
+      type: number
+      example: 100.0
+    AmountIncludingTax:
+      type: number
+      example: 112.5
+    AmountTax:
+      type: number
+      example: 12.5
+    Code:
+      type: string
+      example: PRINT
+    Description:
+      type: string
+      example: Printing
+    Note:
+      type: string
+      example: Note
+    Quantity:
+      type: number
+      example: 1.0
+    UnitCost:
+      type: number
+      example: 50.0
+    UnitPrice:
+      type: number
+      example: 100.0
+  example:
+    Amount: 100
+    AmountIncludingTax: 112.5
+    AmountTax: 12.5
+    Code: PRINT
+    Description: Printing
+    Note: Note
+    Quantity: 1
+    UnitCost: 50
+    UnitPrice: 100

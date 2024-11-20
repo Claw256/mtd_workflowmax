@@ -1,0 +1,20 @@
+job.api-createqoute-job_number:
+  type: object
+  properties:
+    ID:
+      type: string
+      description: ID of the newly created quote
+      example: Q000123
+    Status:
+      type: string
+      example: OK
+    UUID:
+      type: string
+      description: UUID of the newly created quote
+      example: 6af333db-e272-4983-b374-6981301227b3
+  example:
+    ID: Q000123
+    Status: OK
+    UUID: 6af333db-e272-4983-b374-6981301227b3
+  xml:
+    name: Response

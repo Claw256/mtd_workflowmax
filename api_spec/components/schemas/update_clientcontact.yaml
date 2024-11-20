@@ -1,0 +1,49 @@
+Update_ClientContact:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: Samantha Benecke
+    Addressee:
+      type: string
+      example: Mrs S Benecke
+    Email:
+      type: string
+    Mobile:
+      type: string
+    Phone:
+      type: string
+    Salutation:
+      type: string
+      example: Sam
+    Positions:
+      type: array
+      items:
+        type: object
+        properties:
+          UUID:
+            type: string
+            example: 6a405a6f-7c5a-410f-b94e-04e4d8dde1cc
+          Position:
+            type: string
+            example: test 2
+          IncludeInEmails:
+            type: string
+            enum:
+            - true
+            - false
+            example: 'no'
+          IsPrimary:
+            type: string
+            enum:
+            - true
+            - false
+            example: 'yes'
+        xml:
+          name: Position
+      xml:
+        name: Positions
+        wrapped: true
+  xml:
+    name: Contact
+    wrapped: true

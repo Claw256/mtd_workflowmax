@@ -1,0 +1,23 @@
+clientgroup.api-get-uuid:
+  type: object
+  properties:
+    Group:
+      $ref: '#/components/schemas/groupWithClients'
+    Status:
+      type: string
+      example: OK
+  example:
+    Group:
+      Clients:
+        Client:
+        - Name: Joe Bloggs
+          UUID: UUID
+        - Name: Joe Bloggs
+          UUID: UUID
+      Name: Bloggs Family
+      Taxable: true
+      UUID: e873137a-7e07-49a0-8987-130e7418ad34
+    Status: OK
+  xml:
+    name: Response
+    wrapped: true

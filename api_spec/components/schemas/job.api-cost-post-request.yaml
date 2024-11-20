@@ -1,0 +1,37 @@
+job.api-cost-post-request:
+  type: object
+  properties:
+    Billable:
+      type: string
+      enum:
+      - 'true'
+      - 'false'
+    Code:
+      type: string
+      example: WIDGET
+    Date:
+      type: string
+      example: '20091023'
+    Description:
+      type: string
+      example: Widget
+    Job:
+      type: string
+      example: J000309
+    Note:
+      type: string
+      example: a note about the widget
+    Quantity:
+      type: number
+      example: 1.0
+    SupplierUUID:
+      type: string
+      example: 48db0a77-d871-4e1a-9475-aa40de10dd79
+    UnitCost:
+      type: number
+      example: 50.0
+    UnitPrice:
+      type: number
+      example: 100.0
+  xml:
+    name: Cost

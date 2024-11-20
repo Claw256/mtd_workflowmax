@@ -1,0 +1,338 @@
+paths:
+  /client.api/add:
+    post:
+      tags:
+      - Client
+      summary: Add a client and contacts
+      operationId: createClient
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/NewClient'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/client.api-get'
+  /client.api/addrelationship:
+    post:
+      tags:
+      - Client
+      summary: Add a relationship between clients (Practice Manager Only)
+      operationId: createClientRelationship
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/client.api-addrelationship'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                type: object
+                x-content-type: application/xml
+  /client.api/archive:
+    put:
+      tags:
+      - Client
+      summary: Archive a client
+      operationId: archiveClient
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ArchiveClient'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/client.api-get'
+  /client.api/contact:
+    post:
+      tags:
+      - Client
+      summary: Add a contact to a client
+      operationId: createClientContact
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/client.api-contact'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                type: object
+                x-content-type: application/xml
+  /client.api/contact/{uuid}:
+    get:
+      tags:
+      - Client
+      summary: Detailed information for a specific contact
+      operationId: readClientContact
+      parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/client.api-contact-uuid'
+    put:
+      tags:
+      - Client
+      summary: Update a contacts details
+      operationId: updateClientContact
+      parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Update_ClientContact'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/client.api-contact-uuid'
+    delete:
+      tags:
+      - Client
+      summary: Delete a contact
+      operationId: deleteClientContact
+      parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content: {}
+  /client.api/delete:
+    post:
+      tags:
+      - Client
+      summary: Delete a client
+      operationId: deleteClient
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ArchiveClient'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/client.api-get'
+  /client.api/deleterelationship:
+    post:
+      tags:
+      - Client
+      summary: Delete the relationship between clients (Practice Manager Only)
+      operationId: deleteClientRelationship
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/client.api-deleterelationship'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                type: object
+                x-content-type: application/xml
+  /client.api/document:
+    post:
+      tags:
+      - Client
+      summary: Add a document to a client
+      operationId: createClientDocument
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/client.api-newdocument'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                type: object
+                x-content-type: application/xml
+  /client.api/documents/{uuid}:
+    get:
+      tags:
+      - Client
+      summary: Return a list of documents for a client
+      operationId: readClientDocument
+      parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/client.api-documents'
+  /client.api/get/{UUID}:
+    get:
+      tags:
+      - Client
+      summary: Returns a specific client
+      operationId: readClient
+      parameters:
+      - name: UUID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/client.api-get'
+  /client.api/list:
+    get:
+      tags:
+      - Client
+      summary: Returns a list of all clients
+      operationId: readClients
+      parameters:
+      - name: detailed
+        in: query
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+      - name: modifiedsince
+        in: query
+        schema:
+          type: string
+        example: 2012-06-05 06:00:00+00:00
+      - name: page
+        in: query
+        description: The current page. Defaults to 1 if the value is smaller than
+          1 or if the parameter is not present but pagesize parameter is present
+        schema:
+          type: number
+      - name: pagesize
+        in: query
+        description: Number of records per page. Defaults to 100 if pagesize is not
+          provided
+        schema:
+          type: number
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/client.api-list'
+  /client.api/search:
+    get:
+      tags:
+      - Client
+      summary: Returns a list of all clients matching search criteria
+      operationId: searchClients
+      parameters:
+      - name: detailed
+        in: query
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+        example: XYZ
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/client.api-search'
+  /client.api/update:
+    put:
+      tags:
+      - Client
+      summary: Update a clients details
+      operationId: updateClient
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/UpdateClient'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/client.api-get'
+  /client.api/updaterelationship:
+    post:
+      tags:
+      - Client
+      summary: Update the relationship between clients (Practice Manager Only)
+      operationId: updateClientRelationship
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/client.api-updaterelationship'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                type: object
+                x-content-type: application/xml

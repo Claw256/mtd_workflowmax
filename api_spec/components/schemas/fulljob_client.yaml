@@ -1,0 +1,12 @@
+FullJob_Client:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: The Health Company
+    UUID:
+      type: string
+      example: 691e1ea7-dca2-4d1e-a6a8-9f2dac448f8a
+  example:
+    Name: The Health Company
+    UUID: 691e1ea7-dca2-4d1e-a6a8-9f2dac448f8a

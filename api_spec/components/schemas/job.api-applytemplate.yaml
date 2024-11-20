@@ -1,0 +1,21 @@
+job.api-applytemplate:
+  type: object
+  properties:
+    ID:
+      type: string
+      example: J000309
+    TaskMode:
+      type: string
+      description: Describes how tasks are added to the job. AddNew - tasks are always
+        added to the job (default). AppendExisting - where the same task already exists
+        on the job, the template will be appended to the details of the existing task,
+        otherwise the task will be added to the job.
+      enum:
+      - AddNew
+      - AppendExisting
+    TemplateUUID:
+      type: string
+      description: UUID of Job Template to apply to job
+      example: 1318c880-7cba-4f6a-9e9a-0e864f8f36b2
+  xml:
+    name: Job

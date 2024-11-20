@@ -1,0 +1,19 @@
+staff.api-add-request:
+  type: object
+  properties:
+    Address:
+      type: string
+    Email:
+      type: string
+    Mobile:
+      type: string
+    Name:
+      type: string
+      example: John Smith
+    PayrollCode:
+      type: string
+    Phone:
+      type: string
+  xml:
+    name: Staff
+    wrapped: true

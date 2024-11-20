@@ -1,0 +1,7 @@
+client.api-documents:
+  type: array
+  xml:
+    name: Documents
+    wrapped: true
+  items:
+    $ref: '#/components/schemas/document'

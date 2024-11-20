@@ -1,0 +1,44 @@
+PurchaseOrder:
+  type: object
+  properties:
+    Amount:
+      type: number
+      example: 200.0
+    AmountIncludingTax:
+      type: number
+      example: 225.0
+    AmountTax:
+      type: number
+      example: 25.0
+    Date:
+      type: string
+      example: 2007-09-15 00:00:00+00:00
+    DeliveryAddress:
+      type: string
+    Description:
+      type: string
+    ID:
+      type: string
+      example: P000123
+    Job:
+      $ref: '#/components/schemas/JobIdName'
+    State:
+      type: string
+      example: Issued
+    Supplier:
+      $ref: '#/components/schemas/CompanyUuidName'
+  example:
+    Amount: 200
+    AmountIncludingTax: 225
+    AmountTax: 25
+    Date: 2007-09-15 00:00:00+00:00
+    DeliveryAddress: DeliveryAddress
+    Description: Description
+    ID: P000123
+    Job:
+      ID: J000123
+      Name: Design Job
+    State: Issued
+    Supplier:
+      Name: A B C Limited
+      UUID: a98b5db3-c3b7-4f90-acee-f1e741a4fc7c

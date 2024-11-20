@@ -1,0 +1,12 @@
+TaskUuidName:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: Design &amp; Layout
+    UUID:
+      type: string
+      example: c894add0-ae78-43b9-a1bf-6f8112f42730
+  example:
+    Name: Design &amp; Layout
+    UUID: c894add0-ae78-43b9-a1bf-6f8112f42730

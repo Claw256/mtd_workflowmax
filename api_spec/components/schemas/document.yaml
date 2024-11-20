@@ -1,0 +1,29 @@
+document:
+  type: object
+  properties:
+    CreatedBy:
+      type: string
+      example: Jo Bloggs
+    Date:
+      type: string
+      example: '20091023'
+    Folder:
+      type: string
+      example: Correspondence
+    Text:
+      type: string
+    Title:
+      type: string
+      example: Document Title
+    URL:
+      type: string
+      example: https://my.workflowmax.com...
+  example:
+    CreatedBy: Jo Bloggs
+    Date: '20091023'
+    Folder: Correspondence
+    Text: Text
+    Title: Document Title
+    URL: https://my.workflowmax.com...
+  xml:
+    name: Document

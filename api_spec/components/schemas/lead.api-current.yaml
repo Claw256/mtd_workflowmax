@@ -1,0 +1,16 @@
+lead.api-current:
+  type: object
+  properties:
+    Leads:
+      $ref: '#/components/schemas/lead.apicurrent_Leads'
+    Status:
+      type: string
+      example: OK
+  example:
+    Leads:
+      Lead:
+      - ''
+      - ''
+    Status: OK
+  xml:
+    name: Response

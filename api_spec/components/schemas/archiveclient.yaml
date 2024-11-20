@@ -1,0 +1,8 @@
+ArchiveClient:
+  type: object
+  properties:
+    UUID:
+      type: string
+  xml:
+    name: Client
+    wrapped: true

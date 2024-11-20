@@ -1,0 +1,18 @@
+supplier.api-contact-post:
+  type: object
+  properties:
+    Email:
+      type: string
+    Mobile:
+      type: string
+    Name:
+      type: string
+      example: Wyett E Coyote
+    Phone:
+      type: string
+    Position:
+      type: string
+    Supplier:
+      $ref: '#/components/schemas/SupplierArchiveDelete'
+  xml:
+    name: Contact

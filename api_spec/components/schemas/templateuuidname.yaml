@@ -1,0 +1,12 @@
+TemplateUuidName:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: Brochure
+    UUID:
+      type: string
+      example: 98cd8c8a-ed69-44d2-8648-2690563333bb
+  example:
+    Name: Brochure
+    UUID: 98cd8c8a-ed69-44d2-8648-2690563333bb

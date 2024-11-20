@@ -1,0 +1,120 @@
+paths:
+  /staff.api/add:
+    post:
+      tags:
+      - Staff
+      summary: This endpoint has been deprecated.
+      operationId: createStaff
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/staff.api-add-request'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/staff.api-get-uuid'
+  /staff.api/disable:
+    post:
+      tags:
+      - Staff
+      operationId: disableStaff
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/staff_api_disable_body'
+        required: true
+      responses:
+        200:
+          description: success
+          content: {}
+      summary: This endpoint has been deprecated.
+  /staff.api/enable:
+    post:
+      tags:
+      - Staff
+      operationId: enableStaff
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/staff_api_enable_body'
+        required: true
+      responses:
+        200:
+          description: success
+          content: {}
+      summary: This endpoint has been deprecated.
+  /staff.api/forgottenpassword:
+    post:
+      tags:
+      - Staff
+      operationId: resetPassword
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/staff_api_forgottenpassword_body'
+        required: true
+      responses:
+        200:
+          description: success
+          content: {}
+      summary: This endpoint has been deprecated.
+  /staff.api/list:
+    get:
+      tags:
+      - Staff
+      summary: Return a list of all staff members
+      operationId: readStaffList
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/staff.api-list'
+  /staff.api/update:
+    put:
+      tags:
+      - Staff
+      summary: Update a staff member
+      operationId: updateStaff
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Staff'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/staff.api-get-uuid'
+  /staff.api/{uuid}:
+    get:
+      tags:
+      - Staff
+      summary: Details for a specific staff member
+      operationId: readStaff
+      parameters:
+      - name: uuid
+        in: path
+        description: The identifier of the staff member being queried
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/staff.api-get-uuid'

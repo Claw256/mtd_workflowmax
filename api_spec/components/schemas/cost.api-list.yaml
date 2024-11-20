@@ -1,0 +1,41 @@
+cost.api-list:
+  type: object
+  properties:
+    Costs:
+      $ref: '#/components/schemas/costs'
+    Records:
+      type: number
+      example: 2.0
+    Status:
+      type: string
+      example: OK
+  example:
+    Costs:
+      Cost:
+      - Code: Code
+        CostOfSaleAccount: CostOfSaleAccount
+        Description: Widget
+        IncomeAccount: IncomeAccount
+        Note: Note
+        Supplier:
+          Name: Widget Incorporated
+          UUID: UUID
+        UUID: UUID
+        UnitCost: 100
+        UnitPrice: 130
+      - Code: Code
+        CostOfSaleAccount: CostOfSaleAccount
+        Description: Widget
+        IncomeAccount: IncomeAccount
+        Note: Note
+        Supplier:
+          Name: Widget Incorporated
+          UUID: UUID
+        UUID: UUID
+        UnitCost: 100
+        UnitPrice: 130
+    Records: 2
+    Status: OK
+  xml:
+    name: Response
+    wrapped: true

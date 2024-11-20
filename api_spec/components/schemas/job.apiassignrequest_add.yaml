@@ -1,0 +1,15 @@
+job.apiassignrequest_add:
+  type: object
+  properties:
+    task-uuid:
+      type: string
+      description: The Task UUID that this staff member should be assigned to
+      example: c3fe8e7a-0e2f-4c0b-aa1b-58506b9d4460
+      xml:
+        attribute: true
+    uuid:
+      type: string
+      description: UUID of staff member to assign
+      example: 9965d37f-0922-4754-86f0-abe31e938e35
+      xml:
+        attribute: true

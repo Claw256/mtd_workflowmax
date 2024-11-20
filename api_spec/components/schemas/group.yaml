@@ -1,0 +1,20 @@
+group:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: Bloggs Family
+    Taxable:
+      type: string
+      enum:
+      - true
+      - false
+    UUID:
+      type: string
+      example: e873137a-7e07-49a0-8987-130e7418ad34
+  example:
+    Name: Bloggs Family
+    Taxable: true
+    UUID: e873137a-7e07-49a0-8987-130e7418ad34
+  xml:
+    name: Group

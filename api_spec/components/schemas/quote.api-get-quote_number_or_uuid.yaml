@@ -1,0 +1,96 @@
+quote.api-get-quote_number_or_uuid:
+  type: object
+  properties:
+    Quote:
+      $ref: '#/components/schemas/DetailedQuote'
+    Status:
+      type: string
+      example: OK
+  example:
+    Quote:
+      Amount: '200'
+      AmountIncludingTax: '225'
+      AmountTax: '25'
+      Budget: Budget
+      Client:
+        Name: A B C Limited
+        UUID: a98b5db3-c3b7-4f90-acee-f1e741a4fc7c
+      Contact:
+        Name: Andrew Smith
+        UUID: a98b5db3-c3b7-4f90-acee-f1e741a4fc7c
+      Costs:
+        Cost:
+        - Amount: 50
+          AmountIncludingTax: 56.25
+          AmountTax: 6.25
+          Billable: true
+          Code: COURIER
+          Description: Courier
+          Note: Note
+          Quantity: 1
+          UnitCost: 50
+          UnitPrice: 50
+        - Amount: 50
+          AmountIncludingTax: 56.25
+          AmountTax: 6.25
+          Billable: true
+          Code: COURIER
+          Description: Courier
+          Note: Note
+          Quantity: 1
+          UnitCost: 50
+          UnitPrice: 50
+      Date: 2007-09-15 00:00:00+00:00
+      Description: Description
+      EstimatedCost: '100'
+      EstimatedCostIncludingTax: '112.5'
+      EstimatedCostTax: '12.5'
+      ID: Q000123
+      LeadUUID: 754a48e5-0fce-421c-b32b-f84d6b576ef3
+      Name: Name
+      OptionExplanation: OptionExplanation
+      Options:
+        Option:
+        - Amount: 100
+          AmountIncludingTax: 112.5
+          AmountTax: 12.5
+          Code: PRINT
+          Description: Printing
+          Note: Note
+          Quantity: 1
+          UnitCost: 50
+          UnitPrice: 100
+        - Amount: 100
+          AmountIncludingTax: 112.5
+          AmountTax: 12.5
+          Code: PRINT
+          Description: Printing
+          Note: Note
+          Quantity: 1
+          UnitCost: 50
+          UnitPrice: 100
+      State: Issued
+      Tasks:
+        Task:
+        - Amount: 150
+          AmountIncludingTax: 168.75
+          AmountTax: 18.75
+          Billable: true
+          BillableRate: 150
+          Description: Description
+          EstimatedMinutes: 60
+          Name: Design
+        - Amount: 150
+          AmountIncludingTax: 168.75
+          AmountTax: 18.75
+          Billable: true
+          BillableRate: 150
+          Description: Description
+          EstimatedMinutes: 60
+          Name: Design
+      Type: Estimate
+      UUID: 6af333db-e272-4983-b374-6981301227b3
+      ValidDate: 2007-09-22 00:00:00+00:00
+    Status: OK
+  xml:
+    name: Response

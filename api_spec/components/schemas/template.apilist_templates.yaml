@@ -1,0 +1,13 @@
+template.apilist_Templates:
+  type: object
+  properties:
+    Task:
+      type: array
+      items:
+        $ref: '#/components/schemas/TemplateUuidName'
+  example:
+    Task:
+    - Name: Brochure
+      UUID: 98cd8c8a-ed69-44d2-8648-2690563333bb
+    - Name: Brochure
+      UUID: 98cd8c8a-ed69-44d2-8648-2690563333bb

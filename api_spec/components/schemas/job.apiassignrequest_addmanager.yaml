@@ -1,0 +1,9 @@
+job.apiassignrequest_addmanager:
+  type: object
+  properties:
+    uuid:
+      type: string
+      description: UUID of staff member to assign
+      example: 9965d37f-0922-4754-86f0-abe31e938e35
+      xml:
+        attribute: true

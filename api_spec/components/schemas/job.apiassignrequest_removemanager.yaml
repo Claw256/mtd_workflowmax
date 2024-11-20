@@ -1,0 +1,9 @@
+job.apiassignrequest_removemanager:
+  type: object
+  properties:
+    uuid:
+      type: string
+      description: UUID of staff member to unassign
+      example: 4ac6fab1-b1c5-459e-9652-91ba4a72eec4
+      xml:
+        attribute: true

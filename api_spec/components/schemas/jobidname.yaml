@@ -1,0 +1,12 @@
+JobIdName:
+  type: object
+  properties:
+    ID:
+      type: string
+      example: J000123
+    Name:
+      type: string
+      example: Design Job
+  example:
+    ID: J000123
+    Name: Design Job

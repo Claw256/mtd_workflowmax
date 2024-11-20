@@ -1,0 +1,27 @@
+FullInvoice_Tasks:
+  type: object
+  properties:
+    Task:
+      type: array
+      items:
+        $ref: '#/components/schemas/Task'
+  example:
+    Task:
+    - Amount: 150
+      AmountIncludingTax: 168.75
+      AmountTax: 18.75
+      Billable: true
+      BillableRate: 150
+      Description: Description
+      Minutes: 60
+      Name: Design
+      UUID: 5d852206-b63f-4921-9267-12c0d95ef906
+    - Amount: 150
+      AmountIncludingTax: 168.75
+      AmountTax: 18.75
+      Billable: true
+      BillableRate: 150
+      Description: Description
+      Minutes: 60
+      Name: Design
+      UUID: 5d852206-b63f-4921-9267-12c0d95ef906

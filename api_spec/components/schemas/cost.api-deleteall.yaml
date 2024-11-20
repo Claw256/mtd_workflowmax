@@ -1,0 +1,5 @@
+cost.api-deleteall:
+  type: object
+  xml:
+    name: DeleteAll
+    wrapped: true

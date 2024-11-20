@@ -1,0 +1,11 @@
+lead.apicurrent_Leads:
+  type: object
+  properties:
+    Lead:
+      type: array
+      items:
+        type: object
+  example:
+    Lead:
+    - ''
+    - ''

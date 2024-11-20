@@ -1,0 +1,19 @@
+supplier.api-contact-uuid:
+  type: object
+  properties:
+    Contact:
+      $ref: '#/components/schemas/BasicContact'
+    Status:
+      type: string
+      example: OK
+  example:
+    Contact:
+      Email: Email
+      Mobile: Mobile
+      Name: Samantha Benecke
+      Phone: Phone
+      Position: Position
+      UUID: f1ec264f-d269-4232-9615-c167583fa7da
+    Status: OK
+  xml:
+    name: Response

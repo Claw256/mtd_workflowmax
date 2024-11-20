@@ -1,0 +1,10 @@
+customapis-customfield-updaterequest:
+  type: object
+  properties:
+    CustomField:
+      type: array
+      items:
+        $ref: '#/components/schemas/CustomField'
+  xml:
+    name: CustomFields
+    wrapped: true

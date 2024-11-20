@@ -1,0 +1,10 @@
+job.api-reordertasks-request:
+  type: object
+  properties:
+    ID:
+      type: string
+      example: J000123
+    Tasks:
+      $ref: '#/components/schemas/job.apireordertasksrequest_Tasks'
+  xml:
+    name: Job

@@ -1,0 +1,15 @@
+TaskUuidNameDescription:
+  type: object
+  properties:
+    Description:
+      type: string
+    Name:
+      type: string
+      example: Concept
+    UUID:
+      type: string
+      example: f3fa10e2-69e4-4491-9cf4-dad4433f20da
+  example:
+    Description: Description
+    Name: Concept
+    UUID: f3fa10e2-69e4-4491-9cf4-dad4433f20da

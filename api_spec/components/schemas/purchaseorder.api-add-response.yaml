@@ -1,0 +1,14 @@
+purchaseorder.api-add-response:
+  type: object
+  properties:
+    ID:
+      type: string
+      example: P000123
+    Status:
+      type: string
+      example: OK
+  example:
+    ID: P000123
+    Status: OK
+  xml:
+    name: Response

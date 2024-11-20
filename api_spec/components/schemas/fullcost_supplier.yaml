@@ -1,0 +1,12 @@
+FullCost_Supplier:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: Widget Incorporated
+    UUID:
+      type: string
+      example: 48db0a77-d871-4e1a-9475-aa40de10dd79
+  example:
+    Name: Widget Incorporated
+    UUID: 48db0a77-d871-4e1a-9475-aa40de10dd79

@@ -1,0 +1,23 @@
+RawNote:
+  type: object
+  properties:
+    CreatedBy:
+      type: string
+      example: Jo Bloggs
+    Date:
+      type: string
+      example: 2008-09-12 13:00:00+00:00
+    Folder:
+      type: string
+    Text:
+      type: string
+      example: subject of the note
+    Title:
+      type: string
+      example: note title
+  example:
+    CreatedBy: Jo Bloggs
+    Date: 2008-09-12 13:00:00+00:00
+    Folder: Folder
+    Text: subject of the note
+    Title: note title

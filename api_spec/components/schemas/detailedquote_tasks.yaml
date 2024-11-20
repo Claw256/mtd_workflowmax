@@ -1,0 +1,25 @@
+DetailedQuote_Tasks:
+  type: object
+  properties:
+    Task:
+      type: array
+      items:
+        $ref: '#/components/schemas/NewTask'
+  example:
+    Task:
+    - Amount: 150
+      AmountIncludingTax: 168.75
+      AmountTax: 18.75
+      Billable: true
+      BillableRate: 150
+      Description: Description
+      EstimatedMinutes: 60
+      Name: Design
+    - Amount: 150
+      AmountIncludingTax: 168.75
+      AmountTax: 18.75
+      Billable: true
+      BillableRate: 150
+      Description: Description
+      EstimatedMinutes: 60
+      Name: Design

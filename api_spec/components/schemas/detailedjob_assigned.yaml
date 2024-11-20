@@ -1,0 +1,16 @@
+DetailedJob_Assigned:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: John Smith
+    Staff:
+      type: object
+      properties: {}
+    UUID:
+      type: string
+      example: 52ed22ca-4600-437c-86f6-465dda434af2
+  example:
+    Name: John Smith
+    Staff: {}
+    UUID: 52ed22ca-4600-437c-86f6-465dda434af2

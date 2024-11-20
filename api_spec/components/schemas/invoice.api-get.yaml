@@ -1,0 +1,125 @@
+invoice.api-get:
+  type: object
+  properties:
+    Invoice:
+      $ref: '#/components/schemas/FullInvoice'
+    Status:
+      type: string
+      example: OK
+  example:
+    Invoice:
+      Amount: 200
+      AmountIncludingTax: 225
+      AmountOutstanding: 125
+      AmountPaid: 100
+      AmountTax: 25
+      Client:
+        Name: A C Smith Limited
+        UUID: 9298fafa-f1a4-494d-b62a-35aae4c7bb3e
+      Contact:
+        Name: Andy Smith
+        UUID: 5d852206-b63f-4921-9267-12c0d95ef906
+      Date: 2007-09-15 00:00:00+00:00
+      DueDate: 2007-09-22 00:00:00+00:00
+      ID: I000123
+      JobText: J000123
+      Jobs:
+        Jobs:
+        - ClientOrderNumber: ClientOrderNumber
+          Costs:
+            Cost:
+            - Amount: 50
+              AmountIncludingTax: 56.25
+              AmountTax: 6.25
+              Billable: true
+              Code: COURIER
+              Description: Courier
+              Note: Note
+              Quantity: 1
+              UnitCost: 50
+              UnitPrice: 50
+            - Amount: 50
+              AmountIncludingTax: 56.25
+              AmountTax: 6.25
+              Billable: true
+              Code: COURIER
+              Description: Courier
+              Note: Note
+              Quantity: 1
+              UnitCost: 50
+              UnitPrice: 50
+          Description: Description
+          ID: J000345
+          Name: Brochure Design
+          Tasks:
+            Task:
+            - Amount: 150
+              AmountIncludingTax: 168.75
+              AmountTax: 18.75
+              Billable: true
+              BillableRate: 150
+              Description: Description
+              Minutes: 60
+              Name: Design
+              UUID: 5d852206-b63f-4921-9267-12c0d95ef906
+            - Amount: 150
+              AmountIncludingTax: 168.75
+              AmountTax: 18.75
+              Billable: true
+              BillableRate: 150
+              Description: Description
+              Minutes: 60
+              Name: Design
+              UUID: 5d852206-b63f-4921-9267-12c0d95ef906
+        - ClientOrderNumber: ClientOrderNumber
+          Costs:
+            Cost:
+            - Amount: 50
+              AmountIncludingTax: 56.25
+              AmountTax: 6.25
+              Billable: true
+              Code: COURIER
+              Description: Courier
+              Note: Note
+              Quantity: 1
+              UnitCost: 50
+              UnitPrice: 50
+            - Amount: 50
+              AmountIncludingTax: 56.25
+              AmountTax: 6.25
+              Billable: true
+              Code: COURIER
+              Description: Courier
+              Note: Note
+              Quantity: 1
+              UnitCost: 50
+              UnitPrice: 50
+          Description: Description
+          ID: J000345
+          Name: Brochure Design
+          Tasks:
+            Task:
+            - Amount: 150
+              AmountIncludingTax: 168.75
+              AmountTax: 18.75
+              Billable: true
+              BillableRate: 150
+              Description: Description
+              Minutes: 60
+              Name: Design
+              UUID: 5d852206-b63f-4921-9267-12c0d95ef906
+            - Amount: 150
+              AmountIncludingTax: 168.75
+              AmountTax: 18.75
+              Billable: true
+              BillableRate: 150
+              Description: Description
+              Minutes: 60
+              Name: Design
+              UUID: 5d852206-b63f-4921-9267-12c0d95ef906
+      Status: Approved
+      Type: Progress Invoice
+      UUID: e873137a-7e07-49a0-8987-130e7418ad34
+    Status: OK
+  xml:
+    name: Response

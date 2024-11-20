@@ -1,0 +1,49 @@
+purchaseorder.api-get-order_number:
+  type: object
+  properties:
+    ID:
+      type: string
+      example: OK
+    PurchaseOrder:
+      $ref: '#/components/schemas/DetailedPurchaseOrder'
+  example:
+    ID: OK
+    PurchaseOrder:
+      Amount: 200
+      AmountIncludingTax: 225
+      AmountTax: 25
+      Costs:
+        Cost:
+        - Amount: 50
+          AmountIncludingTax: 56.25
+          AmountTax: 6.25
+          Billable: true
+          Code: COURIER
+          Description: Courier
+          Note: Note
+          Quantity: 1
+          UnitCost: 50
+          UnitPrice: 50
+        - Amount: 50
+          AmountIncludingTax: 56.25
+          AmountTax: 6.25
+          Billable: true
+          Code: COURIER
+          Description: Courier
+          Note: Note
+          Quantity: 1
+          UnitCost: 50
+          UnitPrice: 50
+      Date: 2007-09-15 00:00:00+00:00
+      DeliveryAddress: DeliveryAddress
+      Description: Description
+      ID: P000123
+      Job:
+        ID: J000123
+        Name: Design Job
+      State: Issued
+      Supplier:
+        Name: A B C Limited
+        UUID: a98b5db3-c3b7-4f90-acee-f1e741a4fc7c
+  xml:
+    name: Response

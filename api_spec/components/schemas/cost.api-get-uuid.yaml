@@ -1,0 +1,25 @@
+cost.api-get-uuid:
+  type: object
+  properties:
+    Cost:
+      $ref: '#/components/schemas/cost'
+    Status:
+      type: string
+      example: OK
+  example:
+    Cost:
+      Code: Code
+      CostOfSaleAccount: CostOfSaleAccount
+      Description: Widget
+      IncomeAccount: IncomeAccount
+      Note: Note
+      Supplier:
+        Name: Widget Incorporated
+        UUID: UUID
+      UUID: UUID
+      UnitCost: 100
+      UnitPrice: 130
+    Status: OK
+  xml:
+    name: Response
+    wrapped: true

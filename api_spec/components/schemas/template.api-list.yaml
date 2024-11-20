@@ -1,0 +1,18 @@
+template.api-list:
+  type: object
+  properties:
+    Status:
+      type: string
+      example: OK
+    Templates:
+      $ref: '#/components/schemas/template.apilist_Templates'
+  example:
+    Status: OK
+    Templates:
+      Task:
+      - Name: Brochure
+        UUID: 98cd8c8a-ed69-44d2-8648-2690563333bb
+      - Name: Brochure
+        UUID: 98cd8c8a-ed69-44d2-8648-2690563333bb
+  xml:
+    name: Response

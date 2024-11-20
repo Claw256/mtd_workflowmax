@@ -1,0 +1,71 @@
+DetailedJob:
+  type: object
+  properties:
+    ApprovedQuoteId:
+      type: string
+      example: Q000005
+    ApprovedQuoteUUID:
+      type: string
+      example: 90dd07e5-bb36-423d-ab76-5a5ead0bb852
+    Assigned:
+      $ref: '#/components/schemas/DetailedJob_Assigned'
+    Client:
+      $ref: '#/components/schemas/DetailedJob_Client'
+    ClientOrderNumber:
+      type: string
+      example: ABCD1234
+    DateCreatedUtc:
+      type: string
+      example: 2021-05-11 02:09:53+00:00
+    DateModifiedUtc:
+      type: string
+      example: 2021-05-11 02:09:53+00:00
+    Description:
+      type: string
+      example: Brochure Design
+    DueDate:
+      type: string
+      example: 2022-05-11 00:00:00+00:00
+    ID:
+      type: string
+      example: J000159
+    Name:
+      type: string
+      example: Brochure Design
+    StartDate:
+      type: string
+      example: 2021-05-11 00:00:00+00:00
+    State:
+      type: string
+      example: In Progress
+    Type:
+      type: string
+      example: Bookkeeping
+    UUID:
+      type: string
+      example: 0d3458b8-6fde-4389-8dbb-0a85804466ad
+    WebUrl:
+      type: string
+      example: http://app.my.workflowmax.web/job/jobview.aspx?id=116912
+  example:
+    ApprovedQuoteId: Q000005
+    ApprovedQuoteUUID: 90dd07e5-bb36-423d-ab76-5a5ead0bb852
+    Assigned:
+      Name: John Smith
+      Staff: {}
+      UUID: 52ed22ca-4600-437c-86f6-465dda434af2
+    Client:
+      Name: John Smith
+      UUID: 4f2161d6-21af-4f47-9845-2436f3efd5b0
+    ClientOrderNumber: ABCD1234
+    DateCreatedUtc: 2021-05-11 02:09:53+00:00
+    DateModifiedUtc: 2021-05-11 02:09:53+00:00
+    Description: Brochure Design
+    DueDate: 2022-05-11 00:00:00+00:00
+    ID: J000159
+    Name: Brochure Design
+    StartDate: 2021-05-11 00:00:00+00:00
+    State: In Progress
+    Type: Bookkeeping
+    UUID: 0d3458b8-6fde-4389-8dbb-0a85804466ad
+    WebUrl: http://app.my.workflowmax.web/job/jobview.aspx?id=116912

@@ -1,0 +1,16 @@
+PurchaseOrderItem:
+  type: object
+  properties:
+    Code:
+      type: string
+    Description:
+      type: string
+      example: Widget
+    Note:
+      type: string
+    Quantity:
+      type: number
+      example: 4.0
+    UnitCost:
+      type: number
+      example: 50.0

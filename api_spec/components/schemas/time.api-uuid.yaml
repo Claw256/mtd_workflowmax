@@ -1,0 +1,28 @@
+time.api-uuid:
+  type: object
+  properties:
+    Status:
+      type: string
+      example: OK
+    Time:
+      $ref: '#/components/schemas/JobTimeSheetEntry'
+  example:
+    Status: OK
+    Time:
+      Billable: 'true'
+      Date: 2008-10-29 00:00:00+00:00
+      End: 1020
+      InvoiceTaskUUID: InvoiceTaskUUID
+      Job:
+        ID: J000123
+        Name: Design Job
+      Minutes: 240
+      Note: Note
+      Staff:
+        Name: Andrew Smith
+        UUID: a98b5db3-c3b7-4f90-acee-f1e741a4fc7c
+      Start: 780
+      Task:
+        Name: Design &amp; Layout
+        UUID: c894add0-ae78-43b9-a1bf-6f8112f42730
+      UUID: f5d334b2-c07f-424c-89b4-2c2aabc09edd

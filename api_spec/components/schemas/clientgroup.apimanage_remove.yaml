@@ -1,0 +1,8 @@
+clientgroup.apimanage_remove:
+  type: object
+  properties:
+    uuid:
+      type: string
+      example: 8af0464b-bc6c-4b0f-81f6-39df43286ec7
+      xml:
+        attribute: true

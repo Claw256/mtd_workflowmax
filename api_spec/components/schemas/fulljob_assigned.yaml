@@ -1,0 +1,9 @@
+FullJob_Assigned:
+  type: object
+  properties:
+    Staff:
+      $ref: '#/components/schemas/FullJob_Assigned_Staff'
+  example:
+    Staff:
+      Name: John Smith
+      UUID: 52ed22ca-4600-437c-86f6-465dda434af2

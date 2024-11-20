@@ -1,0 +1,22 @@
+RawClient_Type:
+  type: object
+  properties:
+    CostMarkup:
+      type: number
+      example: 30.0
+    Name:
+      type: string
+      example: 20th of Month
+    PaymentDay:
+      type: string
+      example: '20'
+    PaymentTerm:
+      type: string
+      enum:
+      - DayOfMonth
+      - WithinDays
+  example:
+    CostMarkup: 30
+    Name: 20th of Month
+    PaymentDay: '20'
+    PaymentTerm: DayOfMonth

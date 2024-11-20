@@ -1,0 +1,31 @@
+purchaseorder.api-draft:
+  type: object
+  properties:
+    PurchaseOrders:
+      $ref: '#/components/schemas/purchaseorder.apidraft_PurchaseOrders'
+    Page:
+      type: number
+      description: Only appears if page size or page parameters are passed
+      example: 1.0
+    PageSize:
+      type: number
+      description: Only appears if page size or page parameters are passed
+      example: 2.0
+    Status:
+      type: string
+      example: OK
+    TotalRecords:
+      type: number
+      description: Only appears if page size or page parameters are passed
+      example: 36.0
+  example:
+    PurchaseOrders:
+      PurchaseOrder:
+      - ''
+      - ''
+    Page: 1
+    PageSize: 2
+    Status: OK
+    TotalRecords: 36
+  xml:
+    name: Response

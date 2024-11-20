@@ -1,0 +1,36 @@
+cost:
+  type: object
+  properties:
+    Code:
+      type: string
+    CostOfSaleAccount:
+      type: string
+    Description:
+      type: string
+      example: Widget
+    IncomeAccount:
+      type: string
+    Note:
+      type: string
+    Supplier:
+      $ref: '#/components/schemas/cost_Supplier'
+    UUID:
+      type: string
+    UnitCost:
+      type: number
+      example: 100.0
+    UnitPrice:
+      type: number
+      example: 130.0
+  example:
+    Code: Code
+    CostOfSaleAccount: CostOfSaleAccount
+    Description: Widget
+    IncomeAccount: IncomeAccount
+    Note: Note
+    Supplier:
+      Name: Widget Incorporated
+      UUID: UUID
+    UUID: UUID
+    UnitCost: 100
+    UnitPrice: 130

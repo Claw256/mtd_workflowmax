@@ -1,0 +1,14 @@
+NewSupplierContact:
+  type: object
+  properties:
+    Email:
+      type: string
+    Mobile:
+      type: string
+    Name:
+      type: string
+      example: Jo Bloggs
+    Phone:
+      type: string
+    Position:
+      type: string

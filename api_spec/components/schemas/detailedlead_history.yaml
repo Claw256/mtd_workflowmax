@@ -1,0 +1,17 @@
+DetailedLead_History:
+  type: object
+  properties:
+    Item:
+      type: array
+      items:
+        $ref: '#/components/schemas/HistoryItem'
+  example:
+    Item:
+    - Date: 2008-09-12 13:00:00+00:00
+      Detail: Created by Jo Bloggs
+      Staff: Jo Bloggs
+      Type: Lead
+    - Date: 2008-09-12 13:00:00+00:00
+      Detail: Created by Jo Bloggs
+      Staff: Jo Bloggs
+      Type: Lead

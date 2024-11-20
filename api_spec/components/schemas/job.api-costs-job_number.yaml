@@ -1,0 +1,35 @@
+job.api-costs-job_number:
+  type: object
+  properties:
+    Cost:
+      type: array
+      items:
+        $ref: '#/components/schemas/FullCost'
+  example:
+    Cost:
+    - Billable: 'true'
+      Code: WIDGET
+      Date: 2009-10-23 00:00:00+00:00
+      Description: Widget
+      Note: a note about the widget
+      Quantity: 1
+      Supplier:
+        Name: Widget Incorporated
+        UUID: 48db0a77-d871-4e1a-9475-aa40de10dd79
+      UUID: 0e9d45c4-37c5-4489-b966-765b115966e4
+      UnitCost: 50
+      UnitPrice: 100
+    - Billable: 'true'
+      Code: WIDGET
+      Date: 2009-10-23 00:00:00+00:00
+      Description: Widget
+      Note: a note about the widget
+      Quantity: 1
+      Supplier:
+        Name: Widget Incorporated
+        UUID: 48db0a77-d871-4e1a-9475-aa40de10dd79
+      UUID: 0e9d45c4-37c5-4489-b966-765b115966e4
+      UnitCost: 50
+      UnitPrice: 100
+  xml:
+    name: Costs

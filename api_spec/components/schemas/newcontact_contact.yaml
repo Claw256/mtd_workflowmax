@@ -1,0 +1,25 @@
+NewContact_Contact:
+  type: object
+  properties:
+    Addressee:
+      type: string
+      example: Mrs S Benecke
+    Email:
+      type: string
+    IsPrimary:
+      type: string
+      enum:
+      - true
+      - false
+    Mobile:
+      type: string
+    Name:
+      type: string
+      example: Samantha Benecke
+    Phone:
+      type: string
+    Position:
+      type: string
+    Salutation:
+      type: string
+      example: Sam

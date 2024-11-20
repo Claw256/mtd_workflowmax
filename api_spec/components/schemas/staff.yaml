@@ -1,0 +1,35 @@
+Staff:
+  type: object
+  properties:
+    Address:
+      type: string
+    Email:
+      type: string
+      example: jo@bloggs.net
+    Mobile:
+      type: string
+    Name:
+      type: string
+      example: Jo Bloggs
+    PayrollCode:
+      type: string
+    Phone:
+      type: string
+    UUID:
+      type: string
+      example: 47158cb8-20e7-4b42-801a-ca7927e1a2b7
+    WebUrl:
+      type: string
+      example: https://app.my.workflowmax.com/admin/resourceedit.aspx?id=708601
+  example:
+    Address: Address
+    Email: jo@bloggs.net
+    Mobile: Mobile
+    Name: Jo Bloggs
+    PayrollCode: PayrollCode
+    Phone: Phone
+    UUID: 47158cb8-20e7-4b42-801a-ca7927e1a2b7
+    WebUrl: https://app.my.workflowmax.com/admin/resourceedit.aspx?id=708601
+  xml:
+    name: Staff
+    wrapped: true

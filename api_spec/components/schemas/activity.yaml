@@ -1,0 +1,20 @@
+Activity:
+  type: object
+  properties:
+    Completed:
+      type: string
+      enum:
+      - 'false'
+      - 'true'
+    Date:
+      type: string
+      example: 2008-09-24 00:00:00+00:00
+    Responsible:
+      $ref: '#/components/schemas/DetailedLead_Owner'
+    Subject:
+      type: string
+      example: Phone conference at 3pm
+  example:
+    Completed: 'false'
+    Date: 2008-09-24 00:00:00+00:00
+    Subject: Phone conference at 3pm

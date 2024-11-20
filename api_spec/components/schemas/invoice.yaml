@@ -1,0 +1,66 @@
+Invoice:
+  type: object
+  properties:
+    Amount:
+      type: number
+      example: 200.0
+    AmountIncludingTax:
+      type: number
+      example: 225.0
+    AmountOutstanding:
+      type: number
+      example: 125.0
+    AmountPaid:
+      type: number
+      example: 100.0
+    AmountTax:
+      type: number
+      example: 25.0
+    Client:
+      $ref: '#/components/schemas/FullInvoice_Client'
+    Contact:
+      $ref: '#/components/schemas/FullInvoice_Contact'
+    Date:
+      type: string
+      example: 2007-09-12 00:00:00+00:00
+    DueDate:
+      type: string
+      example: 2007-09-22 00:00:00+00:00
+    ID:
+      type: string
+      example: I000123
+    JobText:
+      type: string
+      example: J000123
+    Status:
+      type: string
+      enum:
+      - Approved
+      - Paid
+      - Draft
+      - Cancelled
+    Type:
+      type: string
+      example: Progress Invoice
+    UUID:
+      type: string
+      example: e873137a-7e07-49a0-8987-130e7418ad34
+  example:
+    Amount: 200
+    AmountIncludingTax: 225
+    AmountOutstanding: 125
+    AmountPaid: 100
+    AmountTax: 25
+    Client:
+      Name: A C Smith Limited
+      UUID: 9298fafa-f1a4-494d-b62a-35aae4c7bb3e
+    Contact:
+      Name: Andy Smith
+      UUID: 5d852206-b63f-4921-9267-12c0d95ef906
+    Date: 2007-09-12 00:00:00+00:00
+    DueDate: 2007-09-22 00:00:00+00:00
+    ID: I000123
+    JobText: J000123
+    Status: Approved
+    Type: Progress Invoice
+    UUID: e873137a-7e07-49a0-8987-130e7418ad34

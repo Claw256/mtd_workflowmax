@@ -1,0 +1,190 @@
+paths:
+  /supplier.api/add:
+    post:
+      tags:
+      - Supplier
+      summary: Add a supplier and contacts
+      operationId: createSupplier
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/NewSupplier'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/supplier.api-get-uuid'
+  /supplier.api/archive:
+    put:
+      tags:
+      - Supplier
+      summary: Archive a supplier
+      operationId: archiveSupplier
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/SupplierArchiveDelete'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/supplier.api-get-uuid'
+  /supplier.api/contact:
+    post:
+      tags:
+      - Supplier
+      operationId: createSupplierContact
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/supplier.api-contact-post'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/supplier.api-contact-uuid'
+  /supplier.api/contact/{uuid}:
+    get:
+      tags:
+      - Supplier
+      summary: Detailed information for a specific contact
+      operationId: readSupplierContact
+      parameters:
+      - name: uuid
+        in: path
+        description: The UUID of the given contact
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/supplier.api-contact-uuid'
+    put:
+      tags:
+      - Supplier
+      summary: Update a contacts details
+      operationId: updateSupplierContact
+      parameters:
+      - name: uuid
+        in: path
+        description: The UUID of the given contact
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/supplier.api-contact-uuid-put'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/supplier.api-contact-uuid'
+  /supplier.api/delete:
+    post:
+      tags:
+      - Supplier
+      summary: Delete a supplier
+      operationId: deleteSupplier
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/SupplierArchiveDelete'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/supplier.api-get-uuid'
+  /supplier.api/get/{uuid}:
+    get:
+      tags:
+      - Supplier
+      summary: Return a list of suppliers
+      operationId: readSupplier
+      parameters:
+      - name: uuid
+        in: path
+        description: Supplier UUID
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/supplier.api-get-uuid'
+  /supplier.api/list:
+    get:
+      tags:
+      - Supplier
+      summary: Return a list of suppliers
+      operationId: readSuppliers
+      parameters:
+      - name: detailed
+        in: query
+        description: Return detailed information on a quote
+        schema:
+          type: string
+          enum:
+          - 'false'
+          - 'true'
+      - name: page
+        in: query
+        description: The current page. Defaults to 1 if the value is smaller than
+          1 or if the parameter is not present but pagesize parameter is present
+        schema:
+          type: number
+      - name: pagesize
+        in: query
+        description: Number of records per page. Optional. No pagination if not present.
+        schema:
+          type: number
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/supplier.api-list'
+  /supplier.api/update:
+    put:
+      tags:
+      - Supplier
+      summary: Update a suppliers details
+      operationId: updateSupplier
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/SupplierUpdate'
+        required: true
+      responses:
+        200:
+          description: success - Note, response payload not defined
+          content: {}

@@ -1,0 +1,47 @@
+openapi: 3.0.1
+info:
+  title: WorkflowMax by BlueRock - API V1
+  description: "<p>The WorkflowMax by BlueRock API is organised around RESTful principles\
+    \ - each resource has a unique URI and HTTP verbs are used to specify the action\
+    \ to perform on that resource.</p>\n<p>In order to write or modify a client application\
+    \ for WorkflowMax, you should use a full-featured HTTP client library that supports\
+    \ the HTTP verbs: GET, POST, PUT and DELETE.</p>   \n<p>There are limits to the\
+    \ number of API calls that your application can make against a particular tenant\
+    \ - these are:\n<ul><li>Concurrent Limit: 5 calls in progress at one time</li>\n\
+    \  <li>Minute Limit: 60 calls per minute</li>\n  <li>Daily Limit: 5000 calls per\
+    \ day</li>\n</uL></p>\n<p>Please visit <a href=\"https://workflowmaxbybluerock.zendesk.com/hc/en-us/articles/28754786654233-API-authentication\"\
+    >this article</a> for details on how to authenticate.</p>"
+  version: '0.1'
+servers:
+- url: https://api.workflowmax2.com/
+tags:
+- name: Category
+  description: Category methods
+- name: Client
+  description: Client methods
+- name: Custom Field
+  description: Custom field methods
+- name: Client Group
+  description: Client group methods
+- name: Cost
+  description: Cost methods
+- name: Invoice
+  description: Invoice methods
+- name: Job
+  description: Job methods
+- name: Lead
+  description: Lead methods
+- name: Purchase Order
+  description: Purchase Order methods
+- name: Quote
+  description: Quote methods
+- name: Staff
+  description: Staff methods
+- name: Task
+  description: Task methods
+- name: Supplier
+  description: Supplier methods
+- name: Template
+  description: Template methods
+- name: Time
+  description: Time methods

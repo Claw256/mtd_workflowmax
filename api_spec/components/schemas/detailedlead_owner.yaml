@@ -1,0 +1,12 @@
+DetailedLead_Owner:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: Jo Bloggs
+    UUID:
+      type: string
+      example: 44ce9043-8a05-45e6-9a6b-93a7458d5734
+  example:
+    Name: Jo Bloggs
+    UUID: 44ce9043-8a05-45e6-9a6b-93a7458d5734

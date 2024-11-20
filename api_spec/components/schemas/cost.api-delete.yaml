@@ -1,0 +1,8 @@
+cost.api-delete:
+  type: object
+  properties:
+    UUID:
+      type: string
+  xml:
+    name: Cost
+    wrapped: true

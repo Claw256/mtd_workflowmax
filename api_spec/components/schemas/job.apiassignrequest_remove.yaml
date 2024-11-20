@@ -1,0 +1,15 @@
+job.apiassignrequest_remove:
+  type: object
+  properties:
+    task-uuid:
+      type: string
+      description: The Task UUID that this staff member should be unassigned from
+      example: 70c1c9be-8b2e-4cb2-be69-e1dc69844d19
+      xml:
+        attribute: true
+    uuid:
+      type: string
+      description: UUID of staff member to unassign
+      example: 4ac6fab1-b1c5-459e-9652-91ba4a72eec4
+      xml:
+        attribute: true

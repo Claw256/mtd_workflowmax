@@ -1,0 +1,14 @@
+paths:
+  /template.api/list:
+    get:
+      tags:
+      - Template
+      summary: Return a list of all templates
+      operationId: readTemplates
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/template.api-list'

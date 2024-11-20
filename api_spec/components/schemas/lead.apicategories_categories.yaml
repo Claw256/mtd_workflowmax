@@ -1,0 +1,13 @@
+lead.apicategories_Categories:
+  type: object
+  properties:
+    Category:
+      type: array
+      items:
+        $ref: '#/components/schemas/LeadCategory'
+  example:
+    Category:
+    - Name: Cool
+      UUID: 123123ff-642a-4448-2379-bbb7d81c1ab2
+    - Name: Cool
+      UUID: 123123ff-642a-4448-2379-bbb7d81c1ab2

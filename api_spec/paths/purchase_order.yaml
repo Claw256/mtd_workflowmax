@@ -1,0 +1,166 @@
+paths:
+  /purchaseorder.api/add:
+    post:
+      tags:
+      - Purchase Order
+      summary: Add a purchase order
+      operationId: createPurchaseOrder
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/purchaseorder.api-add-request'
+        required: true
+      responses:
+        200:
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/purchaseorder.api-add-response'
+  /purchaseorder.api/adddraft:
+    post:
+      tags:
+      - Purchase Order
+      summary: Add a draft purchase orders
+      operationId: createDraftPurchaseOrder
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/purchaseorder.api-add-request'
+        required: true
+      responses:
+        200:
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/purchaseorder.api-add-response'
+  /purchaseorder.api/current:
+    get:
+      tags:
+      - Purchase Order
+      summary: Return a list of current purchase orders
+      operationId: readCurrentPurchaseOrders
+      parameters:
+      - name: detailed
+        in: query
+        description: Return detailed information on purchase order
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/purchaseorder.api-current'
+  /purchaseorder.api/draft:
+    get:
+      tags:
+      - Purchase Order
+      summary: Return a list of draft purchase orders
+      operationId: readDraftPurchaseOrders
+      parameters:
+      - name: detailed
+        in: query
+        description: Return detailed information on purchase order
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+      responses:
+        200:
+          description: success - Note response payload requires review
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/purchaseorder.api-draft'
+  /purchaseorder.api/get/{order_number}:
+    get:
+      tags:
+      - Purchase Order
+      summary: Detailed information for a specific purchase order
+      operationId: readPurchaseOrder
+      parameters:
+      - name: order_number
+        in: path
+        description: The purchase order number to retrieve
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/purchaseorder.api-get-order_number'
+  /purchaseorder.api/job/{job_number}:
+    get:
+      tags:
+      - Purchase Order
+      summary: Returns a list of purchase orders for a specific job
+      operationId: readJobPurchaseOrders
+      parameters:
+      - name: job_number
+        in: path
+        description: The jub number to retrieve purchase orders for
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/purchaseorder.api-draft'
+  /purchaseorder.api/list:
+    get:
+      tags:
+      - Purchase Order
+      summary: Return a list of current and archived purchase orders
+      operationId: readPurchaseOrders
+      parameters:
+      - name: from
+        in: query
+        description: Return POs created on or after this date - YYYYMMDD
+        required: true
+        schema:
+          type: string
+      - name: to
+        in: query
+        description: Return POs created on or before this date - YYYYMMDD
+        required: true
+        schema:
+          type: string
+      - name: detailed
+        in: query
+        description: Return detailed information on purchase order
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+      - name: page
+        in: query
+        description: The current page. Defaults to 1 if the value is smaller than
+          1 or if the parameter is not present but pagesize parameter is present
+        schema:
+          type: number
+      - name: pagesize
+        in: query
+        description: Number of records per page. Defaults to 1000 if page parameter
+          is present but pagesize is not provided
+        schema:
+          type: number
+      responses:
+        200:
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/purchaseorder.api-draft'

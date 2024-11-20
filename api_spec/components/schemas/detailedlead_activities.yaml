@@ -1,0 +1,15 @@
+DetailedLead_Activities:
+  type: object
+  properties:
+    Activity:
+      type: array
+      items:
+        $ref: '#/components/schemas/Activity'
+  example:
+    Activity:
+    - Completed: 'false'
+      Date: 2008-09-24 00:00:00+00:00
+      Subject: Phone conference at 3pm
+    - Completed: 'false'
+      Date: 2008-09-24 00:00:00+00:00
+      Subject: Phone conference at 3pm

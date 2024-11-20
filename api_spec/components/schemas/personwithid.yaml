@@ -1,0 +1,24 @@
+PersonWithId:
+  type: object
+  properties:
+    Email:
+      type: string
+    Mobile:
+      type: string
+    Name:
+      type: string
+      example: Samantha Benecke
+    Phone:
+      type: string
+    Position:
+      type: string
+    UUID:
+      type: string
+      example: bb9cb1cb-0646-431b-83f8-192d6dd3b5d1
+  example:
+    Email: Email
+    Mobile: Mobile
+    Name: Samantha Benecke
+    Phone: Phone
+    Position: Position
+    UUID: bb9cb1cb-0646-431b-83f8-192d6dd3b5d1

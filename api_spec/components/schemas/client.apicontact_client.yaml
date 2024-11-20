@@ -1,0 +1,5 @@
+client.apicontact_Client:
+  type: object
+  properties:
+    UUID:
+      type: string

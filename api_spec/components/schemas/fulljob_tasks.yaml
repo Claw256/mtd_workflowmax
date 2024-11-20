@@ -1,0 +1,41 @@
+FullJob_Tasks:
+  type: object
+  properties:
+    Task:
+      type: array
+      items:
+        $ref: '#/components/schemas/FullJob-Task'
+  example:
+    Task:
+    - ActualMinutes: 100
+      Assigned:
+        Staff:
+          AllocatedMinutes: 180
+          Name: Jo Bloggs
+          UUID: 44ce9043-8a05-45e6-9a6b-93a7458d5734
+      Billable: 'true'
+      Completed: 'false'
+      Description: Description
+      DueDate: 2008-08029T00:00:00
+      EstimatedMinutes: 180
+      Folder: Folder
+      Name: Creative Direction
+      StartDate: 2008-08029T00:00:00
+      TaskUUID: 3c1fc167-ab62-4db7-be73-01646abc461d
+      UUID: e805ed72-29d7-4897-8765-875f3461bfae
+    - ActualMinutes: 100
+      Assigned:
+        Staff:
+          AllocatedMinutes: 180
+          Name: Jo Bloggs
+          UUID: 44ce9043-8a05-45e6-9a6b-93a7458d5734
+      Billable: 'true'
+      Completed: 'false'
+      Description: Description
+      DueDate: 2008-08029T00:00:00
+      EstimatedMinutes: 180
+      Folder: Folder
+      Name: Creative Direction
+      StartDate: 2008-08029T00:00:00
+      TaskUUID: 3c1fc167-ab62-4db7-be73-01646abc461d
+      UUID: e805ed72-29d7-4897-8765-875f3461bfae

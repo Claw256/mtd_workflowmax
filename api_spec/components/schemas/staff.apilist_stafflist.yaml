@@ -1,0 +1,25 @@
+staff.apilist_StaffList:
+  type: object
+  properties:
+    Staff:
+      type: array
+      items:
+        $ref: '#/components/schemas/Staff'
+  example:
+    Staff:
+    - Address: Address
+      Email: jo@bloggs.net
+      Mobile: Mobile
+      Name: Jo Bloggs
+      PayrollCode: PayrollCode
+      Phone: Phone
+      UUID: 47158cb8-20e7-4b42-801a-ca7927e1a2b7
+      WebUrl: https://app.my.workflowmax.com/admin/resourceedit.aspx?id=708601
+    - Address: Address
+      Email: jo@bloggs.net
+      Mobile: Mobile
+      Name: Jo Bloggs
+      PayrollCode: PayrollCode
+      Phone: Phone
+      UUID: 47158cb8-20e7-4b42-801a-ca7927e1a2b7
+      WebUrl: https://app.my.workflowmax.com/admin/resourceedit.aspx?id=708601

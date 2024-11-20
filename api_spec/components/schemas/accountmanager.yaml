@@ -1,0 +1,12 @@
+AccountManager:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: Jo Blogs
+    UUID:
+      type: string
+      example: f1ec264f-d269-4232-9615-c167583fa7da
+  example:
+    Name: Jo Blogs
+    UUID: f1ec264f-d269-4232-9615-c167583fa7da

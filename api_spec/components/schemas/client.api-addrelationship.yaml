@@ -1,0 +1,42 @@
+client.api-addrelationship:
+  type: object
+  properties:
+    ClientUUID:
+      type: string
+    EndDate:
+      type: string
+      example: yyyy-MM-dd
+    NumberOfShared:
+      type: number
+      example: 1000.0
+    Percentage:
+      type: number
+      example: 25.0
+    RelatedClientUUID:
+      type: string
+    StartDate:
+      type: string
+      example: yyyy-MM-dd
+    Type:
+      type: string
+      enum:
+      - Shareholder
+      - Director
+      - Trustee
+      - Beneficiary
+      - Partner
+      - Settlor
+      - Associate
+      - Secretary
+      - Public Officer
+      - Husband
+      - Wife
+      - Spouse
+      - Parent Of
+      - Child Of
+      - Appointer
+      - Member
+      - Auditor
+      - Owner
+  xml:
+    name: Relationship

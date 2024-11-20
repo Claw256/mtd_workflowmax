@@ -1,0 +1,8 @@
+clientgroup.apimanage_add:
+  type: object
+  properties:
+    uuid:
+      type: string
+      example: 9b23fbf5-aea0-467d-b2e8-a80be2e73237
+      xml:
+        attribute: true

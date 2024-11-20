@@ -1,0 +1,21 @@
+DetailedSupplier_Notes:
+  type: object
+  properties:
+    Note:
+      type: array
+      items:
+        $ref: '#/components/schemas/Note'
+  example:
+    Note:
+    - Note:
+        CreatedBy: Jo Bloggs
+        Date: 2008-09-12 13:00:00+00:00
+        Folder: Folder
+        Text: subject of the note
+        Title: note title
+    - Note:
+        CreatedBy: Jo Bloggs
+        Date: 2008-09-12 13:00:00+00:00
+        Folder: Folder
+        Text: subject of the note
+        Title: note title

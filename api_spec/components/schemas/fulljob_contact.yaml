@@ -1,0 +1,12 @@
+FullJob_Contact:
+  type: object
+  properties:
+    Name:
+      type: string
+      example: Shelley Brio
+    UUID:
+      type: string
+      example: 699b0eb6-c54d-4afc-ae3d-1da6d91ba47d
+  example:
+    Name: Shelley Brio
+    UUID: 699b0eb6-c54d-4afc-ae3d-1da6d91ba47d

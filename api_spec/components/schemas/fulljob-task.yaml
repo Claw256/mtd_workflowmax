@@ -1,0 +1,58 @@
+FullJob-Task:
+  type: object
+  properties:
+    ActualMinutes:
+      type: number
+      example: 100.0
+    Assigned:
+      $ref: '#/components/schemas/FullJobTask_Assigned'
+    Billable:
+      type: string
+      enum:
+      - 'true'
+      - 'false'
+    Completed:
+      type: string
+      enum:
+      - 'false'
+      - 'true'
+    Description:
+      type: string
+    DueDate:
+      type: string
+      example: 2008-08029T00:00:00
+    EstimatedMinutes:
+      type: number
+      example: 180.0
+    Folder:
+      type: string
+    Name:
+      type: string
+      example: Creative Direction
+    StartDate:
+      type: string
+      description: Only present if the task has been scheduled
+      example: 2008-08029T00:00:00
+    TaskUUID:
+      type: string
+      example: 3c1fc167-ab62-4db7-be73-01646abc461d
+    UUID:
+      type: string
+      example: e805ed72-29d7-4897-8765-875f3461bfae
+  example:
+    ActualMinutes: 100
+    Assigned:
+      Staff:
+        AllocatedMinutes: 180
+        Name: Jo Bloggs
+        UUID: 44ce9043-8a05-45e6-9a6b-93a7458d5734
+    Billable: 'true'
+    Completed: 'false'
+    Description: Description
+    DueDate: 2008-08029T00:00:00
+    EstimatedMinutes: 180
+    Folder: Folder
+    Name: Creative Direction
+    StartDate: 2008-08029T00:00:00
+    TaskUUID: 3c1fc167-ab62-4db7-be73-01646abc461d
+    UUID: e805ed72-29d7-4897-8765-875f3461bfae

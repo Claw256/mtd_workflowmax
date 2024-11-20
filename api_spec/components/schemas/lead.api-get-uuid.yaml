@@ -1,0 +1,48 @@
+lead.api-get-uuid:
+  type: object
+  properties:
+    Lead:
+      $ref: '#/components/schemas/DetailedLead'
+    Status:
+      type: string
+      example: OK
+  example:
+    Lead:
+      Activities:
+        Activity:
+        - Completed: 'false'
+          Date: 2008-09-24 00:00:00+00:00
+          Subject: Phone conference at 3pm
+        - Completed: 'false'
+          Date: 2008-09-24 00:00:00+00:00
+          Subject: Phone conference at 3pm
+      Category: Hot
+      Client:
+        Name: A C Smith Limited
+        UUID: 23a720b6-a58e-4c4f-a938-bddbea7b4c66
+      Contact:
+        Name: Andrew Smith
+        UUID: 9f286b6c-9db8-472d-adf0-e1595f2a80b5
+      Date: 2008-08-29 00:00:00+00:00
+      DateWonLost: DateWonLost
+      Description: Description
+      EstimatedValue: 10000
+      History:
+        Item:
+        - Date: 2008-09-12 13:00:00+00:00
+          Detail: Created by Jo Bloggs
+          Staff: Jo Bloggs
+          Type: Lead
+        - Date: 2008-09-12 13:00:00+00:00
+          Detail: Created by Jo Bloggs
+          Staff: Jo Bloggs
+          Type: Lead
+      Name: Brochure Design
+      Owner:
+        Name: Jo Bloggs
+        UUID: 44ce9043-8a05-45e6-9a6b-93a7458d5734
+      State: Current
+      UUID: 0c6c8518-b2f2-4d2e-86d5-4cda1ffad545
+    Status: OK
+  xml:
+    name: Response

@@ -1,0 +1,32 @@
+time.api-add-request:
+  type: object
+  properties:
+    Date:
+      type: string
+      description: Date in format YYYYMMDD
+      example: '20081030'
+    End:
+      type: string
+      description: Only present when recording time rather than entering it
+      example: '8:10'
+    Job:
+      type: string
+      example: J000309
+    Minutes:
+      type: string
+      example: '60'
+    Note:
+      type: string
+      example: Detailed note about the time sheet entry
+    StaffUUID:
+      type: string
+      example: fa0cb4d8-9b7f-42db-8b89-596681519afa
+    Start:
+      type: string
+      description: Only present when recording time rather than entering it
+      example: '780'
+    TaskUUID:
+      type: string
+      example: f73c82da-c1f3-4fa2-b2c3-eaa6397d300b
+  xml:
+    name: Timesheet
