@@ -13,9 +13,9 @@ A Python module for integrating with the WorkflowMax API, providing robust conta
 
 ## Quick Start
 
-1. Install dependencies:
+1. Install from PyPI:
 ```bash
-pip install -r requirements.txt
+pip install mtd-workflowmax
 ```
 
 2. Configure authentication:
@@ -41,6 +41,7 @@ python -m mtd_workflowmax.cli contact set-field "contact-uuid" "LINKEDIN PROFILE
 Comprehensive documentation is available in the [docs/](docs/) directory:
 
 - [Getting Started](docs/README.md) - Module overview and setup
+- [Usage Guide](docs/usage.md) - Detailed usage examples and API documentation
 - [Architecture](docs/architecture.md) - System design and components
 - [API Integration](docs/api_integration.md) - WorkflowMax API details
 - [Models](docs/models.md) - Data models and XML handling

@@ -10,6 +10,7 @@ import threading
 import os
 import sys
 import ctypes
+import tempfile
 from pathlib import Path
 from typing import Optional, Dict, Any, Union
 from contextvars import ContextVar
@@ -18,6 +19,13 @@ from functools import wraps
 # Context variables for request tracking
 request_id: ContextVar[str] = ContextVar('request_id', default='')
 correlation_id: ContextVar[str] = ContextVar('correlation_id', default='')
+
+def get_app_log_dir() -> Path:
+    """Get application-specific log directory in system temp."""
+    temp_dir = Path(tempfile.gettempdir())
+    log_dir = temp_dir / 'mtd_workflowmax' / 'logs'
+    log_dir.mkdir(parents=True, exist_ok=True)
+    return log_dir
 
 def enable_virtual_terminal_processing():
     """Enable ANSI escape sequences in Windows terminals."""
@@ -48,6 +56,64 @@ COLORS = {
     'WHITE': '\033[37m',
     'GRAY': '\033[90m'
 }
+
+class JsonFormatter(logging.Formatter):
+    """Formatter that outputs JSON formatted logs."""
+    
+    def format(self, record: logging.LogRecord) -> str:
+        """Format log record as JSON."""
+        # Extract the message
+        message = record.msg
+        if isinstance(message, dict):
+            # If message is already a dict, use it directly
+            log_dict = message
+        else:
+            # Otherwise create a dict with the message
+            log_dict = {'message': str(message)}
+        
+        # Format timestamp nicely
+        timestamp = datetime.fromtimestamp(record.created)
+        formatted_time = timestamp.strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]  # Truncate microseconds to 3 digits
+        
+        # Build the log entry with fields in a logical order
+        entry = {
+            # Metadata first
+            'timestamp': formatted_time,
+            'level': record.levelname,
+            'logger': record.name,
+            
+            # Request tracking next
+            **({"request_id": request_id.get()} if request_id.get() else {}),
+            **({"correlation_id": correlation_id.get()} if correlation_id.get() else {}),
+            
+            # Message and context
+            **log_dict
+        }
+        
+        # Add exception info if present
+        if record.exc_info:
+            entry['exception'] = self.formatException(record.exc_info)
+        
+        # Format with nice indentation and add visual separator
+        separator = '-' * 80 + '\n'
+        json_str = json.dumps(entry, indent=2)
+        
+        # Add commas between fields
+        json_str = json_str.replace('\n  "', ',\n  "')
+        
+        # Add color coding
+        json_str = (
+            json_str
+            .replace('"timestamp":', f'{COLORS["CYAN"]}"timestamp":{COLORS["RESET"]}')
+            .replace('"level":', f'{COLORS["YELLOW"]}"level":{COLORS["RESET"]}')
+            .replace('"logger":', f'{COLORS["GREEN"]}"logger":{COLORS["RESET"]}')
+            .replace('"message":', f'{COLORS["BLUE"]}"message":{COLORS["RESET"]}')
+            .replace('"context":', f'{COLORS["MAGENTA"]}"context":{COLORS["RESET"]}')
+            .replace('"request_id":', f'{COLORS["CYAN"]}"request_id":{COLORS["RESET"]}')
+            .replace('"correlation_id":', f'{COLORS["CYAN"]}"correlation_id":{COLORS["RESET"]}')
+        )
+        
+        return separator + json_str + '\n'
 
 class PrettyFormatter(logging.Formatter):
     """Formatter that outputs clean, readable logs."""
@@ -167,12 +233,10 @@ class StructuredLogger:
     
     def _format_log(self, level: str, message: str, **kwargs) -> Dict[str, Any]:
         """Format log entry as structured dictionary."""
+        log_dict = {'message': message}
         if kwargs:
-            return {
-                'message': message,
-                'context': kwargs
-            }
-        return message
+            log_dict['context'] = kwargs
+        return log_dict
 
     def debug(self, message: str, **kwargs):
         """Log debug message."""
@@ -282,10 +346,9 @@ class LogManager:
             cls.set_log_level(level)
             return
             
-        # Set up logging directory
+        # Set up logging directory in system temp if not specified
         if logs_dir is None:
-            logs_dir = Path('logs')
-        logs_dir.mkdir(parents=True, exist_ok=True)
+            logs_dir = get_app_log_dir()
         
         # Configure root logger
         root_logger = logging.getLogger()
@@ -302,8 +365,8 @@ class LogManager:
         console_handler.setLevel(level_value)  # Set handler level explicitly
         root_logger.addHandler(console_handler)
         
-        # Add file handlers
-        json_formatter = logging.Formatter('%(message)s')
+        # Add file handlers with JSON formatting
+        json_formatter = JsonFormatter()
         
         # Main log file - INFO and above
         main_handler = logging.handlers.RotatingFileHandler(

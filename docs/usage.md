@@ -1,12 +1,11 @@
-# WorkflowMax API Client
+# WorkflowMax API Client Usage Guide
 
 A Python client for the WorkflowMax API with support for contact management and LinkedIn integration.
 
 ## Installation
 
 ```bash
-# From the root directory
-pip install -e mtd_workflowmax/
+pip install mtd-workflowmax
 ```
 
 ## Environment Variables
@@ -159,7 +158,7 @@ Save this as `example.py` and run:
 python example.py
 ```
 
-## Development
+## Module Structure
 
 The module is organized into several packages:
 

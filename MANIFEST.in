@@ -1,0 +1,14 @@
+# Include only the mtd_workflowmax package
+recursive-include mtd_workflowmax *.py
+recursive-include mtd_workflowmax py.typed
+
+# Explicitly exclude other directories
+recursive-exclude docs *
+recursive-exclude api_spec *
+recursive-exclude utility_scripts *
+recursive-exclude old_codebase *
+recursive-exclude tests *
+
+# Exclude any cache directories
+global-exclude __pycache__/*
+global-exclude *.py[cod]
