@@ -1,137 +1,94 @@
-# WorkflowMax LinkedIn Profile Fetcher
+# MTD WorkflowMax Integration
 
-A Python script to fetch LinkedIn profiles from WorkflowMax contacts with support for parallel processing, caching, and multiple output formats.
+A Python module for integrating with the WorkflowMax API, providing robust contact management and custom field handling capabilities.
 
 ## Features
 
-- Parallel contact processing for improved performance
-- Custom field caching to reduce API calls
-- Rate limiting and retry mechanisms
-- Multiple output formats (JSON/CSV)
-- Progress tracking with progress bar
-- Configurable settings via YAML file
-- Detailed logging with different log levels
-- Type hints for better code maintainability
+- OAuth2 authentication with WorkflowMax API
+- Contact management (view, update)
+- Custom field handling with proper XML formatting
+- Type validation and conversion
+- Comprehensive error handling
+- Logging and debugging support
 
-## Requirements
+## Quick Start
 
+1. Install dependencies:
 ```bash
-pip install requests pyjwt python-dotenv pyyaml tqdm
+pip install -r requirements.txt
 ```
 
-## Configuration
+2. Configure authentication:
+- Copy `.env.template` to `.env`
+- Fill in your WorkflowMax API credentials:
+  ```
+  WORKFLOWMAX_CLIENT_ID=your-client-id
+  WORKFLOWMAX_CLIENT_SECRET=your-client-secret
+  WORKFLOWMAX_REFRESH_TOKEN=your-refresh-token
+  ```
 
-The script can be configured using `config.yml`:
-
-```yaml
-max_workers: 5              # Maximum number of parallel workers
-max_retries: 3             # Maximum retry attempts for failed requests
-requests_per_second: 2     # Rate limiting for API requests
-
-logging:
-  level: INFO
-  file: workflowmax.log   # Optional log file
-
-custom_fields:
-  linkedin_field_name: "LINKEDIN PROFILE"
-  enable_caching: true
-  max_cache_size: 1000
-
-output:
-  default_format: json
-  include_custom_fields: true
-  directory: output
-```
-
-## Environment Variables
-
-Create a `.env` file with your WorkflowMax API credentials:
-
-```
-CLIENT_ID=your_client_id
-CLIENT_SECRET=your_client_secret
-```
-
-## Usage
-
-Basic usage:
+3. Basic usage:
 ```bash
-python workflowmax_linkedin.py
+# View contact details
+python -m mtd_workflowmax.cli contact view "contact-uuid"
+
+# Update custom field
+python -m mtd_workflowmax.cli contact set-field "contact-uuid" "LINKEDIN PROFILE" "https://www.linkedin.com/in/username"
 ```
 
-With options:
+## Documentation
+
+Comprehensive documentation is available in the [docs/](docs/) directory:
+
+- [Getting Started](docs/README.md) - Module overview and setup
+- [Architecture](docs/architecture.md) - System design and components
+- [API Integration](docs/api_integration.md) - WorkflowMax API details
+- [Models](docs/models.md) - Data models and XML handling
+- [Examples](docs/examples.md) - Code examples and common use cases
+
+## Key Components
+
+- `mtd_workflowmax/cli.py` - Command-line interface
+- `mtd_workflowmax/services/` - Business logic layer
+- `mtd_workflowmax/repositories/` - Data access layer
+- `mtd_workflowmax/models/` - Data models and validation
+- `mtd_workflowmax/api/` - API client and authentication
+
+## Important Notes
+
+When working with custom fields:
+- XML tag order matters (UUID must come first)
+- All custom fields must be included in updates
+- Link URLs should be preserved in their original format
+- Include UUIDs in custom field updates
+
+## Development
+
+1. Clone the repository:
 ```bash
-python workflowmax_linkedin.py --limit 100 --format csv
+git clone https://github.com/Claw256/mtd_workflowmax.git
+cd mtd_workflowmax
 ```
 
-Available options:
-- `--limit`: Maximum number of contacts to process
-- `--start`: Page number to start from (default: 1)
-- `--client`: Only process contacts from a specific client
-- `--format`: Output format (json or csv, default: json)
-
-## Output
-
-The script generates either a JSON or CSV file containing:
-- Contact information (name, email, phone, etc.)
-- Client name
-- LinkedIn profile URL
-- Custom fields (optional)
-
-Example JSON output:
-```json
-[
-  {
-    "name": "John Doe",
-    "email": "john@example.com",
-    "phone": "123-456-7890",
-    "mobile": "098-765-4321",
-    "position": "Manager",
-    "is_primary": "true",
-    "client_name": "Example Corp",
-    "linkedin_url": "https://linkedin.com/in/johndoe",
-    "custom_fields": [
-      ["LINKEDIN PROFILE", "https://linkedin.com/in/johndoe"],
-      ["OTHER FIELD", "value"]
-    ]
-  }
-]
+2. Create virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate     # Windows
 ```
 
-## Error Handling
-
-The script includes robust error handling:
-- Retries for transient network issues
-- Rate limiting to prevent API throttling
-- Specific exception types for different errors
-- Detailed error logging
-
-## Logging
-
-Default logging level is INFO, which shows:
-- Processing progress
-- Custom fields responses
-- LinkedIn URL status for each contact
-- Summary statistics
-
-Debug logging (if enabled) shows:
-- API responses
-- Detailed processing information
-- Cache operations
-- Rate limiting details
-
-## Performance Optimization
-
-The script optimizes performance through:
-1. Parallel processing of contacts using ThreadPoolExecutor
-2. Caching of custom field definitions
-3. Rate limiting to prevent API throttling
-4. Efficient API calls with pagination
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
 ## Contributing
 
-Feel free to submit issues and enhancement requests!
+1. Follow the existing code structure and patterns
+2. Add tests for new functionality
+3. Update documentation as needed
+4. Submit pull requests for review
 
 ## License
 
-MIT License
+Internal use only - All rights reserved
