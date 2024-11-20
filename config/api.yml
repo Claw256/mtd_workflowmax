@@ -1,0 +1,40 @@
+# WorkflowMax API Configuration
+base_url: https://api.workflowmax2.com
+
+# API version
+api_version: "0.1"
+
+# Batch processing
+batch_size: 50
+
+# Rate limiting
+rate_limit:
+  enabled: true
+  concurrent_limit: 10
+  minute_limit: 60
+  daily_limit: 5000
+
+# Retry configuration
+retry:
+  enabled: true
+  max_retries: 3
+  backoff_factor: 0.5
+  retry_statuses:
+    - 429  # Too Many Requests
+    - 500  # Internal Server Error
+    - 502  # Bad Gateway
+    - 503  # Service Unavailable
+    - 504  # Gateway Timeout
+
+# Connection settings
+connection:
+  timeout: 30.0
+  pool_connections: 100
+  pool_maxsize: 200
+  max_keepalive: 5
+
+# Caching
+cache:
+  enabled: true
+  ttl: 300  # 5 minutes in seconds
+  max_size: 1000

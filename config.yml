@@ -1,0 +1,39 @@
+# WorkflowMax API Configuration
+
+# Maximum number of worker threads for parallel processing
+max_workers: 5
+
+# Maximum number of retry attempts for failed requests
+max_retries: 3
+
+# Maximum requests per second (rate limiting)
+requests_per_second: 2
+
+# LinkedIn authentication
+linkedin_username: ${LINKEDIN_USERNAME}
+linkedin_password: ${LINKEDIN_PASSWORD}
+
+# Logging configuration
+logging:
+  # Available levels: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  level: INFO
+  # Log file path (optional)
+  file: workflowmax.log
+
+# Custom field settings
+custom_fields:
+  # Case-insensitive name of the LinkedIn profile field
+  linkedin_field_name: "LINKEDIN PROFILE"
+  # Whether to cache custom field results
+  enable_caching: true
+  # Maximum cache size (number of clients)
+  max_cache_size: 1000
+
+# Output settings
+output:
+  # Default output format (json or csv)
+  default_format: json
+  # Whether to include custom fields in output
+  include_custom_fields: true
+  # Output directory (optional)
+  directory: output
