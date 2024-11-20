@@ -92,4 +92,4 @@ pip install -r requirements.txt
 
 ## License
 
-Internal use only - All rights reserved
+MIT License - see [LICENSE.md](LICENSE.md) for details
