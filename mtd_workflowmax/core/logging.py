@@ -54,7 +54,21 @@ COLORS = {
     'MAGENTA': '\033[35m',
     'CYAN': '\033[36m',
     'WHITE': '\033[37m',
-    'GRAY': '\033[90m'
+    'GRAY': '\033[90m',
+    'BRIGHT_BLUE': '\033[94m',
+    'BRIGHT_GREEN': '\033[92m',
+    'BRIGHT_YELLOW': '\033[93m',
+    'BRIGHT_MAGENTA': '\033[95m',
+    'BRIGHT_CYAN': '\033[96m',
+    'BRIGHT_WHITE': '\033[97m',
+    'BG_BLUE': '\033[44m',
+    'BG_GREEN': '\033[42m',
+    'BG_YELLOW': '\033[43m',
+    'BG_RED': '\033[41m',
+    'BG_MAGENTA': '\033[45m',
+    'BG_CYAN': '\033[46m',
+    'BG_WHITE': '\033[47m',
+    'BG_GRAY': '\033[100m'
 }
 
 class JsonFormatter(logging.Formatter):
@@ -119,11 +133,19 @@ class PrettyFormatter(logging.Formatter):
     """Formatter that outputs clean, readable logs."""
     
     LEVEL_COLORS = {
-        'DEBUG': COLORS['GRAY'],
-        'INFO': COLORS['GREEN'],
-        'WARNING': COLORS['YELLOW'],
-        'ERROR': COLORS['RED'],
-        'CRITICAL': COLORS['RED'] + COLORS['BOLD']
+        'DEBUG': COLORS['BRIGHT_CYAN'],
+        'INFO': COLORS['BRIGHT_GREEN'],
+        'WARNING': COLORS['BRIGHT_YELLOW'],
+        'ERROR': COLORS['RED'] + COLORS['BOLD'],
+        'CRITICAL': COLORS['BG_RED'] + COLORS['WHITE'] + COLORS['BOLD']
+    }
+
+    LEVEL_ICONS = {
+        'DEBUG': '🔍',
+        'INFO': '✨',
+        'WARNING': '⚠️',
+        'ERROR': '❌',
+        'CRITICAL': '💥'
     }
     
     def __init__(self):
@@ -173,55 +195,93 @@ class PrettyFormatter(logging.Formatter):
         """Format timestamp in a readable way."""
         try:
             dt = datetime.fromtimestamp(record.created)
-            return dt.strftime('%H:%M:%S')
+            timestamp = dt.strftime('%H:%M:%S')
+            return self.colorize(timestamp, COLORS['BRIGHT_BLUE'])
         except:
-            return self.formatTime(record)
+            return self.colorize(self.formatTime(record), COLORS['BRIGHT_BLUE'])
+
+    def format_args(self, args_dict: Dict[str, Any], indent: int = 2) -> str:
+        """Format function arguments in a pretty way."""
+        if not args_dict:
+            return ""
+        
+        lines = []
+        indent_str = " " * indent
+        
+        for key, value in args_dict.items():
+            if isinstance(value, (dict, list)):
+                # Format complex types with JSON
+                formatted_value = json.dumps(value, indent=indent + 2)
+                lines.append(f"{indent_str}{self.colorize(key, COLORS['BRIGHT_MAGENTA'])}=")
+                for line in formatted_value.split('\n'):
+                    lines.append(f"{indent_str}  {self.colorize(line, COLORS['BRIGHT_WHITE'])}")
+            else:
+                # Format simple types inline
+                formatted_value = self.colorize(str(value), COLORS['BRIGHT_WHITE'])
+                lines.append(f"{indent_str}{self.colorize(key, COLORS['BRIGHT_MAGENTA'])}={formatted_value}")
+        
+        return '\n'.join(lines)
     
     def format(self, record: logging.LogRecord) -> str:
         """Format log record in a clean, readable way."""
         # Build the log message
         parts = []
         
-        # Timestamp and level
+        # Timestamp, level icon and name
         level_color = self.LEVEL_COLORS.get(record.levelname, '')
+        level_icon = self.LEVEL_ICONS.get(record.levelname, '')
         level_name = self.colorize(f"[{record.levelname:>7}]", level_color)
-        parts.append(f"{self.format_timestamp(record)} {level_name}")
+        parts.append(f"{self.format_timestamp(record)} {level_icon} {level_name}")
         
-        # Logger name
+        # Logger name with pretty formatting
         logger_name = record.name
         if '.' in logger_name:
             *modules, name = logger_name.split('.')
             logger_display = '.'.join(m[0] for m in modules) + '.' + name
         else:
             logger_display = logger_name
-        parts.append(logger_display)
+        parts.append(self.colorize(logger_display, COLORS['BRIGHT_GREEN']))
         
-        # Main message
+        # Main message with function call formatting
         message = record.msg
-        if isinstance(message, str):
-            parts.append(message)
-        elif isinstance(message, dict):
-            # Format dictionary messages
+        if isinstance(message, dict):
             msg = message.get('message', '')
             context = message.get('context', {})
-            parts.append(msg)
-            if context:
-                context_parts = []
-                for key, value in context.items():
-                    if isinstance(value, (dict, list)):
-                        context_parts.append(f"{key}={json.dumps(value, indent=2)}")
-                    else:
-                        context_parts.append(f"{key}={value}")
-                if context_parts:
-                    parts.append('(' + ', '.join(context_parts) + ')')
+            
+            # Format function calls specially
+            if 'Calling' in msg or 'Completed' in msg:
+                func_name = msg.split()[-1]
+                if 'Calling' in msg:
+                    parts.append(self.colorize('Calling', COLORS['BRIGHT_YELLOW']) + 
+                               ' ' + 
+                               self.colorize(func_name, COLORS['BRIGHT_CYAN']))
+                    if 'args' in context or 'kwargs' in context:
+                        parts.append('\n' + self.format_args({
+                            'args': context.get('args', []),
+                            'kwargs': context.get('kwargs', {})
+                        }))
+                else:  # Completed
+                    parts.append(self.colorize('Completed', COLORS['BRIGHT_GREEN']) + 
+                               ' ' + 
+                               self.colorize(func_name, COLORS['BRIGHT_CYAN']))
+                    if 'result' in context:
+                        parts.append('\n' + self.format_args({'result': context['result']}))
+            else:
+                parts.append(self.colorize(msg, COLORS['BRIGHT_WHITE']))
+                if context:
+                    parts.append('\n' + self.format_args(context))
         else:
-            parts.append(str(message))
+            parts.append(self.colorize(str(message), COLORS['BRIGHT_WHITE']))
         
         # Exception information
         if record.exc_info:
-            parts.append('\n' + self.formatException(record.exc_info))
+            parts.append('\n' + self.colorize(self.formatException(record.exc_info), COLORS['RED']))
         
-        return ' '.join(str(p) for p in parts if p)
+        # Join all parts and add subtle separator
+        log_entry = ' '.join(str(p) for p in parts if p)
+        separator = self.colorize('─' * 100, COLORS['DIM']) if self.use_colors else ''
+        
+        return f"{separator}\n{log_entry}\n"
 
 class StructuredLogger:
     """Logger that outputs structured logs with additional context."""
