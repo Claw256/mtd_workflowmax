@@ -70,4 +70,6 @@ contact_service.update_custom_fields("contact-uuid", {
 
 ## License
 
-Internal use only - All rights reserved
+MIT License
+
+Copyright (c) 2024 Munster Tool & Die
