@@ -29,6 +29,14 @@ wheels/
 .installed.cfg
 *.egg
 
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+.env/
+.ENV/
+
 # Backup files
 *_backup_*.json
 *.json.old
